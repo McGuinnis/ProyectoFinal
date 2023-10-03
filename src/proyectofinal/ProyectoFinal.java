@@ -6,7 +6,13 @@
 package proyectofinal;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
+import proyectofinal.Entidades.Ciudad;
 
 /**
  *
@@ -22,8 +28,24 @@ public class ProyectoFinal {
 
         Connection con = Conexion.getConexion();
         
-        // Probando el proyecto
-        ////
+        
+        // ******************* iNSERTANDO UNA ciudad ******************
+        CiudadData cd = new CiudadData();
+        //Ciudad ciudad = new Ciudad("Santa Rosa", "Argentina", true, "La Pampa");
+//        try {
+//            cd.agregarCiudad(ciudad);
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error!!!!");
+//        }
+//    
+//        ********************** MODIFICANDO UNA CIUDAD *************
+        Ciudad ciudad2 = new Ciudad(5, "General Pico", "Argentina", true, "La Pampa");
+//        cd.modificarCiudad(ciudad2);
+    
+    // **************eLIMINANDO UNA ciudad *************
+    
+    cd.eliminarCiudad(4);
+    
     }
 
 }
