@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectofinal;
 
 import java.sql.Connection;
@@ -14,15 +10,10 @@ import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
 import proyectofinal.Entidades.Ciudad;
 
-/**
- *
- * @author Luis
- */
+
 public class ProyectoFinal {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
         // TODO code application logic here
 
@@ -31,7 +22,7 @@ public class ProyectoFinal {
         
         // ******************* iNSERTANDO UNA ciudad ******************
         CiudadData cd = new CiudadData();
-        Ciudad ciudad = new Ciudad("Santa Rosa", "Argentina", true, "La Pampa");
+//        Ciudad ciudad = new Ciudad("Santa Rosa", "Argentina", true, "La Pampa");
 //        try {
 //            cd.agregarCiudad(ciudad);
 //        } catch (SQLException ex) {
@@ -44,7 +35,7 @@ public class ProyectoFinal {
     
     // ************** Eliminando una CIUDAD *************
     
-     cd.eliminarCiudad(4);
+//     cd.eliminarCiudad(4);
     
     }
 
