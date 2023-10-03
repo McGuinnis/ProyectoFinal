@@ -31,7 +31,7 @@ public class ProyectoFinal {
         
         // ******************* iNSERTANDO UNA ciudad ******************
         CiudadData cd = new CiudadData();
-        //Ciudad ciudad = new Ciudad("Santa Rosa", "Argentina", true, "La Pampa");
+        Ciudad ciudad = new Ciudad("Santa Rosa", "Argentina", true, "La Pampa");
 //        try {
 //            cd.agregarCiudad(ciudad);
 //        } catch (SQLException ex) {
@@ -39,12 +39,12 @@ public class ProyectoFinal {
 //        }
 //    
 //        ********************** MODIFICANDO UNA CIUDAD *************
-        Ciudad ciudad2 = new Ciudad(5, "General Pico", "Argentina", true, "La Pampa");
+//        Ciudad ciudad2 = new Ciudad(6, "General Pico", "Argentina", true, "La Pampa");
 //        cd.modificarCiudad(ciudad2);
     
-    // **************eLIMINANDO UNA ciudad *************
+    // ************** Eliminando una CIUDAD *************
     
-    cd.eliminarCiudad(4);
+     cd.eliminarCiudad(4);
     
     }
 
