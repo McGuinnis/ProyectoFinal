@@ -31,7 +31,7 @@ public class CiudadData {
     }
 
 //Insertando una Ciudad
-    public void agregarCiudad(Ciudad ciudad) throws SQLException {
+    public void agregarCiudad(Ciudad ciudad){
 
         String sql = "INSERT INTO ciudad (Nombre, Pais, Estado, Provincia)"
                 + "VALUES(?, ?, ?, ?)";

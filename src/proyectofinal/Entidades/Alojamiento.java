@@ -6,6 +6,8 @@
 package proyectofinal.Entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import proyectofinal.AccesoaDatos.TipoAlojamiento;
 
 /**
  *
@@ -14,26 +16,28 @@ import java.sql.Date;
 public class Alojamiento {
     
     private int idAlojamiento;
-    private Date Fechaing; // fecha de ingreso
-    private Date FechaOn; // fecha de salida
+    private LocalDate Fechaing; // fecha de ingreso
+    private LocalDate FechaOn; // fecha de salida
     private boolean estado;
     private String servicio;
     private double importeDiario;
     private Ciudad ciudadDest;
+    private TipoAlojamiento tipoAlojam;
 
     public Alojamiento() {
     }
 
-    public Alojamiento(Date Fechaing, Date FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest) {
+    public Alojamiento(LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, TipoAlojamiento tipoAlojam) {
         this.Fechaing = Fechaing;
         this.FechaOn = FechaOn;
         this.estado = estado;
         this.servicio = servicio;
         this.importeDiario = importeDiario;
         this.ciudadDest = ciudadDest;
+        this.tipoAlojam = tipoAlojam;
     }
 
-    public Alojamiento(int idAlojamiento, Date Fechaing, Date FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest) {
+    public Alojamiento(int idAlojamiento, LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, TipoAlojamiento tipoAlojam) {
         this.idAlojamiento = idAlojamiento;
         this.Fechaing = Fechaing;
         this.FechaOn = FechaOn;
@@ -41,6 +45,7 @@ public class Alojamiento {
         this.servicio = servicio;
         this.importeDiario = importeDiario;
         this.ciudadDest = ciudadDest;
+        this.tipoAlojam = tipoAlojam;
     }
 
     public int getIdAlojamiento() {
@@ -51,19 +56,19 @@ public class Alojamiento {
         this.idAlojamiento = idAlojamiento;
     }
 
-    public Date getFechaing() {
+    public LocalDate getFechaing() {
         return Fechaing;
     }
 
-    public void setFechaing(Date Fechaing) {
+    public void setFechaing(LocalDate Fechaing) {
         this.Fechaing = Fechaing;
     }
 
-    public Date getFechaOn() {
+    public LocalDate getFechaOn() {
         return FechaOn;
     }
 
-    public void setFechaOn(Date FechaOn) {
+    public void setFechaOn(LocalDate FechaOn) {
         this.FechaOn = FechaOn;
     }
 
@@ -98,4 +103,17 @@ public class Alojamiento {
     public void setCiudadDest(Ciudad ciudadDest) {
         this.ciudadDest = ciudadDest;
     }
+
+    public TipoAlojamiento getTipoAlojam() {
+        return tipoAlojam;
+    }
+
+    public void setTipoAlojam(TipoAlojamiento tipoAlojam) {
+        this.tipoAlojam = tipoAlojam;
+    }
+    
+    
+   
+    
+    
  }
