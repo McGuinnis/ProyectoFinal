@@ -3,9 +3,12 @@ package proyectofinal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
 import proyectofinal.Entidades.Ciudad;
@@ -36,7 +39,17 @@ public class ProyectoFinal {
     // ************** Eliminando una CIUDAD *************
     
 //     cd.eliminarCiudad(4);
+
+AlojamientoData vac = new AlojamientoData();
+
+vac.Calculo();
+
+
+
+
+  }
+
+
     
-    }
 
 }

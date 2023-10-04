@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -65,5 +67,55 @@ public class AlojamientoData {
 
         }
     }
-
+ public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2){
+   
+    
+    
+        
+  public void Calculo () {
+      
+      
+      
+    LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
+    
+    LocalDate fechaFin = LocalDate.of(2023, 1, 16);
+        
+        String temporada = CalcularTemporada(fechaInicio);
+        
+        int diasVacaciones = CalcularDiasVacaciones(fechaInicio, fechaFin);
+        
+      System.out.println("Temporada" +  temporada);
+      System.out.println("Día de Vacaciones" +  diasVacaciones);
 }
+    
+    private String CalcularTemporada(LocalDate fechaInicio){
+        
+        Month mesInicio = fechaInicio.getMonth();
+        
+        if (mesInicio == Month.JANUARY || mesInicio == Month.JULY){
+            return "Alta";
+        } else if (mesInicio == Month.FEBRUARY || mesInicio == Month.JUNE){
+            return "Media";
+        } else {
+            return "Baja";
+        }  
+    }
+    
+    private int CalcularDiasVacaciones(LocalDate fechaInicio, LocalDate fechaFin){
+        
+        long diasDeDiferencia = fechaInicio.until(fechaFin, ChronoUnit.DAYS);
+        
+        return (int) diasDeDiferencia;
+        
+    }
+    
+    }
+
+
+
+    
+    
+    
+    
+
+
