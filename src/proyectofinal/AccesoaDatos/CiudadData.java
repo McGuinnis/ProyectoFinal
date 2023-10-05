@@ -106,4 +106,34 @@ public class CiudadData {
         }
     }
 
+    public Ciudad buscarCiudad (int id){
+        Ciudad ciudad=null;
+        String sql="SELECT Nombre, Pais, Estado, Provincia FROM ciudad WHERE idCiudad=? ";
+        
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            
+            if (rs.next()) {
+                ciudad= new Ciudad();
+                ciudad.setIdCiudad(id);
+                ciudad.setNombre(rs.getString("Nombre"));
+                ciudad.setPais(rs.getString("Pais"));
+                ciudad.setEstado(rs.getBoolean("Estado"));
+                ciudad.setProvincia(rs.getString("Provincia"));
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Ciudad no Disponible");
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos ciudad");
+        }catch (NullPointerException ex2){
+            
+        }
+        return ciudad;
+    }
+    
 }

@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
+import proyectofinal.AccesoaDatos.TipoAlojamiento;
+import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
 
 
@@ -39,17 +41,21 @@ public class ProyectoFinal {
     // ************** Eliminando una CIUDAD *************
     
 //     cd.eliminarCiudad(4);
+Ciudad ciu=new Ciudad(4,"Santa Rosa", "Argentina", true, "La Pampa");
 
 AlojamientoData vac = new AlojamientoData();
 
-vac.Calculo();
-
-
-
-
-  }
-
-
+//Alojamiento alo= new Alojamiento(1,LocalDate.of(2023, 1, 15),LocalDate.of(2023, 1, 21),true,"Desayuno y Almuerzo",20000,ciu,TipoAlojamiento.Hotel);
+//
+//vac.modificarAlojamiento(alo);
+try {
+          ciu=cd.buscarCiudad(7);
+        System.out.println(ciu.getNombre());
+        System.out.println(ciu.getPais());
+        System.out.println(ciu.getProvincia());
     
+        } catch (NullPointerException e) {
+        }
 
+}
 }

@@ -67,6 +67,37 @@ public class AlojamientoData {
 
         }
     }
+    
+    public void modificarAlojamiento(Alojamiento alojamiento){
+        
+       String sql= "UPDATE `alojamiento` SET FechaIn=?,FechaOn=?,Estado=?,Servicio=?,ImporteDiario=?,idCuidadDestino=?,TipodeAlojamiento=? WHERE idAlojamiento= ?";
+            
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
+            ps.setDate(1, Date.valueOf(alojamiento.getFechaing()));
+            ps.setDate(2, Date.valueOf(alojamiento.getFechaOn()));
+            ps.setBoolean(3, alojamiento.isEstado());
+            ps.setString(4, alojamiento.getServicio());
+            ps.setDouble(5, alojamiento.getImporteDiario());
+            ps.setInt(6, alojamiento.getCiudadDest().getIdCiudad());
+            ps.setString(7, alojamiento.getTipoAlojam().name());
+            ps.setInt(8, alojamiento.getIdAlojamiento());
+            
+            int exito= ps.executeUpdate();
+            
+            if (exito==1) {
+                JOptionPane.showMessageDialog(null, "Alojamiento Modificado con Exito");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Alojamiento");
+        }
+    }
+    
+    
+    
+    
  public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2){ 
     LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
     
@@ -100,6 +131,8 @@ public class AlojamientoData {
         return (int) diasDeDiferencia;
         
     }
+    
+    
     
     }
 
