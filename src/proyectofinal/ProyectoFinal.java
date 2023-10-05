@@ -11,9 +11,11 @@ import javax.swing.JOptionPane;
 import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
+import proyectofinal.AccesoaDatos.PasajeData;
 import proyectofinal.AccesoaDatos.TipoAlojamiento;
 import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
+import proyectofinal.Entidades.Pasaje;
 
 
 public class ProyectoFinal {
@@ -41,7 +43,7 @@ public class ProyectoFinal {
     // ************** Eliminando una CIUDAD *************
     
 //     cd.eliminarCiudad(4);
-Ciudad ciu=new Ciudad(4,"Santa Rosa", "Argentina", true, "La Pampa");
+Ciudad ciu=new Ciudad(4,"Mar de Plata", "Argentina", true, "Buenos Aires");
 
 AlojamientoData vac = new AlojamientoData();
 
@@ -57,6 +59,14 @@ AlojamientoData vac = new AlojamientoData();
 //        } catch (NullPointerException e) {
 //        }
 //
-vac.eliminarAlojamiento(1);
+//vac.eliminarAlojamiento(1);
+
+PasajeData psaje = new PasajeData();
+//Pasaje pasaje = new Pasaje("Avion", 50000, ciu, true);
+//
+//psaje.agregarPasaje(pasaje);
+
+psaje.EliminarPasaje(4);
+
 }
 }
