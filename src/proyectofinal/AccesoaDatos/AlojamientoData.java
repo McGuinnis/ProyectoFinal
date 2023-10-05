@@ -67,15 +67,7 @@ public class AlojamientoData {
 
         }
     }
- public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2){
-   
-    
-    
-        
-  public void Calculo () {
-      
-      
-      
+ public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2){ 
     LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
     
     LocalDate fechaFin = LocalDate.of(2023, 1, 16);
