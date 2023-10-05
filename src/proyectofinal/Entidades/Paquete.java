@@ -16,64 +16,74 @@ public class Paquete {
     private Ciudad destino;
     private Alojamiento alojamiento;
     private Pasaje pasaje;
+    private int stock;
 
     public Paquete() {
     }
 
-    public Paquete(Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
+    public Paquete(Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje, int stock) {
         this.origen = origen;
         this.destino = destino;
         this.alojamiento = alojamiento;
         this.pasaje = pasaje;
+        this.stock = stock;
     }
 
-    public Paquete(int idPaquete, Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
+    public Paquete(int idPaquete, Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje, int stock) {
         this.idPaquete = idPaquete;
         this.origen = origen;
         this.destino = destino;
         this.alojamiento = alojamiento;
         this.pasaje = pasaje;
-    }
-
-    public int getIdPaquete() {
-        return idPaquete;
+        this.stock = stock;
     }
 
     public void setIdPaquete(int idPaquete) {
         this.idPaquete = idPaquete;
     }
 
-    public Ciudad getOrigen() {
-        return origen;
-    }
-
     public void setOrigen(Ciudad origen) {
         this.origen = origen;
-    }
-
-    public Ciudad getDestino() {
-        return destino;
     }
 
     public void setDestino(Ciudad destino) {
         this.destino = destino;
     }
 
-    public Alojamiento getAlojamiento() {
-        return alojamiento;
-    }
-
     public void setAlojamiento(Alojamiento alojamiento) {
         this.alojamiento = alojamiento;
+    }
+
+    public void setPasaje(Pasaje pasaje) {
+        this.pasaje = pasaje;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public int getIdPaquete() {
+        return idPaquete;
+    }
+
+    public Ciudad getOrigen() {
+        return origen;
+    }
+
+    public Ciudad getDestino() {
+        return destino;
+    }
+
+    public Alojamiento getAlojamiento() {
+        return alojamiento;
     }
 
     public Pasaje getPasaje() {
         return pasaje;
     }
 
-    public void setPasaje(Pasaje pasaje) {
-        this.pasaje = pasaje;
+    public int getStock() {
+        return stock;
     }
-    
-    
+
 }

@@ -95,9 +95,6 @@ public class AlojamientoData {
         }
     }
     
-    
-    
-    
  public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2){ 
     LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
     
@@ -132,15 +129,26 @@ public class AlojamientoData {
         
     }
     
+    public void eliminarAlojamiento(int id){
+        String sql="UPDATE alojamiento SET Estado=0 WHERE idAlojamiento=?";
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito=ps.executeUpdate();
+            
+            if(exito==1){
+            JOptionPane.showMessageDialog(null, "Alojamiento eliminado con exito");
+            }else{
+            JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Alojamiento");
+        }
+    }
+    
+    
     
     
     }
-
-
-
-    
-    
-    
-    
-
-

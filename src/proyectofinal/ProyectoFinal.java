@@ -48,14 +48,15 @@ AlojamientoData vac = new AlojamientoData();
 //Alojamiento alo= new Alojamiento(1,LocalDate.of(2023, 1, 15),LocalDate.of(2023, 1, 21),true,"Desayuno y Almuerzo",20000,ciu,TipoAlojamiento.Hotel);
 //
 //vac.modificarAlojamiento(alo);
-try {
-          ciu=cd.buscarCiudad(7);
-        System.out.println(ciu.getNombre());
-        System.out.println(ciu.getPais());
-        System.out.println(ciu.getProvincia());
-    
-        } catch (NullPointerException e) {
-        }
-
+//try {
+//          ciu=cd.buscarCiudad(7);
+//        System.out.println(ciu.getNombre());
+//        System.out.println(ciu.getPais());
+//        System.out.println(ciu.getProvincia());
+//    
+//        } catch (NullPointerException e) {
+//        }
+//
+vac.eliminarAlojamiento(1);
 }
 }
