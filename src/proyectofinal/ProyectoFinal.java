@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -48,7 +49,7 @@ Ciudad ciu=new Ciudad(4,"Mar de Plata", "Argentina", true, "Buenos Aires");
 AlojamientoData vac = new AlojamientoData();
 
 //Alojamiento alo= new Alojamiento(1,LocalDate.of(2023, 1, 15),LocalDate.of(2023, 1, 21),true,"Desayuno y Almuerzo",20000,ciu,TipoAlojamiento.Hotel);
-//
+////********************Modificar Alojamiento*************************
 //vac.modificarAlojamiento(alo);
 //try {
 //          ciu=cd.buscarCiudad(7);
@@ -63,10 +64,23 @@ AlojamientoData vac = new AlojamientoData();
 
 PasajeData psaje = new PasajeData();
 //Pasaje pasaje = new Pasaje("Avion", 50000, ciu, true);
-//
+/////////////************** Agregar Pasaje**************
 //psaje.agregarPasaje(pasaje);
 
-psaje.EliminarPasaje(4);
+//////**************Eliminar Pasaje ********************
+//psaje.EliminarPasaje(1);
+
+////////********Listar Ciudades por Pais ********************
+//List<Ciudad> cc=cd.listarciudadPais("Argentina");
+//        for (Ciudad ciudad1 : cc) {
+//            System.out.println("Nombre Ciudad: "+ciudad1.getNombre());
+//            System.out.println("Provincia: "+ciudad1.getProvincia());
+//            System.out.println("---------------------------------------");
+//        }
+        
+ 
+cd.listarPaises();
+
 
 }
 }

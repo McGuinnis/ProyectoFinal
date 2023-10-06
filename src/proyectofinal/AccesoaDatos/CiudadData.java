@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -136,4 +138,61 @@ public class CiudadData {
         return ciudad;
     }
     
+    public List<Ciudad> listarCiudadPorPais(String pais){
+        
+        String sql="SELECT `idCiudad`, `Nombre`, `Estado`, `Provincia` FROM `ciudad` WHERE estado=1 AND Pais=?";
+        ArrayList<Ciudad> ciudadList=new ArrayList<>();
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setString(1, pais);
+            
+            
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()) {                
+                 Ciudad ciudad= new Ciudad();
+                 
+                 ciudad.setIdCiudad(rs.getInt("idCiudad"));
+                 ciudad.setNombre(rs.getString("Nombre"));
+                 ciudad.setEstado(true);
+                 ciudad.setProvincia(rs.getString("Provincia"));
+                 ciudad.setPais(pais); 
+                 ciudadList.add(ciudad);
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos ciudad");
+        }finally{
+            try {
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); 
+        }
+        }
+        return ciudadList;
+    }
+    
+    public void listarPaises(){
+        String sql="SELECT DISTINCT pais FROM ciudad";
+  //      ArrayList<Ciudad> pais=new ArrayList<>();
+        
+        try {
+            ps=con.prepareStatement(sql);
+            ResultSet resultSet = ps.executeQuery(sql);
+
+            // Imprimir los países encontrados
+            while (resultSet.next()) {
+                String pais = resultSet.getString("pais");
+                System.out.println(pais);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CiudadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+    
+    } 
 }
