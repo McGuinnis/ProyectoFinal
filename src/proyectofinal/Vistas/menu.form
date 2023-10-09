@@ -50,10 +50,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jdEscritorio" min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="jdEscritorio" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -68,12 +65,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="810" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1212" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="488" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="719" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

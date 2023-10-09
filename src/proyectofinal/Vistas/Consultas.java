@@ -5,6 +5,7 @@
 package proyectofinal.Vistas;
 
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.Entidades.Ciudad;
 /**
@@ -16,11 +17,24 @@ public class Consultas extends javax.swing.JInternalFrame {
     /**
      * Creates new form Consultas
      */
+    private DefaultTableModel modelo;
     public Consultas() {
         initComponents();
         cargarComboPaises();
+        cargarComboProvincias();
+        modelo=new DefaultTableModel();
+        armarCabecera();
+        
+        
+        jcomboProvincia.setEnabled(false);
+        jcomboMes.setEnabled(false);
+        jbBuscar.setEnabled(false);
     }
-
+ 
+    //************Variables Globales*******************
+    CiudadData cData = new CiudadData();
+    
+    ///***************************************************
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +59,7 @@ public class Consultas extends javax.swing.JInternalFrame {
         jcomboMes = new javax.swing.JComboBox<>();
         jbBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTabla = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,7 +73,9 @@ public class Consultas extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setPreferredSize(new java.awt.Dimension(700, 600));
 
+        jPanel2.setMinimumSize(new java.awt.Dimension(500, 490));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -72,11 +88,21 @@ public class Consultas extends javax.swing.JInternalFrame {
 
         jcomboPais.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcomboPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jcomboPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboPaisActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Selecione Provincia:");
 
         jcomboProvincia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcomboProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboProvinciaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Cantidad de Personas:");
@@ -88,6 +114,11 @@ public class Consultas extends javax.swing.JInternalFrame {
         jcomboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -140,7 +171,7 @@ public class Consultas extends javax.swing.JInternalFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 73, -1, 210));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -151,23 +182,44 @@ public class Consultas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTabla);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 460, 250));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 650, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
+        jcomboProvincia.setEnabled(true);
+        
+        cargarComboProvincias();
+
+       
+    }//GEN-LAST:event_jcomboPaisActionPerformed
+
+    private void jcomboProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboProvinciaActionPerformed
+        // TODO add your handling code here:
+        jcomboMes.setEnabled(true);
+        
+    }//GEN-LAST:event_jcomboProvinciaActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -181,7 +233,7 @@ public class Consultas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTabla;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JComboBox<String> jcomboMes;
     private javax.swing.JComboBox<String> jcomboPais;
@@ -190,8 +242,6 @@ public class Consultas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarComboPaises() {
-        
-        CiudadData cData = new CiudadData();
         
         List<String> pais = cData.listarPaises();
         
@@ -203,4 +253,25 @@ public class Consultas extends javax.swing.JInternalFrame {
         
     }    
     
+   private void cargarComboProvincias(){
+       String pai=(String)jcomboPais.getSelectedItem();
+       
+       List<Ciudad> ciudad= cData.listarCiudadPorPais(pai);
+       System.out.println(pai);
+       for (Ciudad ciudad1 : ciudad) {
+           jcomboProvincia.addItem(ciudad1);
+       }
+   }
+    
+  private void armarCabecera(){
+      modelo.addColumn("Fecha Inicio");
+      modelo.addColumn("Fecha Fin");
+      modelo.addColumn("Transporte");
+      modelo.addColumn("Alojamiento");
+      modelo.addColumn("Servicios");
+      modelo.addColumn("Precio Total");
+      jTabla.setModel(modelo);
+  }
+   
+   
 }

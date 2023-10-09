@@ -71,15 +71,15 @@ PasajeData psaje = new PasajeData();
 //psaje.EliminarPasaje(1);
 
 ////////********Listar Ciudades por Pais ********************
-//List<Ciudad> cc=cd.listarciudadPais("Argentina");
-//        for (Ciudad ciudad1 : cc) {
-//            System.out.println("Nombre Ciudad: "+ciudad1.getNombre());
-//            System.out.println("Provincia: "+ciudad1.getProvincia());
-//            System.out.println("---------------------------------------");
-//        }
+List<Ciudad> cc=cd.listarCiudadPorPais("Peru");
+        for (Ciudad ciudad1 : cc) {
+            System.out.println("Nombre Ciudad: "+ciudad1.getNombre());
+            System.out.println("Provincia: "+ciudad1.getProvincia());
+            System.out.println("---------------------------------------");
+        }
         
  
-cd.listarPaises();
+//cd.listarPaises();
 
 
 }
