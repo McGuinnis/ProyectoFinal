@@ -7,7 +7,6 @@ package proyectofinal.Vistas;
 import java.util.List;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.Entidades.Ciudad;
-
 /**
  *
  * @author orell
@@ -136,7 +135,7 @@ public class Consultas extends javax.swing.JInternalFrame {
                     .addComponent(jspCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jbBuscar))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 73, -1, 210));
