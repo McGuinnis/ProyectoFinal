@@ -265,6 +265,7 @@ public class Consultas extends javax.swing.JInternalFrame {
    }
     
   private void armarCabecera(){
+      modelo.addColumn("Ciudad");
       modelo.addColumn("Fecha Inicio");
       modelo.addColumn("Fecha Fin");
       modelo.addColumn("Transporte");
