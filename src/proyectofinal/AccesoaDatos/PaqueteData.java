@@ -10,9 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import proyectofinal.Entidades.Alojamiento;
+import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Paquete;
+import proyectofinal.Entidades.Pasaje;
 
 /**
  *
@@ -64,6 +70,33 @@ public void modificarPaquete(Paquete paquete){
 public void eliminarPaquete(Paquete paquete){
 }
 
-//public List<Paquete> listarPaquete(){
-//}
+public List<Paquete> listarPaquetePorCiudad(int idCiudad  ){
+   
+    String sql= "SELECT `idPaquete`, `idCuidadOrigen`,  `idAlojamiento`, `idPasaje` FROM `paquete` WHERE idCiudadDestino=?";
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idCiudad);
+            ResultSet rs=ps.executeQuery();
+            ArrayList<Paquete> paqueteA=new ArrayList<>();
+            while(rs.next()){
+               Paquete paq=new Paquete(); 
+               Alojamiento alo=new Alojamiento();
+               Pasaje pasaje=new Pasaje ();
+               Ciudad ciu= new Ciudad();
+               
+               paq.setIdPaquete(rs.getInt("idPaquete"));
+               paq.set
+               
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PaqueteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+            
+    
+    
+}
 }

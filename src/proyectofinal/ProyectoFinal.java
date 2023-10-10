@@ -80,5 +80,15 @@ public class ProyectoFinal {
 //
 //        }
 
+    
+//List<Ciudad> cc=cd.listarCiudadPorProvinciaypais("Argentina", "Chubut");
+//        for (Ciudad ciudad1 : cc) {
+//            System.out.println("Id: "+ ciudad1.getIdCiudad());
+//            System.out.println("Nombre Ciudad: "+ciudad1.getNombre());
+//            System.out.println("Provincia: "+ciudad1.getProvincia());
+//            System.out.println("---------------------------------------");
+//        }
+
+
     }
 }

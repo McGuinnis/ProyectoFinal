@@ -148,7 +148,37 @@ public class AlojamientoData {
         }
     }
     
-    
+    public Alojamiento buscarAlojamiento(int idAlo){
+        String sql="SELECT `FechaIn`, `FechaOn`, `Estado`, `Servicio`, `ImporteDiario`, `idCuidadDestino`, `TipodeAlojamiento` FROM `alojamiento` WHERE idAlojamiento=?";
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idAlo);
+            
+            ResultSet rs=ps.executeQuery();
+            
+            if (rs!=null) {
+               Alojamiento alo1=new Alojamiento();
+               alo1.setEstado(true);
+               alo1.setFechaing(rs.getDate("FechaIn").toLocalDate());
+               alo1.setFechaOn(rs.getDate("FechaOn").toLocalDate());
+               alo1.setServicio(rs.getString("Servicio"));
+               alo1.setImporteDiario(rs.getDouble("ImporteDiario"));
+               alo1.setTipoAlojam(rs.getString("TipoAlojamiento"));
+               
+               
+               
+            }
+            
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlojamientoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
     
     
     }

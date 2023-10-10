@@ -216,4 +216,44 @@ public class CiudadData {
         }
         return listaProvincias;
     }
+    
+     public List<Ciudad> listarCiudadPorProvinciaypais(String pais,String provincia ) {
+
+        String sql = "SELECT `idCiudad`, `Nombre` FROM `ciudad` WHERE Provincia=? AND Pais=? ";
+        ArrayList<Ciudad> ciudadList = new ArrayList<>();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, provincia);
+            ps.setString(2, pais);
+            
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Ciudad ciudad = new Ciudad();
+
+                ciudad.setIdCiudad(rs.getInt("idCiudad"));
+                ciudad.setNombre(rs.getString("Nombre"));
+                ciudad.setEstado(true);
+                ciudad.setProvincia(provincia);
+                ciudad.setPais(pais);
+                ciudadList.add(ciudad);
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos ciudad");
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return ciudadList;
+    }
+    
+    
 }
