@@ -256,8 +256,9 @@ public class Consultas extends javax.swing.JInternalFrame {
    private void cargarComboProvincias(){
        String pai=(String)jcomboPais.getSelectedItem();
        
-       List<Ciudad> ciudad= cData.listarCiudadPorPais(pai);
-       System.out.println(pai);
+       List<Ciudad> ciudad= cData.listarProvinciasPorPaisCombo(pai);
+       jcomboProvincia.removeAllItems();
+       
        for (Ciudad ciudad1 : ciudad) {
            jcomboProvincia.addItem(ciudad1);
        }

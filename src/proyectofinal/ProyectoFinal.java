@@ -1,4 +1,3 @@
-
 package proyectofinal;
 
 import java.sql.Connection;
@@ -18,16 +17,13 @@ import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Pasaje;
 
-
 public class ProyectoFinal {
 
-   
     public static void main(String[] args) {
         // TODO code application logic here
 
         Connection con = Conexion.getConexion();
-        
-        
+
         // ******************* iNSERTANDO UNA ciudad ******************
         CiudadData cd = new CiudadData();
 //        Ciudad ciudad = new Ciudad("Santa Rosa", "Argentina", true, "La Pampa");
@@ -40,13 +36,12 @@ public class ProyectoFinal {
 //        ********************** MODIFICANDO UNA CIUDAD *************
 //        Ciudad ciudad2 = new Ciudad(6, "General Pico", "Argentina", true, "La Pampa");
 //        cd.modificarCiudad(ciudad2);
-    
-    // ************** Eliminando una CIUDAD *************
-    
-//     cd.eliminarCiudad(4);
-Ciudad ciu=new Ciudad(4,"Mar de Plata", "Argentina", true, "Buenos Aires");
 
-AlojamientoData vac = new AlojamientoData();
+        // ************** Eliminando una CIUDAD *************
+//     cd.eliminarCiudad(4);
+        Ciudad ciu = new Ciudad(4, "Mar de Plata", "Argentina", true, "Buenos Aires");
+
+        AlojamientoData vac = new AlojamientoData();
 
 //Alojamiento alo= new Alojamiento(1,LocalDate.of(2023, 1, 15),LocalDate.of(2023, 1, 21),true,"Desayuno y Almuerzo",20000,ciu,TipoAlojamiento.Hotel);
 ////********************Modificar Alojamiento*************************
@@ -61,26 +56,29 @@ AlojamientoData vac = new AlojamientoData();
 //        }
 //
 //vac.eliminarAlojamiento(1);
-
-PasajeData psaje = new PasajeData();
+        PasajeData psaje = new PasajeData();
 //Pasaje pasaje = new Pasaje("Avion", 50000, ciu, true);
 /////////////************** Agregar Pasaje**************
 //psaje.agregarPasaje(pasaje);
 
 //////**************Eliminar Pasaje ********************
 //psaje.EliminarPasaje(1);
-
 ////////********Listar Ciudades por Pais ********************
-List<Ciudad> cc=cd.listarCiudadPorPais("Peru");
-        for (Ciudad ciudad1 : cc) {
-            System.out.println("Nombre Ciudad: "+ciudad1.getNombre());
-            System.out.println("Provincia: "+ciudad1.getProvincia());
-            System.out.println("---------------------------------------");
-        }
-        
- 
+//List<Ciudad> cc=cd.listarCiudadPorPais("Peru");
+//        for (Ciudad ciudad1 : cc) {
+//            System.out.println("Nombre Ciudad: "+ciudad1.getNombre());
+//            System.out.println("Provincia: "+ciudad1.getProvincia());
+//            System.out.println("---------------------------------------");
+//        }
+//        
 //cd.listarPaises();
+//        List<String> provincias = cd.listarProvinciasPorPaisCombo("España");
+//
+//        for (String provincia : provincias) {
+//
+//            System.out.println("" + provincia);
+//
+//        }
 
-
-}
+    }
 }
