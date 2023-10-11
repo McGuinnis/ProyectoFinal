@@ -37,7 +37,7 @@ public class AlojamientoData {
 
     public void agregarAlojamiento(Alojamiento alojamiento) {
 
-        String sql = "INSERT INTO alojamiento(FechaIn, FechaOn, Estado, Servicio, ImporteDiario, idCuidadDestino, TipodeAlojamiento) "
+        String sql = "INSERT INTO alojamiento(FechaIn, FechaOn, Estado, Servicio, ImporteDiario, idCiudadDestino, TipodeAlojamiento) "
                 + "VALUES (?, ? , ?, ?, ?, ?, ?)";
 
         try {
@@ -70,7 +70,7 @@ public class AlojamientoData {
 
     public void modificarAlojamiento(Alojamiento alojamiento) {
 
-        String sql = "UPDATE `alojamiento` SET FechaIn=?,FechaOn=?,Estado=?,Servicio=?,ImporteDiario=?,idCuidadDestino=?,TipodeAlojamiento=? WHERE idAlojamiento= ?";
+        String sql = "UPDATE `alojamiento` SET FechaIn=?,FechaOn=?,Estado=?,Servicio=?,ImporteDiario=?,idCiudadDestino=?,TipodeAlojamiento=? WHERE idAlojamiento= ?";
 
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -150,7 +150,7 @@ public class AlojamientoData {
 
     public Alojamiento buscarAlojamiento(int idAlojamiento) {
 
-        String sql = "SELECT FechaIn, FechaOn, Estado, Servicio, ImporteDiario, idCuidadDestino, TipodeAlojamiento FROM alojamiento WHERE idAlojamiento = ?";
+        String sql = "SELECT FechaIn, FechaOn, Estado, Servicio, ImporteDiario, idCiudadDestino, TipodeAlojamiento FROM alojamiento WHERE idAlojamiento = ?";
         Alojamiento alojamiento = null;
 
         try {
@@ -161,13 +161,17 @@ public class AlojamientoData {
             if (rs.next()) {
                 // Obtenemos los valores del resultado y creamos un objeto Alojamiento
                 alojamiento = new Alojamiento();
+                CiudadData cD=new CiudadData();
+                Ciudad ciU=cD.buscarCiudad(rs.getInt("idCiudadDestino"));
+                
                 alojamiento.setIdAlojamiento(idAlojamiento);
                 alojamiento.setFechaing(rs.getDate("FechaIn").toLocalDate());
                 alojamiento.setFechaOn(rs.getDate("FechaOn").toLocalDate());
                 alojamiento.setEstado(rs.getBoolean("Estado"));
                 alojamiento.setServicio(rs.getString("Servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("ImporteDiario"));
-               
+                alojamiento.setCiudadDest(ciU);
+                //alojamiento.setTipoAlojam(TipoAlojamiento.valueOf(rs.getString("TipoAlojamiento")));
             } else {
                 JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
             }

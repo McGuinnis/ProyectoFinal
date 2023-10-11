@@ -96,7 +96,12 @@ public class ProyectoFinal {
             System.out.println("Estado: " + alojamiento.isEstado());
             System.out.println("Servicio: " + alojamiento.getServicio());
             System.out.println("Importe Diario: " + alojamiento.getImporteDiario());
+            //System.out.println("Tipo Alojamiento:"+ alojamiento.getTipoAlojam());
 
         }
+        
+        
+        
+        
     }
 }

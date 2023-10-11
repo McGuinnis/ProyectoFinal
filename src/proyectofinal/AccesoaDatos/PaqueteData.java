@@ -19,6 +19,7 @@ import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Paquete;
 import proyectofinal.Entidades.Pasaje;
+import sun.security.rsa.RSACore;
 
 /**
  *
@@ -71,28 +72,63 @@ public class PaqueteData {
     public void eliminarPaquete(Paquete paquete) {
     }
 
-    public List<Paquete> listarPaquetePorCiudad(int idCiudad) {
+    public List<Paquete> listarPaquetePorCiudad(int idCiudaddestino) {
 
-        String sql = "SELECT `idPaquete`, `idCuidadOrigen`,  `idAlojamiento`, `idPasaje` FROM `paquete` WHERE idCiudadDestino=?";
+        String sql = "SELECT *" +
+            "FROM paquete p " +
+            "INNER JOIN Ciudad co ON  p.idCiudadOrigen=co.idCiudad " +
+            "INNER JOIN Alojamiento a ON p.idAlojamiento = a.idAlojamiento " +
+            "INNER JOIN Pasaje pa ON p.idPasaje = pa.idPasaje " +
+            "INNER JOIN Ciudad cd ON p.idCiudadDestino= cd.idCiudad "+    
+            "WHERE p.idCiudadDestino = ? ";
+            ArrayList<Paquete> paquete1 = new ArrayList<>();
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, idCiudad);
+               ps.setInt(1, idCiudaddestino);
+
             ResultSet rs = ps.executeQuery();
-            ArrayList<Paquete> paqueteA = new ArrayList<>();
-            while (rs.next()) {
-                Paquete paq = new Paquete();
-                Alojamiento alo = new Alojamiento();
-                Pasaje pasaje = new Pasaje();
-                Ciudad ciu = new Ciudad();
-
-                paq.setIdPaquete(rs.getInt("idPaquete"));
-               // paq.setOrigen(rs.getInt("idCiudadOrigen"));
-
+            
+            if (rs.next()) {
+               Paquete paq = new Paquete();
+               Alojamiento alo= new Alojamiento();
+               AlojamientoData aloData=new AlojamientoData();
+               Pasaje pas=new Pasaje();
+               Ciudad ciuO = new Ciudad();
+               Ciudad ciuD= new Ciudad();
+              
+               
+               ciuO.setIdCiudad(rs.getInt("idCiudadOrigen"));
+               ciuO.setNombre(rs.getString("co.Nombre"));
+               ciuO.setPais(rs.getString("co.Pais"));
+               ciuO.setProvincia(rs.getString("co.Provincia"));
+               ciuO.setEstado(rs.getBoolean("co.Estado"));
+               
+               ciuD.setIdCiudad(rs.getInt("idCiudadDestino"));
+               ciuD.setNombre(rs.getString("cd.Nombre"));
+               ciuD.setPais(rs.getString("cd.Pais"));
+               ciuD.setProvincia(rs.getString("cd.Provincia"));
+               ciuD.setEstado(rs.getBoolean("cd.Estado"));
+               
+               
+               alo=aloData.buscarAlojamiento(rs.getInt("idAlojamiento"));
+               paq.setAlojamiento(alo);
+               paq.setOrigen(ciuO);
+               paq.setDestino(ciuD);
+               
+               
+               
+               paquete1.add(paq);
+                
             }
-
+        
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(PaqueteData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+         
+ 
+        return paquete1;
+//    }
     }
 }

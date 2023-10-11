@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Paquete;
 import proyectofinal.Entidades.Pasaje;
 
@@ -77,6 +78,40 @@ public class PasajeData {
         }
     }
     
-    
+    public Pasaje buscarPasaje(int idPas) {
+
+        String sql = "SELECT  `TipodeTransporte`, `Importe`, `idCiudadOrigen`, `Estado` FROM `pasaje` WHERE idPasaje=?";
+       Pasaje pasaje = null;
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPas);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                // Obtenemos los valores del resultado y creamos un objeto Alojamiento
+               pasaje = new Pasaje();
+               CiudadData cO=new CiudadData();
+               Ciudad ciu=cO.buscarCiudad(rs.getInt("idCiudadOrigen"));
+               pasaje.setIdPasaje(idPas);
+               
+               pasaje.setNombreCiudadOrigen(ciu);
+               pasaje.setImporte(rs.getDouble("Importe"));
+               pasaje.setTipoTransporte(rs.getString("TipodeTransporte"));
+               pasaje.setEstado(rs.getBoolean("Estado"));
+               
+               
+            } else {
+                JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos Alojamiento");
+        }
+
+        return pasaje;
+    }
+
     
 }
