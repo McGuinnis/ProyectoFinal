@@ -50,31 +50,31 @@ public class AlojamientoData {
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDest().getIdCiudad());
             ps.setString(7, alojamiento.getTipoAlojam().name());
-            
+
             ps.executeUpdate();
-            
+
             ResultSet rs = ps.getGeneratedKeys();
-            
-            if(rs.next()){
-                
+
+            if (rs.next()) {
+
                 alojamiento.setIdAlojamiento(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alojamiento Agregado con Exito");
             }
-            
+
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Alojamiento");
 
         }
     }
-    
-    public void modificarAlojamiento(Alojamiento alojamiento){
-        
-       String sql= "UPDATE `alojamiento` SET FechaIn=?,FechaOn=?,Estado=?,Servicio=?,ImporteDiario=?,idCuidadDestino=?,TipodeAlojamiento=? WHERE idAlojamiento= ?";
-            
+
+    public void modificarAlojamiento(Alojamiento alojamiento) {
+
+        String sql = "UPDATE `alojamiento` SET FechaIn=?,FechaOn=?,Estado=?,Servicio=?,ImporteDiario=?,idCuidadDestino=?,TipodeAlojamiento=? WHERE idAlojamiento= ?";
+
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
+
             ps.setDate(1, Date.valueOf(alojamiento.getFechaing()));
             ps.setDate(2, Date.valueOf(alojamiento.getFechaOn()));
             ps.setBoolean(3, alojamiento.isEstado());
@@ -83,102 +83,101 @@ public class AlojamientoData {
             ps.setInt(6, alojamiento.getCiudadDest().getIdCiudad());
             ps.setString(7, alojamiento.getTipoAlojam().name());
             ps.setInt(8, alojamiento.getIdAlojamiento());
-            
-            int exito= ps.executeUpdate();
-            
-            if (exito==1) {
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alojamiento Modificado con Exito");
             }
             ps.close();
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Alojamiento");
         }
     }
-    
- public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2){ 
-    LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
-    
-    LocalDate fechaFin = LocalDate.of(2023, 1, 16);
-        
+
+    public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2) {
+        LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
+
+        LocalDate fechaFin = LocalDate.of(2023, 1, 16);
+
         String temporada = CalcularTemporada(fechaInicio);
-        
+
         int diasVacaciones = CalcularDiasVacaciones(fechaInicio, fechaFin);
-        
-      System.out.println("Temporada" +  temporada);
-      System.out.println("Día de Vacaciones" +  diasVacaciones);
-}
-    
-    private String CalcularTemporada(LocalDate fechaInicio){
-        
+
+        System.out.println("Temporada" + temporada);
+        System.out.println("Día de Vacaciones" + diasVacaciones);
+    }
+
+    private String CalcularTemporada(LocalDate fechaInicio) {
+
         Month mesInicio = fechaInicio.getMonth();
-        
-        if (mesInicio == Month.JANUARY || mesInicio == Month.JULY){
+
+        if (mesInicio == Month.JANUARY || mesInicio == Month.JULY) {
             return "Alta";
-        } else if (mesInicio == Month.FEBRUARY || mesInicio == Month.JUNE){
+        } else if (mesInicio == Month.FEBRUARY || mesInicio == Month.JUNE) {
             return "Media";
         } else {
             return "Baja";
-        }  
+        }
     }
-    
-    private int CalcularDiasVacaciones(LocalDate fechaInicio, LocalDate fechaFin){
-        
+
+    private int CalcularDiasVacaciones(LocalDate fechaInicio, LocalDate fechaFin) {
+
         long diasDeDiferencia = fechaInicio.until(fechaFin, ChronoUnit.DAYS);
-        
+
         return (int) diasDeDiferencia;
-        
+
     }
-    
-    public void eliminarAlojamiento(int id){
-        String sql="UPDATE alojamiento SET Estado=0 WHERE idAlojamiento=?";
+
+    public void eliminarAlojamiento(int id) {
+        String sql = "UPDATE alojamiento SET Estado=0 WHERE idAlojamiento=?";
         try {
-            ps=con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            int exito=ps.executeUpdate();
-            
-            if(exito==1){
-            JOptionPane.showMessageDialog(null, "Alojamiento eliminado con exito");
-            }else{
-            JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Alojamiento eliminado con exito");
+            } else {
+                JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Alojamiento");
         }
     }
-    
-    public Alojamiento buscarAlojamiento(int idAlo){
-        String sql="SELECT `FechaIn`, `FechaOn`, `Estado`, `Servicio`, `ImporteDiario`, `idCuidadDestino`, `TipodeAlojamiento` FROM `alojamiento` WHERE idAlojamiento=?";
+
+    public Alojamiento buscarAlojamiento(int idAlojamiento) {
+
+        String sql = "SELECT FechaIn, FechaOn, Estado, Servicio, ImporteDiario, idCuidadDestino, TipodeAlojamiento FROM alojamiento WHERE idAlojamiento = ?";
+        Alojamiento alojamiento = null;
+
         try {
-            ps=con.prepareStatement(sql);
-            ps.setInt(1, idAlo);
-            
-            ResultSet rs=ps.executeQuery();
-            
-            if (rs!=null) {
-               Alojamiento alo1=new Alojamiento();
-               alo1.setEstado(true);
-               alo1.setFechaing(rs.getDate("FechaIn").toLocalDate());
-               alo1.setFechaOn(rs.getDate("FechaOn").toLocalDate());
-               alo1.setServicio(rs.getString("Servicio"));
-               alo1.setImporteDiario(rs.getDouble("ImporteDiario"));
-               alo1.setTipoAlojam(rs.getString("TipoAlojamiento"));
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlojamiento);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                // Obtenemos los valores del resultado y creamos un objeto Alojamiento
+                alojamiento = new Alojamiento();
+                alojamiento.setIdAlojamiento(idAlojamiento);
+                alojamiento.setFechaing(rs.getDate("FechaIn").toLocalDate());
+                alojamiento.setFechaOn(rs.getDate("FechaOn").toLocalDate());
+                alojamiento.setEstado(rs.getBoolean("Estado"));
+                alojamiento.setServicio(rs.getString("Servicio"));
+                alojamiento.setImporteDiario(rs.getDouble("ImporteDiario"));
                
-               
-               
+            } else {
+                JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
             }
-            
-            
-            
-            
+
+            ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AlojamientoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos Alojamiento");
         }
-        
-        
-        
+
+        return alojamiento;
     }
-    
-    
-    }
+
+}

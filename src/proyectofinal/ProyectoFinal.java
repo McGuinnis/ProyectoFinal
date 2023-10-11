@@ -79,8 +79,6 @@ public class ProyectoFinal {
 //            System.out.println("" + provincia);
 //
 //        }
-
-    
 //List<Ciudad> cc=cd.listarCiudadPorProvinciaypais("Argentina", "Chubut");
 //        for (Ciudad ciudad1 : cc) {
 //            System.out.println("Id: "+ ciudad1.getIdCiudad());
@@ -88,7 +86,17 @@ public class ProyectoFinal {
 //            System.out.println("Provincia: "+ciudad1.getProvincia());
 //            System.out.println("---------------------------------------");
 //        }
+        AlojamientoData ad = new AlojamientoData();
+        Alojamiento alojamiento = ad.buscarAlojamiento(1);
+        if (alojamiento != null) {
 
+            System.out.println("ID de Alojamiento: " + alojamiento.getIdAlojamiento());
+            System.out.println("Fecha Inicio: " + alojamiento.getFechaing());
+            System.out.println("Fecha Fin: " + alojamiento.getFechaOn());
+            System.out.println("Estado: " + alojamiento.isEstado());
+            System.out.println("Servicio: " + alojamiento.getServicio());
+            System.out.println("Importe Diario: " + alojamiento.getImporteDiario());
 
+        }
     }
 }
