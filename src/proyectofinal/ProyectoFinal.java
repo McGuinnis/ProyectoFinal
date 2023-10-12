@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
+import proyectofinal.AccesoaDatos.PaqueteData;
 import proyectofinal.AccesoaDatos.PasajeData;
 
 import proyectofinal.Entidades.Alojamiento;
@@ -87,20 +88,24 @@ public class ProyectoFinal {
 //            System.out.println("---------------------------------------");
 //        }
         AlojamientoData ad = new AlojamientoData();
-        Alojamiento alojamiento = ad.buscarAlojamiento(1);
-        if (alojamiento != null) {
-
-            System.out.println("ID de Alojamiento: " + alojamiento.getIdAlojamiento());
-            System.out.println("Fecha Inicio: " + alojamiento.getFechaing());
-            System.out.println("Fecha Fin: " + alojamiento.getFechaOn());
-            System.out.println("Estado: " + alojamiento.isEstado());
-            System.out.println("Servicio: " + alojamiento.getServicio());
-            System.out.println("Importe Diario: " + alojamiento.getImporteDiario());
-            System.out.println("Tipo Alojamiento:"+ alojamiento.getTipoAlojam());
-
-        }
+        //Alojamiento alojamiento = ad.buscarAlojamiento(1);
         
+//        if (alojamiento != null) {
+//
+//            System.out.println("ID de Alojamiento: " + alojamiento.getIdAlojamiento());
+//            System.out.println("Fecha Inicio: " + alojamiento.getFechaing());
+//            System.out.println("Fecha Fin: " + alojamiento.getFechaOn());
+//            System.out.println("Estado: " + alojamiento.isEstado());
+//            System.out.println("Servicio: " + alojamiento.getServicio());
+//            System.out.println("Importe Diario: " + alojamiento.getImporteDiario());
+//            System.out.println("Tipo Alojamiento:"+ alojamiento.getTipoAlojam());
+//            
+//            
+//
+//        }
         
+        PaqueteData pd = new PaqueteData();
+        pd.listarPaquetePorCiudad(2);
         
         
     }

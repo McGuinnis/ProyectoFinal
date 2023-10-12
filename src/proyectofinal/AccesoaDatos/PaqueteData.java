@@ -92,11 +92,11 @@ public class PaqueteData {
                Paquete paq = new Paquete();
                Alojamiento alo= new Alojamiento();
                AlojamientoData aloData=new AlojamientoData();
-               Pasaje pas=new Pasaje();
+               PasajeData pd = new PasajeData();
+               Pasaje pas = new Pasaje();
                Ciudad ciuO = new Ciudad();
                Ciudad ciuD= new Ciudad();
               
-               
                ciuO.setIdCiudad(rs.getInt("idCiudadOrigen"));
                ciuO.setNombre(rs.getString("co.Nombre"));
                ciuO.setPais(rs.getString("co.Pais"));
@@ -109,16 +109,21 @@ public class PaqueteData {
                ciuD.setProvincia(rs.getString("cd.Provincia"));
                ciuD.setEstado(rs.getBoolean("cd.Estado"));
                
-               
                alo=aloData.buscarAlojamiento(rs.getInt("idAlojamiento"));
                paq.setAlojamiento(alo);
                paq.setOrigen(ciuO);
                paq.setDestino(ciuD);
-               
-               
+              
+               pas = pd.buscarPasaje(rs.getInt("idPasaje"));
+               paq.setPasaje(pas);
                
                paquete1.add(paq);
-                
+               
+//                System.out.println("Nombre ciudad Origen "+ciuO.getNombre());
+//                System.out.println("Nombre ciudad Destino "+ciuD.getNombre());
+//                System.out.println("Nombre del Alojamiento ID "+alo.getIdAlojamiento());
+//                System.out.println("Nombre de pasaje ID "+pas.getIdPasaje());
+//                System.out.println("===================================================");
             }
         
             
@@ -129,6 +134,6 @@ public class PaqueteData {
          
  
         return paquete1;
-//    }
+
     }
 }
