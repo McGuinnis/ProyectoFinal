@@ -12,7 +12,7 @@ import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.Conexion;
 import proyectofinal.AccesoaDatos.PasajeData;
-import proyectofinal.AccesoaDatos.TipoAlojamiento;
+
 import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Pasaje;
@@ -96,7 +96,7 @@ public class ProyectoFinal {
             System.out.println("Estado: " + alojamiento.isEstado());
             System.out.println("Servicio: " + alojamiento.getServicio());
             System.out.println("Importe Diario: " + alojamiento.getImporteDiario());
-            //System.out.println("Tipo Alojamiento:"+ alojamiento.getTipoAlojam());
+            System.out.println("Tipo Alojamiento:"+ alojamiento.getTipoAlojam());
 
         }
         

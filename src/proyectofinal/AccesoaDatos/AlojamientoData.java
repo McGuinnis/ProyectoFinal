@@ -49,7 +49,7 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDest().getIdCiudad());
-            ps.setString(7, alojamiento.getTipoAlojam().name());
+            ps.setString(7, alojamiento.getTipoAlojam());
 
             ps.executeUpdate();
 
@@ -81,7 +81,7 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDest().getIdCiudad());
-            ps.setString(7, alojamiento.getTipoAlojam().name());
+            ps.setString(7, alojamiento.getTipoAlojam());
             ps.setInt(8, alojamiento.getIdAlojamiento());
 
             int exito = ps.executeUpdate();
@@ -171,7 +171,7 @@ public class AlojamientoData {
                 alojamiento.setServicio(rs.getString("Servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("ImporteDiario"));
                 alojamiento.setCiudadDest(ciU);
-                //alojamiento.setTipoAlojam(TipoAlojamiento.valueOf(rs.getString("TipoAlojamiento")));
+                alojamiento.setTipoAlojam(rs.getString("TipodeAlojamiento"));
             } else {
                 JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
             }

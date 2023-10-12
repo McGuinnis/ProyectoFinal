@@ -7,7 +7,7 @@ package proyectofinal.Entidades;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import proyectofinal.AccesoaDatos.TipoAlojamiento;
+
 
 /**
  *
@@ -22,12 +22,12 @@ public class Alojamiento {
     private String servicio;
     private double importeDiario;
     private Ciudad ciudadDest;
-    private TipoAlojamiento tipoAlojam;
+    private String tipoAlojam;
 
     public Alojamiento() {
     }
 
-    public Alojamiento(LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, TipoAlojamiento tipoAlojam) {
+    public Alojamiento(LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, String tipoAlojam) {
         this.Fechaing = Fechaing;
         this.FechaOn = FechaOn;
         this.estado = estado;
@@ -37,7 +37,7 @@ public class Alojamiento {
         this.tipoAlojam = tipoAlojam;
     }
 
-    public Alojamiento(int idAlojamiento, LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, TipoAlojamiento tipoAlojam) {
+    public Alojamiento(int idAlojamiento, LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, String tipoAlojam) {
         this.idAlojamiento = idAlojamiento;
         this.Fechaing = Fechaing;
         this.FechaOn = FechaOn;
@@ -104,13 +104,15 @@ public class Alojamiento {
         this.ciudadDest = ciudadDest;
     }
 
-    public TipoAlojamiento getTipoAlojam() {
+    public String getTipoAlojam() {
         return tipoAlojam;
     }
 
-    public void setTipoAlojam(TipoAlojamiento tipoAlojam) {
+    public void setTipoAlojam(String tipoAlojam) {
         this.tipoAlojam = tipoAlojam;
     }
+
+    
     
     
    
