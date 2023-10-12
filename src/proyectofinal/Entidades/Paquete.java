@@ -86,4 +86,9 @@ public class Paquete {
         return stock;
     }
 
+    @Override
+    public String toString() {
+        return "Paquete{" + "idPaquete=" + idPaquete + ", origen=" + origen + ", destino=" + destino + ", alojamiento=" + alojamiento + ", pasaje=" + pasaje + ", stock=" + stock + '}';
+    }
+
 }

@@ -104,9 +104,9 @@ public class ProyectoFinal {
 //
 //        }
         
-        PaqueteData pd = new PaqueteData();
-        pd.listarPaquetePorCiudad(2);
-        
+//        PaqueteData pd = new PaqueteData();
+//        pd.listarPaquetePorCiudad(2);
+//        
         
     }
 }

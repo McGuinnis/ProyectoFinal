@@ -117,12 +117,16 @@ public class PaqueteData {
                pas = pd.buscarPasaje(rs.getInt("idPasaje"));
                paq.setPasaje(pas);
                
+               paq.setIdPaquete(rs.getInt("IdPaquete"));
+               
                paquete1.add(paq);
                
+                
 //                System.out.println("Nombre ciudad Origen "+ciuO.getNombre());
 //                System.out.println("Nombre ciudad Destino "+ciuD.getNombre());
 //                System.out.println("Nombre del Alojamiento ID "+alo.getIdAlojamiento());
 //                System.out.println("Nombre de pasaje ID "+pas.getIdPasaje());
+//                System.out.println("Fecha "+alo.getFechaing());
 //                System.out.println("===================================================");
             }
         

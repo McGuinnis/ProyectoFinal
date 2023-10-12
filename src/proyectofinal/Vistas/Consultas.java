@@ -4,12 +4,15 @@
  */
 package proyectofinal.Vistas;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal.AccesoaDatos.CiudadData;
+import proyectofinal.AccesoaDatos.PaqueteData;
 import proyectofinal.Entidades.Ciudad;
+import proyectofinal.Entidades.Paquete;
 /**
  *
  * @author orell
@@ -86,7 +89,7 @@ public class Consultas extends javax.swing.JInternalFrame {
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 397, 11));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Selecione Pais:");
+        jLabel1.setText("Selecione Pais Destino:");
 
         jcomboPais.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcomboPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -140,19 +143,18 @@ public class Consultas extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jspCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addComponent(jbBuscar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
                             .addComponent(jLabel5))
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jcomboProvincia, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jcomboPais, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jcomboMes, 0, 221, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jcomboMes, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -233,21 +235,38 @@ public class Consultas extends javax.swing.JInternalFrame {
         
         Ciudad ciu= new Ciudad();
         CiudadData ciuDat=new CiudadData();
+        PaqueteData paquetedata = new PaqueteData();
+        List<Paquete> paquete = new ArrayList();
+        boolean flag = false;
         
+        //********* Obteniendo ID Ciudades Destino por Provincias
         List<Ciudad> cd= ciuDat.listarCiudadPorProvinciaypais(pais, provincia);
         for (Ciudad ciudad : cd) {
             
-            ciudad.getIdCiudad();
+            int idCiudadDestTabla = ciudad.getIdCiudad();
+            paquete = paquetedata.listarPaquetePorCiudad(idCiudadDestTabla);
+            System.out.println("listando paquete: "+paquete);
+            
+                       
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
+        for (Paquete paq : paquete) {
+            String fechaIngreso = paq.getAlojamiento().getFechaing().getMonth().toString();
+            System.out.println(fechaIngreso);
+            if (mes.equalsIgnoreCase(fechaIngreso)){
+                System.out.println("Funcionooo");
+            }
+            
+            
+            
+            
+            
+            
+            modelo.addRow(new Object[]{
+            paq.getDestino().getNombre(),
+            });
+            
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jcomboMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboMesActionPerformed
@@ -310,6 +329,6 @@ public class Consultas extends javax.swing.JInternalFrame {
       modelo.addColumn("Precio Total");
       jTabla.setModel(modelo);
   }
-   
-   
+
+      
 }

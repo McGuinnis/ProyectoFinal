@@ -37,6 +37,7 @@ public class Alojamiento {
         this.tipoAlojam = tipoAlojam;
     }
 
+  
     public Alojamiento(int idAlojamiento, LocalDate Fechaing, LocalDate FechaOn, boolean estado, String servicio, double importeDiario, Ciudad ciudadDest, String tipoAlojam) {
         this.idAlojamiento = idAlojamiento;
         this.Fechaing = Fechaing;
@@ -110,6 +111,11 @@ public class Alojamiento {
 
     public void setTipoAlojam(String tipoAlojam) {
         this.tipoAlojam = tipoAlojam;
+    }
+
+    @Override
+    public String toString() {
+        return "Alojamiento{" + "idAlojamiento=" + idAlojamiento + ", Fechaing=" + Fechaing + ", FechaOn=" + FechaOn + ", servicio=" + servicio + ", importeDiario=" + importeDiario + ", tipoAlojam=" + tipoAlojam + '}';
     }
 
     
