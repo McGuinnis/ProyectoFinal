@@ -251,8 +251,11 @@ public class Consultas extends javax.swing.JInternalFrame {
         }
         
         for (Paquete paq : paquete) {
+            
+            
             String fechaIngreso = paq.getAlojamiento().getFechaing().getMonth().toString();
-            System.out.println(fechaIngreso);
+            String fe=traducir(fechaIngreso);
+            System.out.println(fe);
             if (mes.equalsIgnoreCase(fechaIngreso)){
                 System.out.println("Funcionooo");
             }
@@ -330,5 +333,17 @@ public class Consultas extends javax.swing.JInternalFrame {
       jTabla.setModel(modelo);
   }
 
+      public String traducir (String fecha){
+       if (fecha.equalsIgnoreCase("january")) {
+          fecha="Enero";
+            
+       }else if (fecha.equalsIgnoreCase("october")) {
+           fecha="Octubre";
+       }else if (fecha.equalsIgnoreCase("NOVEMBER")) {
+           fecha="Noviembre";
+       }
+       
+       return fecha;
+   }
       
 }
