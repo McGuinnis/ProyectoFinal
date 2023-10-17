@@ -6,6 +6,7 @@ package proyectofinal.Vistas;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +14,7 @@ import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.PaqueteData;
 import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Paquete;
+
 /**
  *
  * @author orell
@@ -23,22 +25,22 @@ public class Consultas extends javax.swing.JInternalFrame {
      * Creates new form Consultas
      */
     private DefaultTableModel modelo;
+
     public Consultas() {
         initComponents();
         cargarComboPaises();
         cargarComboProvincias();
-        modelo=new DefaultTableModel();
+        modelo = new DefaultTableModel();
         armarCabecera();
-        
-        
+
         jcomboProvincia.setEnabled(false);
         jcomboMes.setEnabled(false);
         jbBuscar.setEnabled(false);
     }
- 
+
     //************Variables Globales*******************
     CiudadData cData = new CiudadData();
-    
+
     ///***************************************************
     /**
      * This method is called from within the constructor to initialize the form.
@@ -213,70 +215,81 @@ public class Consultas extends javax.swing.JInternalFrame {
 
     private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
         jcomboProvincia.setEnabled(true);
-        
+
         cargarComboProvincias();
 
-       
+
     }//GEN-LAST:event_jcomboPaisActionPerformed
 
     private void jcomboProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboProvinciaActionPerformed
         // TODO add your handling code here:
         jcomboMes.setEnabled(true);
-        
+
     }//GEN-LAST:event_jcomboProvinciaActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
-        String pais= jcomboPais.getSelectedItem().toString();
-        String provincia= jcomboProvincia.getSelectedItem().toString();
-        String mes= jcomboMes.getSelectedItem().toString();
-        int cantidadPersonas= (int)jspCantidad.getValue();
+        String pais = jcomboPais.getSelectedItem().toString();
+        String provincia = jcomboProvincia.getSelectedItem().toString();
+        String mes = jcomboMes.getSelectedItem().toString();
+
+        int cantidadPersonas = (int) jspCantidad.getValue();
         ////////////////////////////////////////////////////////////////////////
-        
-        Ciudad ciu= new Ciudad();
-        CiudadData ciuDat=new CiudadData();
+
+        Ciudad ciu = new Ciudad();
+        CiudadData ciuDat = new CiudadData();
         PaqueteData paquetedata = new PaqueteData();
         List<Paquete> paquete = new ArrayList();
         boolean flag = false;
-        
+
         //********* Obteniendo ID Ciudades Destino por Provincias
-        List<Ciudad> cd= ciuDat.listarCiudadPorProvinciaypais(pais, provincia);
+        List<Ciudad> cd = ciuDat.listarCiudadPorProvinciaypais(pais, provincia);
+        borrarFilas();
         for (Ciudad ciudad : cd) {
-            
+
             int idCiudadDestTabla = ciudad.getIdCiudad();
             paquete = paquetedata.listarPaquetePorCiudad(idCiudadDestTabla);
-            System.out.println("listando paquete: "+paquete);
-            
-                       
-        }
-        
-        for (Paquete paq : paquete) {
-            
-            
-            String fechaIngreso = paq.getAlojamiento().getFechaing().getMonth().toString();
-            String fe=traducir(fechaIngreso);
-            System.out.println(fe);
-            if (mes.equalsIgnoreCase(fechaIngreso)){
-                System.out.println("Funcionooo");
+
+            if (!paquete.isEmpty()) {
+                for (Paquete paque : paquete) {
+                    for (Paquete paq : paquete) {
+
+                        String fechaIngreso = paq.getAlojamiento().getFechaing().getMonth().toString();
+                        System.out.println("que fecha estoy capturando? " + fechaIngreso);
+
+                        String fe = traducir(fechaIngreso);
+                        System.out.println("imprimo la traduccion " + fe);
+                        if (mes.equalsIgnoreCase(fe)) {
+                            flag = true;
+                            System.out.println("Funcionooo");
+
+                            modelo.addRow(new Object[]{
+                                paq.getDestino().getNombre(),
+                                paq.getAlojamiento().getFechaing(),
+                                paq.getAlojamiento().getFechaOn(),
+                                paq.getPasaje().getTipoTransporte(),
+                                paq.getAlojamiento().getTipoAlojam(),
+                                paq.getAlojamiento().getServicio(),
+                                paq.getPasaje().getImporte()
+                            });
+                        } else {
+                            JOptionPane.showMessageDialog(this, "No hay paquete para esa fecha");
+                            flag = true;
+                        }
+
+                    }
+                } 
             }
-            
-            
-            
-            
-            
-            
-            modelo.addRow(new Object[]{
-            paq.getDestino().getNombre(),
-            });
-            
+
         }
+        flag = false;
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jcomboMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboMesActionPerformed
         // TODO add your handling code here:
         jbBuscar.setEnabled(true);
-        
-        
+
+
     }//GEN-LAST:event_jcomboMesActionPerformed
 
 
@@ -300,50 +313,79 @@ public class Consultas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarComboPaises() {
-        
-        List<String> pais = cData.listarPaises();
-        
-        for (String pai : pais) {
-            
-            jcomboPais.addItem(pai);
-            
-        }
-        
-    }    
-    
-   private void cargarComboProvincias(){
-       String pai=(String)jcomboPais.getSelectedItem();
-       
-       List<Ciudad> ciudad= cData.listarProvinciasPorPaisCombo(pai);
-       jcomboProvincia.removeAllItems();
-       
-       for (Ciudad ciudad1 : ciudad) {
-           jcomboProvincia.addItem(ciudad1);
-       }
-   }
-    
-  private void armarCabecera(){
-      modelo.addColumn("Ciudad");
-      modelo.addColumn("Fecha Inicio");
-      modelo.addColumn("Fecha Fin");
-      modelo.addColumn("Transporte");
-      modelo.addColumn("Alojamiento");
-      modelo.addColumn("Servicios");
-      modelo.addColumn("Precio Total");
-      jTabla.setModel(modelo);
-  }
 
-      public String traducir (String fecha){
-       if (fecha.equalsIgnoreCase("january")) {
-          fecha="Enero";
-            
-       }else if (fecha.equalsIgnoreCase("october")) {
-           fecha="Octubre";
-       }else if (fecha.equalsIgnoreCase("NOVEMBER")) {
-           fecha="Noviembre";
-       }
-       
-       return fecha;
-   }
-      
+        List<String> pais = cData.listarPaises();
+
+        for (String pai : pais) {
+
+            jcomboPais.addItem(pai);
+
+        }
+
+    }
+
+    private void cargarComboProvincias() {
+        String pai = (String) jcomboPais.getSelectedItem();
+
+        List<Ciudad> ciudad = cData.listarProvinciasPorPaisCombo(pai);
+        jcomboProvincia.removeAllItems();
+
+        for (Ciudad ciudad1 : ciudad) {
+            jcomboProvincia.addItem(ciudad1);
+        }
+    }
+
+    private void armarCabecera() {
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Fecha Inicio");
+        modelo.addColumn("Fecha Fin");
+        modelo.addColumn("Transporte");
+        modelo.addColumn("Alojamiento");
+        modelo.addColumn("Servicios");
+        modelo.addColumn("Precio Total");
+        jTabla.setModel(modelo);
+    }
+
+    public String traducir(String fecha) {
+        if (fecha.equalsIgnoreCase("october")) {
+            System.out.println("Estoy dentro de octubre");
+            fecha = "Octubre";
+
+        } else if (fecha.equalsIgnoreCase("january")) {
+            System.out.println("Estoy en el if enero");
+            fecha = "Enero";
+        } else if (fecha.equalsIgnoreCase("november")) {
+            fecha = "Noviembre";
+        } else if (fecha.equalsIgnoreCase("february")) {
+            fecha = "Febrero";
+        } else if (fecha.equalsIgnoreCase("march")) {
+            fecha = "Marzo";
+        } else if (fecha.equalsIgnoreCase("april")) {
+            fecha = "Abril";
+        } else if (fecha.equalsIgnoreCase("May")) {
+            fecha = "Mayo";
+        } else if (fecha.equalsIgnoreCase("june")) {
+            fecha = "Junio";
+        } else if (fecha.equalsIgnoreCase("july")) {
+            fecha = "Julio";
+        } else if (fecha.equalsIgnoreCase("august")) {
+            fecha = "Agosto";
+        } else if (fecha.equalsIgnoreCase("september")) {
+            fecha = "Septiembre";
+        } else if (fecha.equalsIgnoreCase("december")) {
+            fecha = "Diciembre";
+        }
+        return fecha;
+    }
+    
+     private void borrarFilas() {
+
+        int filas = jTabla.getRowCount() - 1;
+
+        for (int i = filas; i >= 0; i--) {
+
+            modelo.removeRow(i);
+        }
+    }
+
 }
