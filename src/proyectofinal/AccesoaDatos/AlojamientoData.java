@@ -108,7 +108,7 @@ public class AlojamientoData {
         System.out.println("Día de Vacaciones" + diasVacaciones);
     }
 
-    private String CalcularTemporada(LocalDate fechaInicio) {
+    public String CalcularTemporada(LocalDate fechaInicio) {
 
         Month mesInicio = fechaInicio.getMonth();
 
@@ -121,7 +121,7 @@ public class AlojamientoData {
         }
     }
 
-    private int CalcularDiasVacaciones(LocalDate fechaInicio, LocalDate fechaFin) {
+    public int CalcularDiasVacaciones(LocalDate fechaInicio, LocalDate fechaFin) {
 
         long diasDeDiferencia = fechaInicio.until(fechaFin, ChronoUnit.DAYS);
 

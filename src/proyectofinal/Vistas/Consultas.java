@@ -4,12 +4,14 @@
  */
 package proyectofinal.Vistas;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
+import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.PaqueteData;
 import proyectofinal.Entidades.Ciudad;
@@ -24,7 +26,7 @@ public class Consultas extends javax.swing.JInternalFrame {
     /**
      * Creates new form Consultas
      */
-    private DefaultTableModel modelo;
+    private DefaultTableModel modelo;    
 
     public Consultas() {
         initComponents();
@@ -40,6 +42,7 @@ public class Consultas extends javax.swing.JInternalFrame {
 
     //************Variables Globales*******************
     CiudadData cData = new CiudadData();
+    AlojamientoData ad = new AlojamientoData();
 
     ///***************************************************
     /**
@@ -255,13 +258,21 @@ public class Consultas extends javax.swing.JInternalFrame {
                     for (Paquete paq : paquete) {
 
                         String fechaIngreso = paq.getAlojamiento().getFechaing().getMonth().toString();
-                        System.out.println("que fecha estoy capturando? " + fechaIngreso);
+                        
 
                         String fe = traducir(fechaIngreso);
-                        System.out.println("imprimo la traduccion " + fe);
+                        
                         if (mes.equalsIgnoreCase(fe)) {
                             flag = true;
-                            System.out.println("Funcionooo");
+                            String temporada = ad.CalcularTemporada(paq.getAlojamiento().getFechaing());
+                            
+                            int diasDeVacaciones = ad.CalcularDiasVacaciones(paq.getAlojamiento().getFechaing(), paq.getAlojamiento().getFechaOn());
+                            double costoTotal = (paq.getPasaje().getImporte() + (paq.getAlojamiento().getImporteDiario()* diasDeVacaciones));
+                            if (temporada.equalsIgnoreCase("alta")){
+                                costoTotal *= 1.3;
+                            }else if (temporada.equalsIgnoreCase("media")){
+                                costoTotal *= 1.15;
+                            }
 
                             modelo.addRow(new Object[]{
                                 paq.getDestino().getNombre(),
@@ -270,10 +281,10 @@ public class Consultas extends javax.swing.JInternalFrame {
                                 paq.getPasaje().getTipoTransporte(),
                                 paq.getAlojamiento().getTipoAlojam(),
                                 paq.getAlojamiento().getServicio(),
-                                paq.getPasaje().getImporte()
+                                costoTotal
                             });
                         } else {
-                            JOptionPane.showMessageDialog(this, "No hay paquete para esa fecha");
+                           // JOptionPane.showMessageDialog(this, "No hay paquete para esa fecha");
                             flag = true;
                         }
 
@@ -348,11 +359,9 @@ public class Consultas extends javax.swing.JInternalFrame {
 
     public String traducir(String fecha) {
         if (fecha.equalsIgnoreCase("october")) {
-            System.out.println("Estoy dentro de octubre");
             fecha = "Octubre";
 
         } else if (fecha.equalsIgnoreCase("january")) {
-            System.out.println("Estoy en el if enero");
             fecha = "Enero";
         } else if (fecha.equalsIgnoreCase("november")) {
             fecha = "Noviembre";
