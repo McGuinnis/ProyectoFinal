@@ -235,6 +235,7 @@ public class Consultas extends javax.swing.JInternalFrame {
         String pais = jcomboPais.getSelectedItem().toString();
         String provincia = jcomboProvincia.getSelectedItem().toString();
         String mes = jcomboMes.getSelectedItem().toString();
+        int cantPersonas = (int) jspCantidad.getValue();
 
         int cantidadPersonas = (int) jspCantidad.getValue();
         ////////////////////////////////////////////////////////////////////////
@@ -267,7 +268,7 @@ public class Consultas extends javax.swing.JInternalFrame {
                             String temporada = ad.CalcularTemporada(paq.getAlojamiento().getFechaing());
                             
                             int diasDeVacaciones = ad.CalcularDiasVacaciones(paq.getAlojamiento().getFechaing(), paq.getAlojamiento().getFechaOn());
-                            double costoTotal = (paq.getPasaje().getImporte() + (paq.getAlojamiento().getImporteDiario()* diasDeVacaciones));
+                            double costoTotal = ((paq.getPasaje().getImporte() + (paq.getAlojamiento().getImporteDiario()* diasDeVacaciones)) * cantPersonas);
                             if (temporada.equalsIgnoreCase("alta")){
                                 costoTotal *= 1.3;
                             }else if (temporada.equalsIgnoreCase("media")){
