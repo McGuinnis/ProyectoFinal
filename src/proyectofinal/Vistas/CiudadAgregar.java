@@ -6,6 +6,9 @@
 
 package proyectofinal.Vistas;
 
+import proyectofinal.AccesoaDatos.CiudadData;
+import proyectofinal.Entidades.Ciudad;
+
 /**
  *
  * @author Luis
@@ -76,6 +79,11 @@ public class CiudadAgregar extends javax.swing.JFrame {
         });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -171,9 +179,9 @@ public class CiudadAgregar extends javax.swing.JFrame {
 
     private void jtPaisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPaisKeyTyped
         
-        if (!Character.isLetter(evt.getKeyChar())) { // Acepta letras
-            evt.consume();                        //sacarle el " ! " para que acepte numeros
-        }
+//        if (!Character.isLetter(evt.getKeyChar())) { // Acepta letras
+//            evt.consume();                        //sacarle el " ! " para que acepte numeros
+//        }
 
     }//GEN-LAST:event_jtPaisKeyTyped
 
@@ -184,18 +192,28 @@ public class CiudadAgregar extends javax.swing.JFrame {
 
     private void jtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtProvinciaKeyTyped
         
-        if (!Character.isLetter(evt.getKeyChar())) { // Acepta letras
-            evt.consume();                        //sacarle el " ! " para que acepte numeros
-        }
-
+        
     }//GEN-LAST:event_jtProvinciaKeyTyped
 
     private void jtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCiudadKeyTyped
        
-        if (!Character.isLetter(evt.getKeyChar())) { // Acepta letras
-            evt.consume();                        //sacarle el " ! " para que acepte numeros
-        }
+//        if (!Character.isLetter(evt.getKeyChar())) { // Acepta letras
+//            evt.consume();                        //sacarle el " ! " para que acepte numeros
+//        }
     }//GEN-LAST:event_jtCiudadKeyTyped
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        
+        CiudadData cd = new CiudadData();
+        String pais = jtPais.getText();
+        String provincia = jtProvincia.getText();
+        String ciudad = jtCiudad.getText();
+        boolean estado = jEstado.isSelected();
+        Ciudad ciu = new Ciudad(ciudad, pais, estado, provincia);
+        cd.agregarCiudad(ciu);
+        
+        
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
     /**
      * @param args the command line arguments

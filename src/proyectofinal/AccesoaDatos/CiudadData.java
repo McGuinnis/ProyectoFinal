@@ -56,7 +56,7 @@ public class CiudadData {
             }
             ps.close();
         } catch (SQLException eq) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos ciudad");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos ciudad y/o entrada duplicada");
         }
 
     }
