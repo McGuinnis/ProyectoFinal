@@ -42,6 +42,8 @@ public class Login extends javax.swing.JInternalFrame {
         jbAlojamiento = new javax.swing.JButton();
         jbPaquete = new javax.swing.JButton();
 
+        setClosable(true);
+
         jtfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfUsuarioActionPerformed(evt);
@@ -50,8 +52,6 @@ public class Login extends javax.swing.JInternalFrame {
 
         jlUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-user-30.png"))); // NOI18N
         jlUsuario.setText("Usuario");
-
-        jpfContraseña.setText("jPasswordField1");
 
         jlContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-lock-30.png"))); // NOI18N
         jlContrasena.setText("Contraseña");
@@ -81,7 +81,7 @@ public class Login extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,55 +193,43 @@ public class Login extends javax.swing.JInternalFrame {
 
     private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
         // TODO add your handling code here:
-        
-        String usuario  = "admin";
+
+        String usuario = "admin";
         String pass = "admin";
-        
-        if(usuario.equals(jtfUsuario.getText()) && pass.equals(jpfContraseña.getText())){
-            
-            System.out.println("Entrando al if");
+
+        if (usuario.equals(jtfUsuario.getText()) && pass.equals(jpfContraseña.getText())) {
+
             jbCiudad.setEnabled(true);
             jbAlojamiento.setEnabled(true);
             jbPaquete.setEnabled(true);
-            
-            
-        }else 
+
+        } else {
             System.out.println("No entro al login");
-        
-        
-        
-        
+        }
+
+
     }//GEN-LAST:event_jbLoginActionPerformed
 
     private void jbCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCiudadActionPerformed
         // TODO add your handling code here:
-        AgregarCiudad ciudad = new AgregarCiudad();
-        
-        jdpEscritorio2.removeAll();
-        jdpEscritorio2.repaint();
-        
-        ciudad.setVisible(true);
-        jdpEscritorio2.add(ciudad);
-        jdpEscritorio2.moveToFront(ciudad);
-        
-        
-        
-        
-        
-        
+        CiudadAgregar ciudadA = new CiudadAgregar();
+
+        ciudadA.setVisible(true);
+
+
     }//GEN-LAST:event_jbCiudadActionPerformed
 
     private void jbAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlojamientoActionPerformed
-        // TODO add your handling code here:
+        
+        AgregarAlojamiento aa = new AgregarAlojamiento();
+        aa.setVisible(true);
+
     }//GEN-LAST:event_jbAlojamientoActionPerformed
 
     private void jtfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsuarioActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jtfUsuarioActionPerformed
 
 
