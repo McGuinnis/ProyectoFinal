@@ -5,6 +5,8 @@
  */
 package proyectofinal.Entidades;
 
+import proyectofinal.Vistas.AgregarAlojamiento;
+
 /**
  *
  * @author Luis
@@ -75,12 +77,17 @@ public class Ciudad {
         this.provincia = provincia;
     }
 
+  
+    
+    
+    
     @Override
     public String toString() {
-        return  provincia ;
+  
+        return  provincia ;  
     }
 
-    
+
     
     
     
