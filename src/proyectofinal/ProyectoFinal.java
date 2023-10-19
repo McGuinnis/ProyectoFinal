@@ -108,6 +108,8 @@ public class ProyectoFinal {
 //        PaqueteData pd = new PaqueteData();
 //        pd.listarPaquetePorCiudad(2);
 //        
-        
+//        Ciudad ss = cd.buscarCiudadPorNombre("Azul");
+//        
+//        System.out.println("Probando "+ss.getIdCiudad()+" "+ss.getNombre());
     }
 }
