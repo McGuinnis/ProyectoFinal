@@ -51,6 +51,7 @@ public class Login extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        jtfUsuario.setText("admin");
         jtfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfUsuarioActionPerformed(evt);
@@ -59,6 +60,8 @@ public class Login extends javax.swing.JInternalFrame {
 
         jlUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-user-30.png"))); // NOI18N
         jlUsuario.setText("Usuario");
+
+        jpfContraseña.setText("admin");
 
         jlContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-lock-30.png"))); // NOI18N
         jlContrasena.setText("Contraseña");
@@ -88,7 +91,7 @@ public class Login extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -38,6 +38,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         
         jcomboProvincia.setEnabled(false);
         jComboCiudad.setEnabled(false);
+        jbBuscar.setEnabled(false);
     }
     
      class jPanelGradient extends JPanel {
@@ -551,6 +552,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         // TODO add your handling code here:
         jComboCiudad.setEnabled(false);
         jComboCiudad.removeAllItems();
+        jbBuscar.setEnabled(true);
     }//GEN-LAST:event_jcomboProvinciaActionPerformed
 
     /**
