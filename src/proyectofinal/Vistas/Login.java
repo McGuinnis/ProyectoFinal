@@ -18,7 +18,14 @@ public class Login extends javax.swing.JInternalFrame {
         jbCiudad.setEnabled(false);
         jbAlojamiento.setEnabled(false);
         jbPaquete.setEnabled(false);
+        
+        
+        
+        
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -233,6 +240,9 @@ public class Login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfUsuarioActionPerformed
 
 
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
