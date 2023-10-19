@@ -120,6 +120,12 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
             }
         });
 
+        jcomboProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboProvinciaActionPerformed(evt);
+            }
+        });
+
         jLabel9.setText("Paises");
 
         jLabel10.setText("Provincias");
@@ -529,7 +535,9 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
        Double importeDiario = Double.parseDouble(jtImporteDiario.getText());
        String ciudadDestino = jComboCiudad.getSelectedItem().toString();
        Ciudad ciudad1 = cData.buscarCiudadPorNombre(ciudadDestino);
-       //int idCiudadAgregar = ciudad1.getIdCiudad();
+       
+       
+        //int idCiudadAgregar = ciudad1.getIdCiudad();
        String tipoAlojamiento = jcTipoAlojamiento.getSelectedItem().toString();
        
        Alojamiento alojamiento2 = new Alojamiento(fechaIng, fechaSalida, estado, tipoServicio, importeDiario, ciudad1, tipoAlojamiento);
@@ -538,6 +546,12 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         
       
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jcomboProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboProvinciaActionPerformed
+        // TODO add your handling code here:
+        jComboCiudad.setEnabled(false);
+        jComboCiudad.removeAllItems();
+    }//GEN-LAST:event_jcomboProvinciaActionPerformed
 
     /**
      * @param args the command line arguments
