@@ -15,10 +15,11 @@ public class Login extends javax.swing.JInternalFrame {
      */
     public Login() {
         initComponents();
+        
         jbCiudad.setEnabled(false);
         jbAlojamiento.setEnabled(false);
         jbPaquete.setEnabled(false);
-        
+        jbPasaje.setEnabled(false);
         
         
         
@@ -48,6 +49,7 @@ public class Login extends javax.swing.JInternalFrame {
         jbCiudad = new javax.swing.JButton();
         jbAlojamiento = new javax.swing.JButton();
         jbPaquete = new javax.swing.JButton();
+        jbPasaje = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -125,6 +127,13 @@ public class Login extends javax.swing.JInternalFrame {
 
         jbPaquete.setText("Agregar Paquete");
 
+        jbPasaje.setText("Agregar Pasaje");
+        jbPasaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPasajeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -133,20 +142,23 @@ public class Login extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbAlojamiento)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jbPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(jbPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCiudad)
                     .addComponent(jbAlojamiento)
-                    .addComponent(jbPaquete))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(jbPasaje))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbPaquete))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -161,7 +173,7 @@ public class Login extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +181,7 @@ public class Login extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(37, 37, 37))
         );
 
         jdpEscritorio2.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -195,7 +207,7 @@ public class Login extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jdpEscritorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +224,7 @@ public class Login extends javax.swing.JInternalFrame {
             jbCiudad.setEnabled(true);
             jbAlojamiento.setEnabled(true);
             jbPaquete.setEnabled(true);
+            jbPasaje.setEnabled(true);
 
         } else {
             System.out.println("No entro al login");
@@ -242,6 +255,14 @@ public class Login extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jtfUsuarioActionPerformed
 
+    private void jbPasajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPasajeActionPerformed
+        // TODO add your handling code here:
+        
+        AgregarPasaje agP= new  AgregarPasaje();
+        agP.setVisible(true);
+        
+    }//GEN-LAST:event_jbPasajeActionPerformed
+
 
     
     
@@ -254,6 +275,7 @@ public class Login extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbCiudad;
     private javax.swing.JButton jbLogin;
     private javax.swing.JButton jbPaquete;
+    private javax.swing.JButton jbPasaje;
     private javax.swing.JDesktopPane jdpEscritorio2;
     private javax.swing.JLabel jlContrasena;
     private javax.swing.JLabel jlUsuario;
