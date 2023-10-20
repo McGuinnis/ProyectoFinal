@@ -186,15 +186,15 @@ public class AlojamientoData {
         return alojamiento;
     }
 
-    public List<Alojamiento> listarAlojamientoxCyF(int ciudad, Date fechaIn) {
+    public List<Alojamiento> listarAlojamientoxCyF(int ciudad, LocalDate fechaIn) {
 
-        String sql = "SELECT idAlojamiento, FechaOn, Servicio, ImporteDiario,  TipodeAlojamiento FROM alojamiento WHERE FechaIn = ? AND idCiudadDestino=? AND Estado=1";
+        String sql = "SELECT idAlojamiento, FechaIn, FechaOn, Servicio, ImporteDiario,  TipodeAlojamiento FROM alojamiento WHERE FechaIn >= ? AND idCiudadDestino=? AND Estado=1";
         Alojamiento alojamiento = null;
         ArrayList<Alojamiento> listaAlojamiento=new ArrayList<>();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, fechaIn); //LocalDate fechaIng = jdFechaIngreso.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            ps.setDate(1, Date.valueOf(fechaIn)); //LocalDate fechaIng = jdFechaIngreso.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             ps.setInt(2, ciudad);
             ResultSet rs = ps.executeQuery();
             
@@ -208,7 +208,7 @@ public class AlojamientoData {
                 ciU=cd.buscarCiudad(ciudad);
                 
                 alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
-                alojamiento.setFechaing(fechaIn.toLocalDate());
+                alojamiento.setFechaing(rs.getDate("FechaIn").toLocalDate());
                 alojamiento.setFechaOn(rs.getDate("FechaOn").toLocalDate());
                 alojamiento.setEstado(true);
                 alojamiento.setServicio(rs.getString("Servicio"));

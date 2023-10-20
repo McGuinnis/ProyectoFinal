@@ -226,6 +226,27 @@ public class CiudadData {
 
     }
     
+    public List<String> listarProvinciasPorPaisC(String pais){
+        
+        String sql = "SELECT DISTINCT provincia FROM ciudad WHERE pais = ?";
+        List<String> listaProvincias = new ArrayList<>();
+        
+        try {
+            ps = con.prepareStatement(sql);           
+            ps.setString(1, pais);            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                String provincia = rs.getString("provincia");
+                listaProvincias.add(provincia);
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos ciudad");
+        }
+        return listaProvincias;
+    }
+    
     public List<Ciudad> listarProvinciasPorPaisCombo(String pais){
         
         String sql = "SELECT DISTINCT provincia FROM ciudad WHERE pais = ?";

@@ -4,9 +4,15 @@
  */
 package proyectofinal.Vistas;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
+import java.util.Calendar;
+
 import javax.swing.table.DefaultTableModel;
+import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
+import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
 
 /**
@@ -29,8 +35,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         armarCabecera();
 
         
-        
-        
+        Calendar hoy=Calendar.getInstance();
+        jfechaIn.setCalendar(hoy);
         jcomboProvincia.setEnabled(false);
         jcomboCiudad.setEnabled(false);
     }
@@ -52,12 +58,11 @@ private CiudadData cData = new CiudadData();
         jcomboProvincia = new javax.swing.JComboBox<>();
         jcomboPais = new javax.swing.JComboBox<>();
         jcomboCiudad = new javax.swing.JComboBox<>();
-        jbBuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabla = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jfechaIn = new com.toedter.calendar.JDateChooser();
         jbBuscarTabla = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -89,13 +94,6 @@ private CiudadData cData = new CiudadData();
             }
         });
 
-        jbBuscar.setText("Buscar");
-        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbBuscarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -108,11 +106,8 @@ private CiudadData cData = new CiudadData();
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jcomboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jbBuscar)))
-                .addGap(18, 18, 18)
+                    .addComponent(jcomboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(133, 133, 133)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcomboCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
@@ -130,19 +125,13 @@ private CiudadData cData = new CiudadData();
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel8)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jbBuscar)
-                        .addGap(15, 15, 15))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jcomboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcomboPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcomboCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jcomboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcomboPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcomboCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 0, 51));
@@ -175,13 +164,13 @@ private CiudadData cData = new CiudadData();
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jfechaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addComponent(jbBuscarTabla)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -191,7 +180,7 @@ private CiudadData cData = new CiudadData();
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jfechaIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbBuscarTabla))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,18 +309,6 @@ private CiudadData cData = new CiudadData();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        // TODO add your handling code here:
-        String provincias =jcomboProvincia.getSelectedItem().toString();
-        String pais =jcomboPais.getSelectedItem().toString();
-        System.out.println(pais+ provincias);
-        
-        
-        jcomboCiudad.setEnabled(true);
-               
-        cargarComboCiudades(pais, provincias);
-    }//GEN-LAST:event_jbBuscarActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -345,13 +322,18 @@ private CiudadData cData = new CiudadData();
 
     private void jcomboProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboProvinciaActionPerformed
         // TODO add your handling code here:
-        jcomboCiudad.setEnabled(false);
+        jcomboCiudad.setEnabled(true);
         jcomboCiudad.removeAllItems();
-        jbBuscar.setEnabled(true);
+        //jbBuscar.setEnabled(true);
+        cargarComboCiudades();
     }//GEN-LAST:event_jcomboProvinciaActionPerformed
 
     private void jbBuscarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTablaActionPerformed
         // TODO add your handling code here:
+        CiudadData cd=new CiudadData();
+        
+        Ciudad c=cd.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
+        cargarTabla(c.getIdCiudad(), jfechaIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         
     }//GEN-LAST:event_jbBuscarTablaActionPerformed
 
@@ -360,7 +342,6 @@ private CiudadData cData = new CiudadData();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;
@@ -376,19 +357,18 @@ private CiudadData cData = new CiudadData();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbBuscarTabla;
     private javax.swing.JComboBox<String> jcomboCiudad;
     private javax.swing.JComboBox<String> jcomboPais;
-    private javax.swing.JComboBox<Ciudad> jcomboProvincia;
+    private javax.swing.JComboBox<String> jcomboProvincia;
+    private com.toedter.calendar.JDateChooser jfechaIn;
     // End of variables declaration//GEN-END:variables
 
     private void cargarComboPaises() {
-
         List<String> pais = cData.listarPaises();
         
-        jcomboCiudad.setEnabled(false);
-        jcomboCiudad.removeAllItems();
+        //jcomboCiudad.setEnabled(false);
+        //jcomboCiudad.removeAllItems();
         
         for (String pai : pais) {
 
@@ -401,20 +381,20 @@ private CiudadData cData = new CiudadData();
     private void cargarComboProvincias() {
         String pai = (String) jcomboPais.getSelectedItem();
 
-        List<Ciudad> ciudad = cData.listarProvinciasPorPaisCombo(pai);
+        List<String> provincias = cData.listarProvinciasPorPaisC(pai);
         
-        jcomboCiudad.setEnabled(false);
+        //jcomboCiudad.setEnabled(false);
         jcomboProvincia.removeAllItems();        
         jcomboCiudad.removeAllItems();
 
-        for (Ciudad ciudad1 : ciudad) {
-            jcomboProvincia.addItem(ciudad1);
+        for (String provincia : provincias) {
+            jcomboProvincia.addItem(provincia);
         }
     }
     
-    private void cargarComboCiudades(String pai, String prov){
-        
-        
+    private void cargarComboCiudades(){
+        String pai =(String) jcomboPais.getSelectedItem();
+        String prov=(String) jcomboProvincia.getSelectedItem();
         List<Ciudad> ciu =  cData.listarCiudadPorProvinciaypais(pai, prov);
         
         for (Ciudad ciudad : ciu) {
@@ -426,6 +406,7 @@ private CiudadData cData = new CiudadData();
     }
     
         private void armarCabecera() {
+        modelo.addColumn("Fecha Inicio");
         modelo.addColumn("Fecha Fin");
         modelo.addColumn("Tipo Alojamiento");
         modelo.addColumn("Servicios");
@@ -442,4 +423,14 @@ private CiudadData cData = new CiudadData();
             modelo.removeRow(i);
         }
     }
+     private void cargarTabla (int ciudad, LocalDate fechaIn){
+         AlojamientoData ad=new AlojamientoData();
+         List<Alojamiento> al=ad.listarAlojamientoxCyF(ciudad, fechaIn);
+         borrarFilas();
+         for(Alojamiento al1:al){
+         modelo.addRow(new Object[]{al1.getFechaing(), al1.getFechaOn(),al1.getTipoAlojam(),al1.getServicio(),al1.getImporteDiario()});
+         }
+         }
+         
 }
+
