@@ -126,6 +126,11 @@ public class Login extends javax.swing.JInternalFrame {
         });
 
         jbPaquete.setText("Agregar Paquete");
+        jbPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPaqueteActionPerformed(evt);
+            }
+        });
 
         jbPasaje.setText("Agregar Pasaje");
         jbPasaje.addActionListener(new java.awt.event.ActionListener() {
@@ -168,11 +173,11 @@ public class Login extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -262,6 +267,13 @@ public class Login extends javax.swing.JInternalFrame {
         agP.setVisible(true);
         
     }//GEN-LAST:event_jbPasajeActionPerformed
+
+    private void jbPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaqueteActionPerformed
+        // TODO add your handling code here:
+        AgregarPaquete ap = new AgregarPaquete();
+        ap.setVisible(true);
+        
+    }//GEN-LAST:event_jbPaqueteActionPerformed
 
 
     
