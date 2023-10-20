@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -182,6 +184,49 @@ public class AlojamientoData {
         }
 
         return alojamiento;
+    }
+
+    public List<Alojamiento> listarAlojamientoxCyF(int ciudad, Date fechaIn) {
+
+        String sql = "SELECT idAlojamiento, FechaOn, Servicio, ImporteDiario,  TipodeAlojamiento FROM alojamiento WHERE FechaIn = ? AND idCiudadDestino=? AND Estado=1";
+        Alojamiento alojamiento = null;
+        ArrayList<Alojamiento> listaAlojamiento=new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, fechaIn); //LocalDate fechaIng = jdFechaIngreso.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            ps.setInt(2, ciudad);
+            ResultSet rs = ps.executeQuery();
+            
+            CiudadData cd=new CiudadData();
+            
+
+            if (rs.next()) {
+                // Obtenemos los valores del resultado y creamos un objeto Alojamiento
+                alojamiento = new Alojamiento();
+                Ciudad ciU=new Ciudad();
+                ciU=cd.buscarCiudad(ciudad);
+                
+                alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
+                alojamiento.setFechaing(fechaIn.toLocalDate());
+                alojamiento.setFechaOn(rs.getDate("FechaOn").toLocalDate());
+                alojamiento.setEstado(true);
+                alojamiento.setServicio(rs.getString("Servicio"));
+                alojamiento.setImporteDiario(rs.getDouble("ImporteDiario"));
+                alojamiento.setCiudadDest(ciU);
+                alojamiento.setTipoAlojam(rs.getString("TipodeAlojamiento"));
+                
+                listaAlojamiento.add(alojamiento);
+            } else {
+                //JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos Alojamiento");
+        }
+
+        return listaAlojamiento;
     }
 
 }

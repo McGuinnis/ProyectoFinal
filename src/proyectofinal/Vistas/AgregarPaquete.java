@@ -4,6 +4,11 @@
  */
 package proyectofinal.Vistas;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import proyectofinal.AccesoaDatos.CiudadData;
+import proyectofinal.Entidades.Ciudad;
+
 /**
  *
  * @author orell
@@ -13,10 +18,23 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarPaquete
      */
+    
+    private DefaultTableModel modelo;   
+    
     public AgregarPaquete() {
         initComponents();
-    }
+        cargarComboPaises();
+        
+        modelo = new DefaultTableModel();
+        armarCabecera();
 
+        
+        
+        
+        jcomboProvincia.setEnabled(false);
+        jcomboCiudad.setEnabled(false);
+    }
+private CiudadData cData = new CiudadData();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,15 +49,16 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jcProvincia = new javax.swing.JComboBox<>();
-        jcPais = new javax.swing.JComboBox<>();
-        jcCiudad = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jcomboProvincia = new javax.swing.JComboBox<>();
+        jcomboPais = new javax.swing.JComboBox<>();
+        jcomboCiudad = new javax.swing.JComboBox<>();
+        jbBuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTabla = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jbBuscarTabla = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -58,16 +77,22 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Ciudades");
 
-        jcProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jcPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jcCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jcomboProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jcomboProvinciaActionPerformed(evt);
+            }
+        });
+
+        jcomboPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboPaisActionPerformed(evt);
+            }
+        });
+
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
             }
         });
 
@@ -79,17 +104,17 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jcPais, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcomboPais, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jcProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcomboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(jButton1)))
+                        .addComponent(jbBuscar)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcomboCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -108,21 +133,21 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jbBuscar)
                         .addGap(15, 15, 15))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jcProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcomboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jcomboPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcomboCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 0, 51));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -133,9 +158,16 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTabla);
 
         jLabel5.setText("Fecha Inicio");
+
+        jbBuscarTabla.setText("Buscar");
+        jbBuscarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarTablaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -143,12 +175,14 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbBuscarTabla)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -157,7 +191,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscarTabla))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -285,17 +320,43 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String provincias =jcomboProvincia.getSelectedItem().toString();
+        String pais =jcomboPais.getSelectedItem().toString();
+        System.out.println(pais+ provincias);
+        
+        
+        jcomboCiudad.setEnabled(true);
+               
+        cargarComboCiudades(pais, provincias);
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
+        // TODO add your handling code here:
+        jcomboProvincia.setEnabled(true);
+        
+        cargarComboProvincias();
+    }//GEN-LAST:event_jcomboPaisActionPerformed
+
+    private void jcomboProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboProvinciaActionPerformed
+        // TODO add your handling code here:
+        jcomboCiudad.setEnabled(false);
+        jcomboCiudad.removeAllItems();
+        jbBuscar.setEnabled(true);
+    }//GEN-LAST:event_jcomboProvinciaActionPerformed
+
+    private void jbBuscarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTablaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbBuscarTablaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -313,10 +374,72 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTabla;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JComboBox<String> jcCiudad;
-    private javax.swing.JComboBox<String> jcPais;
-    private javax.swing.JComboBox<String> jcProvincia;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbBuscarTabla;
+    private javax.swing.JComboBox<String> jcomboCiudad;
+    private javax.swing.JComboBox<String> jcomboPais;
+    private javax.swing.JComboBox<Ciudad> jcomboProvincia;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarComboPaises() {
+
+        List<String> pais = cData.listarPaises();
+        
+        jcomboCiudad.setEnabled(false);
+        jcomboCiudad.removeAllItems();
+        
+        for (String pai : pais) {
+
+            jcomboPais.addItem(pai);
+
+        }
+
+    }
+
+    private void cargarComboProvincias() {
+        String pai = (String) jcomboPais.getSelectedItem();
+
+        List<Ciudad> ciudad = cData.listarProvinciasPorPaisCombo(pai);
+        
+        jcomboCiudad.setEnabled(false);
+        jcomboProvincia.removeAllItems();        
+        jcomboCiudad.removeAllItems();
+
+        for (Ciudad ciudad1 : ciudad) {
+            jcomboProvincia.addItem(ciudad1);
+        }
+    }
+    
+    private void cargarComboCiudades(String pai, String prov){
+        
+        
+        List<Ciudad> ciu =  cData.listarCiudadPorProvinciaypais(pai, prov);
+        
+        for (Ciudad ciudad : ciu) {
+            String ciudadx = ciudad.getNombre();
+            jcomboCiudad.addItem(ciudadx);
+            
+        }
+        
+    }
+    
+        private void armarCabecera() {
+        modelo.addColumn("Fecha Fin");
+        modelo.addColumn("Tipo Alojamiento");
+        modelo.addColumn("Servicios");
+        modelo.addColumn("Importe Diario");
+        jTabla.setModel(modelo);
+    }
+        
+     private void borrarFilas() {
+
+        int filas = jTabla.getRowCount() - 1;
+
+        for (int i = filas; i >= 0; i--) {
+
+            modelo.removeRow(i);
+        }
+    }
 }

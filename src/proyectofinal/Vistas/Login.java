@@ -271,6 +271,7 @@ public class Login extends javax.swing.JInternalFrame {
     private void jbPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaqueteActionPerformed
         // TODO add your handling code here:
         AgregarPaquete ap = new AgregarPaquete();
+        getParent().add(ap);
         ap.setVisible(true);
         
     }//GEN-LAST:event_jbPaqueteActionPerformed
