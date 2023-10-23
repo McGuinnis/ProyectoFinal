@@ -87,7 +87,7 @@ public class PaqueteData {
 
             ResultSet rs = ps.executeQuery();
             
-            if (rs.next()) {
+            while (rs.next()) {
                Paquete paq = new Paquete();
                Alojamiento alo= new Alojamiento();
                AlojamientoData aloData=new AlojamientoData();

@@ -201,7 +201,7 @@ public class AlojamientoData {
             CiudadData cd=new CiudadData();
             
 
-            if (rs.next()) {
+            while (rs.next()) {
                 // Obtenemos los valores del resultado y creamos un objeto Alojamiento
                 alojamiento = new Alojamiento();
                 Ciudad ciU=new Ciudad();
@@ -217,8 +217,6 @@ public class AlojamientoData {
                 alojamiento.setTipoAlojam(rs.getString("TipodeAlojamiento"));
                 
                 listaAlojamiento.add(alojamiento);
-            } else {
-                //JOptionPane.showMessageDialog(null, "Alojamiento no encontrado");
             }
 
             ps.close();

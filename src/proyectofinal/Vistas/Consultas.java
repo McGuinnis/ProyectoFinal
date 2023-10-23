@@ -255,7 +255,6 @@ public class Consultas extends javax.swing.JInternalFrame {
             paquete = paquetedata.listarPaquetePorCiudad(idCiudadDestTabla);
 
             if (!paquete.isEmpty()) {
-                for (Paquete paque : paquete) {
                     for (Paquete paq : paquete) {
 
                         String fechaIngreso = paq.getAlojamiento().getFechaing().getMonth().toString();
@@ -287,7 +286,6 @@ public class Consultas extends javax.swing.JInternalFrame {
                         } else {
                            // JOptionPane.showMessageDialog(this, "No hay paquete para esa fecha");
                             flag = true;
-                        }
 
                     }
                 } 
