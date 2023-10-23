@@ -12,8 +12,13 @@ import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal.AccesoaDatos.AlojamientoData;
 import proyectofinal.AccesoaDatos.CiudadData;
+import proyectofinal.AccesoaDatos.PaqueteData;
+import proyectofinal.AccesoaDatos.PasajeData;
 import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
+import proyectofinal.Entidades.Paquete;
+import proyectofinal.Entidades.Pasaje;
+import proyectofinal.Entidades.TipoTransporte;
 
 /**
  *
@@ -35,8 +40,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         armarCabecera();
 
         
-        Calendar hoy=Calendar.getInstance();
-        jfechaIn.setCalendar(hoy);
+        //Calendar hoy=Calendar.getInstance();
+        jfechaIn.setCalendar(Calendar.getInstance());
         jcomboProvincia.setEnabled(false);
         jcomboCiudad.setEnabled(false);
     }
@@ -68,11 +73,11 @@ private CiudadData cData = new CiudadData();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        jcomboTransporte = new javax.swing.JComboBox<>();
+        jtImporte = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBotonGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -196,7 +201,12 @@ private CiudadData cData = new CiudadData();
 
         jLabel10.setText("Importe");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcomboTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Tren", "Autobus", "Taxi" }));
+        jcomboTransporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboTransporteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -206,11 +216,11 @@ private CiudadData cData = new CiudadData();
                 .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcomboTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -222,21 +232,26 @@ private CiudadData cData = new CiudadData();
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcomboTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 0));
 
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBotonGuardar.setText("Agregar");
+        jBotonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBotonGuardarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Salir");
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -244,9 +259,9 @@ private CiudadData cData = new CiudadData();
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(jButton2)
+                .addComponent(jBotonGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(jbSalir)
                 .addGap(64, 64, 64))
         );
         jPanel5Layout.setVerticalGroup(
@@ -254,8 +269,8 @@ private CiudadData cData = new CiudadData();
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBotonGuardar)
+                    .addComponent(jbSalir))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -309,9 +324,42 @@ private CiudadData cData = new CiudadData();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonGuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        Ciudad ciudadOrigen= new Ciudad();
+        Ciudad ciudadDestino=new Ciudad();
+        ciudadOrigen=cData.buscarCiudadPorNombre("Azul");
+        ciudadDestino=cData.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
+        System.out.println(ciudadDestino.getIdCiudad()+"importe "+Double.parseDouble(jtImporte.getText()));
+        //Carga de Pasaje para paquete
+        Pasaje pasaje1= new Pasaje(jcomboTransporte.getSelectedItem().toString(),
+                Double.parseDouble(jtImporte.getText()), ciudadOrigen, true);
+        PasajeData pData= new PasajeData();
+        Pasaje pasaje=pData.agregarPasaje(pasaje1);
+        
+        
+       
+        
+        
+        //Obtener IdAlojamiento de la seleccion en tabla
+        Alojamiento alojamiento=new Alojamiento();
+        AlojamientoData aData=new AlojamientoData();
+        int filaActual = jTabla.getSelectedRow();
+        Integer idAlojamiento = (Integer) jTabla.getValueAt(filaActual, 0);
+        alojamiento=aData.buscarAlojamiento(idAlojamiento);
+        
+        
+        //Guardado Paquete
+        Paquete paquete=new Paquete(ciudadOrigen, ciudadDestino, alojamiento, pasaje);
+        PaqueteData paqData=new PaqueteData();
+        paqData.agregarPaquete(paquete);
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jBotonGuardarActionPerformed
 
     private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
         // TODO add your handling code here:
@@ -337,11 +385,18 @@ private CiudadData cData = new CiudadData();
         
     }//GEN-LAST:event_jbBuscarTablaActionPerformed
 
+    private void jcomboTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboTransporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcomboTransporteActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jBotonGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;
@@ -356,22 +411,22 @@ private CiudadData cData = new CiudadData();
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbBuscarTabla;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<String> jcomboCiudad;
     private javax.swing.JComboBox<String> jcomboPais;
     private javax.swing.JComboBox<String> jcomboProvincia;
+    private javax.swing.JComboBox<String> jcomboTransporte;
     private com.toedter.calendar.JDateChooser jfechaIn;
+    private javax.swing.JTextField jtImporte;
     // End of variables declaration//GEN-END:variables
 
     private void cargarComboPaises() {
-        List<String> pais = cData.listarPaises();
-        
+        List<String> pais = cData.listarPaises();        
         //jcomboCiudad.setEnabled(false);
         //jcomboCiudad.removeAllItems();
         
         for (String pai : pais) {
-
             jcomboPais.addItem(pai);
 
         }
@@ -381,8 +436,7 @@ private CiudadData cData = new CiudadData();
     private void cargarComboProvincias() {
         String pai = (String) jcomboPais.getSelectedItem();
 
-        List<String> provincias = cData.listarProvinciasPorPaisC(pai);
-        
+        List<String> provincias = cData.listarProvinciasPorPaisC(pai);        
         //jcomboCiudad.setEnabled(false);
         jcomboProvincia.removeAllItems();        
         jcomboCiudad.removeAllItems();
@@ -404,8 +458,15 @@ private CiudadData cData = new CiudadData();
         }
         
     }
+    private void cargarComboTransporte(){
+        TipoTransporte[] tipos=TipoTransporte.values();
+        for (TipoTransporte tipo:tipos){
+        jcomboTransporte.addItem(tipo.toString());}
+                
+    }
     
         private void armarCabecera() {
+        modelo.addColumn("Id");
         modelo.addColumn("Fecha Inicio");
         modelo.addColumn("Fecha Fin");
         modelo.addColumn("Tipo Alojamiento");
@@ -428,7 +489,7 @@ private CiudadData cData = new CiudadData();
          List<Alojamiento> al=ad.listarAlojamientoxCyF(ciudad, fechaIn);
          borrarFilas();
          for(Alojamiento al1:al){
-         modelo.addRow(new Object[]{al1.getFechaing(), al1.getFechaOn(),al1.getTipoAlojam(),al1.getServicio(),al1.getImporteDiario()});
+         modelo.addRow(new Object[]{al1.getIdAlojamiento(), al1.getFechaing(), al1.getFechaOn(),al1.getTipoAlojam(),al1.getServicio(),al1.getImporteDiario()});
          }
          }
          

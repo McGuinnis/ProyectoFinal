@@ -16,50 +16,23 @@ public class Paquete {
     private Ciudad destino;
     private Alojamiento alojamiento;
     private Pasaje pasaje;
-    private int stock;
 
     public Paquete() {
     }
 
-    public Paquete(Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje, int stock) {
+    public Paquete(Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
         this.origen = origen;
         this.destino = destino;
         this.alojamiento = alojamiento;
         this.pasaje = pasaje;
-        this.stock = stock;
     }
 
-    public Paquete(int idPaquete, Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje, int stock) {
+    public Paquete(int idPaquete, Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
         this.idPaquete = idPaquete;
         this.origen = origen;
         this.destino = destino;
         this.alojamiento = alojamiento;
         this.pasaje = pasaje;
-        this.stock = stock;
-    }
-
-    public void setIdPaquete(int idPaquete) {
-        this.idPaquete = idPaquete;
-    }
-
-    public void setOrigen(Ciudad origen) {
-        this.origen = origen;
-    }
-
-    public void setDestino(Ciudad destino) {
-        this.destino = destino;
-    }
-
-    public void setAlojamiento(Alojamiento alojamiento) {
-        this.alojamiento = alojamiento;
-    }
-
-    public void setPasaje(Pasaje pasaje) {
-        this.pasaje = pasaje;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
     public int getIdPaquete() {
@@ -82,13 +55,30 @@ public class Paquete {
         return pasaje;
     }
 
-    public int getStock() {
-        return stock;
+    public void setIdPaquete(int idPaquete) {
+        this.idPaquete = idPaquete;
     }
 
+    public void setOrigen(Ciudad origen) {
+        this.origen = origen;
+    }
+
+    public void setDestino(Ciudad destino) {
+        this.destino = destino;
+    }
+
+    public void setAlojamiento(Alojamiento alojamiento) {
+        this.alojamiento = alojamiento;
+    }
+
+    public void setPasaje(Pasaje pasaje) {
+        this.pasaje = pasaje;
+    }
+    
+    
     @Override
     public String toString() {
-        return "Paquete{" + "idPaquete=" + idPaquete + ", origen=" + origen + ", destino=" + destino + ", alojamiento=" + alojamiento + ", pasaje=" + pasaje + ", stock=" + stock + '}';
+        return "Paquete{" + "idPaquete=" + idPaquete + ", origen=" + origen + ", destino=" + destino + ", alojamiento=" + alojamiento + ", pasaje=" + pasaje + '}';
     }
 
 }

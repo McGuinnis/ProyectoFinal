@@ -37,8 +37,8 @@ public class PaqueteData {
     }
 
     public void agregarPaquete(Paquete paquete) {
-        String sql = "INSERT INTO `paquete`(idCuidadOrigen, idCuidadDestino, idAlojamiento, idPasaje, stock) "
-                + "VALUES (?, ? , ?, ?, ?)";
+        String sql = "INSERT INTO `paquete`(idCiudadOrigen, idCiudadDestino, idAlojamiento, idPasaje) "
+                + "VALUES (?, ? , ?, ?)";
 
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -47,7 +47,6 @@ public class PaqueteData {
             ps.setInt(2, paquete.getDestino().getIdCiudad());
             ps.setInt(3, paquete.getAlojamiento().getIdAlojamiento());
             ps.setInt(4, paquete.getPasaje().getIdPasaje());
-            ps.setInt(5, paquete.getStock());
 
             ps.executeUpdate();
 

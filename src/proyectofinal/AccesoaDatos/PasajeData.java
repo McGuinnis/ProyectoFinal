@@ -28,7 +28,7 @@ public class PasajeData {
     con = Conexion.getConexion();
     }
     
-    public void agregarPasaje(Pasaje pasaje){
+    public Pasaje agregarPasaje(Pasaje pasaje){
         
         String sql = "INSERT INTO pasaje(TipodeTransporte, Importe, idCiudadOrigen, Estado) VALUES (?, ?, ?, ?)";
         try {
@@ -46,9 +46,10 @@ public class PasajeData {
             if(rs.next()){
                 
                 pasaje.setIdPasaje(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Paquete Agregado con Exito");
+                JOptionPane.showMessageDialog(null, "Pasaje Agregado con Exito");
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Paquete no agregado");
+                JOptionPane.showMessageDialog(null, "Pasaje no agregado");
             }
 
             ps.close();
@@ -57,6 +58,7 @@ public class PasajeData {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos Paquete");
                 
     }
+        return pasaje;
   }
     
     public void EliminarPasaje(int id){

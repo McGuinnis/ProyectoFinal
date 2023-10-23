@@ -290,12 +290,12 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                          <Component id="jcomboTransporte" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="jtImporte" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -311,8 +311,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcomboTransporte" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtImporte" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="36" max="32767" attributes="0"/>
                   </Group>
@@ -330,22 +330,25 @@
                 <Property name="text" type="java.lang.String" value="Importe"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="jcomboTransporte">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                    <StringItem index="0" value="Avion"/>
+                    <StringItem index="1" value="Tren"/>
+                    <StringItem index="2" value="Autobus"/>
+                    <StringItem index="3" value="Taxi"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcomboTransporteActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="jtImporte">
             </Component>
           </SubComponents>
         </Container>
@@ -361,9 +364,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBotonGuardar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="102" max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -373,8 +376,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBotonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbSalir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
@@ -382,18 +385,21 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="jBotonGuardar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonGuardarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="jbSalir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSalirActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
