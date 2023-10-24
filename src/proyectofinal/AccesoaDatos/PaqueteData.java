@@ -68,7 +68,28 @@ public class PaqueteData {
     public void modificarPaquete(Paquete paquete) {
     }
 
-    public void eliminarPaquete(Paquete paquete) {
+    public void eliminarPaquete(int id) {
+        String sql="DELETE FROM `paquete` WHERE idPaquete=?";
+        
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito=ps.executeUpdate();
+            
+            if(exito==1){
+            JOptionPane.showMessageDialog(null, "Paquete eliminado con exito");
+            }else{
+            JOptionPane.showMessageDialog(null, "Paquete no encontrado");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PaqueteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
     }
 
     public List<Paquete> listarPaquetePorCiudad(int idCiudaddestino) {

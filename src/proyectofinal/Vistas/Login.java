@@ -105,7 +105,6 @@ public class Login extends javax.swing.JInternalFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Guardar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -203,7 +202,7 @@ public class Login extends javax.swing.JInternalFrame {
         jbPasaje.setBackground(new java.awt.Color(51, 51, 51));
         jbPasaje.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jbPasaje.setForeground(new java.awt.Color(255, 255, 255));
-        jbPasaje.setText("Agregar Pasaje");
+        jbPasaje.setText("Eliminar");
         jbPasaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPasajeActionPerformed(evt);
@@ -219,22 +218,21 @@ public class Login extends javax.swing.JInternalFrame {
                 .addComponent(jbCiudad)
                 .addGap(18, 18, 18)
                 .addComponent(jbAlojamiento)
-                .addGap(18, 18, 18)
-                .addComponent(jbPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbPaquete)
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCiudad)
                     .addComponent(jbAlojamiento)
                     .addComponent(jbPasaje)
                     .addComponent(jbPaquete))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 45, Short.MAX_VALUE))
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-user-50.png"))); // NOI18N
@@ -303,9 +301,7 @@ public class Login extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jdpEscritorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jdpEscritorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,8 +358,10 @@ public class Login extends javax.swing.JInternalFrame {
     private void jbPasajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPasajeActionPerformed
         // TODO add your handling code here:
         
-        AgregarPasaje agP= new  AgregarPasaje();
-        agP.setVisible(true);
+         Eliminar eli= new Eliminar();
+         getParent().add(eli);
+        eli.setVisible(true);
+        
         
     }//GEN-LAST:event_jbPasajeActionPerformed
 

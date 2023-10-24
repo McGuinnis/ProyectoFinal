@@ -62,7 +62,7 @@ public class PasajeData {
   }
     
     public void EliminarPasaje(int id){
-        String sql="UPDATE pasaje SET Estado=0 WHERE idPasaje=?";
+        String sql="DELETE FROM `pasaje` WHERE idPasaje=?";
         try {
             ps=con.prepareStatement(sql);
             ps.setInt(1, id);
