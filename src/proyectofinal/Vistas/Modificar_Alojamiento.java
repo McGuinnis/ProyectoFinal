@@ -330,6 +330,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jdFechaInicio.setDate(java.sql.Date.valueOf(alojamiento.getFechaing()));
         jdFechaSalida.setDate(java.sql.Date.valueOf(alojamiento.getFechaOn()));
         
+
         
         if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno".toLowerCase())){
             jcServicio.setSelectedIndex(0);
@@ -349,6 +350,22 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
          jtIdAlojamiento.setText(""+alojamiento.getIdAlojamiento());
         jtImporteDiario.setText(""+alojamiento.getImporteDiario());
         jcEstado.setSelected(alojamiento.isEstado());
+
+        jcTipoAlojamiento.setSelectedItem(alojamiento.getTipoAlojam());
+        jcServicio.setSelectedItem(alojamiento.getServicio());
+        
+//        if (alojamiento.getServicio().equalsIgnoreCase("Desayuno")){
+//            jcServicio.setSelectedIndex(0);
+//        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo")){
+//            jcServicio.setSelectedIndex(1);
+//        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo - Cena")){
+//            jcServicio.setSelectedIndex(2);
+//        }
+//        
+            
+        
+        
+
         
                
         
