@@ -14,8 +14,10 @@ import java.util.List;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal.AccesoaDatos.AlojamientoData;
+import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.AccesoaDatos.PaqueteData;
 import proyectofinal.Entidades.Alojamiento;
+import proyectofinal.Entidades.Ciudad;
 import proyectofinal.Entidades.Paquete;
 
 /**
@@ -38,6 +40,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     }
     private PaqueteData pd = new PaqueteData();
     private AlojamientoData ad = new AlojamientoData();
+    private CiudadData cd = new CiudadData();
     
 
     /**
@@ -352,7 +355,19 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbCargarAlojamientoActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        //ad.modificarAlojamiento(alojamiento);
+        
+        Ciudad ciudadD = new Ciudad();
+        int filaActual = jtPaquetesVencidos.getSelectedRow();
+        String ciudadDestino = (String) jtPaquetesVencidos.getValueAt(filaActual, 1);
+        ciudadD = cd.buscarCiudadPorNombre(ciudadDestino);
+        int idAlo = Integer.parseInt(jtIdAlojamiento.getText());
+        
+        LocalDate fechaIng = jdFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaSal = jdFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        double importeD = Double.parseDouble(jtImporteDiario.getText());
+        
+        Alojamiento alojamientoA = new Alojamiento(idAlo, fechaIng, fechaSal, jcEstado.isSelected(), jcServicio.getSelectedItem().toString(), importeD, ciudadD, jcTipoAlojamiento.getSelectedItem().toString());
+        ad.modificarAlojamiento(alojamientoA);
     }//GEN-LAST:event_jbActualizarActionPerformed
 
 
