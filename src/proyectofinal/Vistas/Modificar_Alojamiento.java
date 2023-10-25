@@ -66,13 +66,15 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jcEstado = new javax.swing.JCheckBox();
         jSeparator4 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        jbActualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtPaquetesVencidos = new javax.swing.JTable();
         jbBuscarPaquetes = new javax.swing.JButton();
         jbCargarAlojamiento = new javax.swing.JButton();
         jdCalendarioActual = new com.toedter.calendar.JDateChooser();
+        jtIdAlojamiento = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -98,7 +100,12 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Estado:");
 
-        jButton1.setText("Actualizar");
+        jbActualizar.setText("Actualizar");
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
 
         jtPaquetesVencidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,6 +163,10 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23))
         );
 
+        jtIdAlojamiento.setEditable(false);
+
+        jLabel7.setText("ID");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -163,22 +174,6 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jSeparator1))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator4)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jdFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jdFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(158, 158, 158))
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -196,9 +191,31 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                                     .addComponent(jtImporteDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(183, 183, 183)
-                                .addComponent(jButton1)))
-                        .addGap(119, 119, 119)))
-                .addContainerGap())
+                                .addComponent(jbActualizar)))
+                        .addGap(125, 125, 125))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator4)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel7))
+                                .addGap(46, 46, 46)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jtIdAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jSeparator1))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jdFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jdFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(158, 158, 158)))))
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(jdCalendarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,10 +227,17 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jdCalendarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtIdAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(jdFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -244,7 +268,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jbActualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -288,40 +312,58 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     private void jbCargarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCargarAlojamientoActionPerformed
      
         int filaActual = jtPaquetesVencidos.getSelectedRow();
-        Integer idAlojamiento = (Integer) jtPaquetesVencidos.getValueAt(filaActual, 0);
+        Integer idAlojamiento = (Integer) jtPaquetesVencidos.getValueAt(filaActual, 2);
         
         Alojamiento alojamiento = new Alojamiento();
         alojamiento = ad.buscarAlojamiento(idAlojamiento);
         //**************Seteando Campos *****************
-        
+        jdFechaInicio.setDate(null);
+        jdFechaSalida.setDate(null);
+        jcEstado.setSelected(false);
+        jtImporteDiario.setText("");
+        jcTipoAlojamiento.setSelectedIndex(0);
+        jcServicio.setSelectedIndex(0);
         
         jdFechaInicio.setDate(java.sql.Date.valueOf(alojamiento.getFechaing()));
         jdFechaSalida.setDate(java.sql.Date.valueOf(alojamiento.getFechaOn()));
         
-        if (alojamiento.getServicio().equalsIgnoreCase("Desayuno")){
+        
+        if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno".toLowerCase())){
             jcServicio.setSelectedIndex(0);
-        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo")){
+        }else if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno - Almuerzo".toLowerCase())){
             jcServicio.setSelectedIndex(1);
-        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo - Cena")){
+        }else if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno - Almuerzo - Cena".toLowerCase())){
             jcServicio.setSelectedIndex(2);
         }
         
-            
+        if (alojamiento.getTipoAlojam().equalsIgnoreCase("Hotel")){
+            jcTipoAlojamiento.setSelectedIndex(0);
+        }else if (alojamiento.getTipoAlojam().equalsIgnoreCase("Hostel")){
+            jcTipoAlojamiento.setSelectedIndex(1);
+        }else{
+            jcTipoAlojamiento.setSelectedIndex(2);
+        }
+         jtIdAlojamiento.setText(""+alojamiento.getIdAlojamiento());
+        jtImporteDiario.setText(""+alojamiento.getImporteDiario());
+        jcEstado.setSelected(alojamiento.isEstado());
         
-        
-        
+               
         
     }//GEN-LAST:event_jbCargarAlojamientoActionPerformed
 
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+        //ad.modificarAlojamiento(alojamiento);
+    }//GEN-LAST:event_jbActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -329,6 +371,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBuscarPaquetes;
     private javax.swing.JButton jbCargarAlojamiento;
     private javax.swing.JCheckBox jcEstado;
@@ -337,6 +380,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser jdCalendarioActual;
     private com.toedter.calendar.JDateChooser jdFechaInicio;
     private com.toedter.calendar.JDateChooser jdFechaSalida;
+    private javax.swing.JTextField jtIdAlojamiento;
     private javax.swing.JTextField jtImporteDiario;
     private javax.swing.JTable jtPaquetesVencidos;
     // End of variables declaration//GEN-END:variables
