@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -69,79 +70,75 @@ public class PaqueteData {
     }
 
     public void eliminarPaquete(int id) {
-        String sql="DELETE FROM `paquete` WHERE idPaquete=?";
-        
+        String sql = "DELETE FROM `paquete` WHERE idPaquete=?";
+
         try {
-            ps=con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            int exito=ps.executeUpdate();
-            
-            if(exito==1){
-            JOptionPane.showMessageDialog(null, "Paquete eliminado con exito");
-            }else{
-            JOptionPane.showMessageDialog(null, "Paquete no encontrado");
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Paquete eliminado con exito");
+            } else {
+                JOptionPane.showMessageDialog(null, "Paquete no encontrado");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(PaqueteData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
+
     }
 
     public List<Paquete> listarPaquetePorCiudad(int idCiudaddestino) {
 
-        String sql = "SELECT *" +
-            "FROM paquete p " +
-            "INNER JOIN Ciudad co ON  p.idCiudadOrigen=co.idCiudad " +
-            "INNER JOIN Alojamiento a ON p.idAlojamiento = a.idAlojamiento " +
-            "INNER JOIN Pasaje pa ON p.idPasaje = pa.idPasaje " +
-            "INNER JOIN Ciudad cd ON p.idCiudadDestino= cd.idCiudad "+    
-            "WHERE p.idCiudadDestino = ? ";
-            ArrayList<Paquete> paquete1 = new ArrayList<>();
+        String sql = "SELECT *"
+                + "FROM paquete p "
+                + "INNER JOIN Ciudad co ON  p.idCiudadOrigen=co.idCiudad "
+                + "INNER JOIN Alojamiento a ON p.idAlojamiento = a.idAlojamiento "
+                + "INNER JOIN Pasaje pa ON p.idPasaje = pa.idPasaje "
+                + "INNER JOIN Ciudad cd ON p.idCiudadDestino= cd.idCiudad "
+                + "WHERE p.idCiudadDestino = ? ";
+        ArrayList<Paquete> paquete1 = new ArrayList<>();
         try {
             ps = con.prepareStatement(sql);
-               ps.setInt(1, idCiudaddestino);
+            ps.setInt(1, idCiudaddestino);
 
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
-               Paquete paq = new Paquete();
-               Alojamiento alo= new Alojamiento();
-               AlojamientoData aloData=new AlojamientoData();
-               PasajeData pd = new PasajeData();
-               Pasaje pas = new Pasaje();
-               Ciudad ciuO = new Ciudad();
-               Ciudad ciuD= new Ciudad();
-              
-               ciuO.setIdCiudad(rs.getInt("idCiudadOrigen"));
-               ciuO.setNombre(rs.getString("co.Nombre"));
-               ciuO.setPais(rs.getString("co.Pais"));
-               ciuO.setProvincia(rs.getString("co.Provincia"));
-               ciuO.setEstado(rs.getBoolean("co.Estado"));
-               
-               ciuD.setIdCiudad(rs.getInt("idCiudadDestino"));
-               ciuD.setNombre(rs.getString("cd.Nombre"));
-               ciuD.setPais(rs.getString("cd.Pais"));
-               ciuD.setProvincia(rs.getString("cd.Provincia"));
-               ciuD.setEstado(rs.getBoolean("cd.Estado"));
-               
-               alo=aloData.buscarAlojamiento(rs.getInt("idAlojamiento"));
-               paq.setAlojamiento(alo);
-               paq.setOrigen(ciuO);
-               paq.setDestino(ciuD);
-              
-               pas = pd.buscarPasaje(rs.getInt("idPasaje"));
-               paq.setPasaje(pas);
-               
-               paq.setIdPaquete(rs.getInt("IdPaquete"));
-               
-               paquete1.add(paq);
-               
-                
+                Paquete paq = new Paquete();
+                Alojamiento alo = new Alojamiento();
+                AlojamientoData aloData = new AlojamientoData();
+                PasajeData pd = new PasajeData();
+                Pasaje pas = new Pasaje();
+                Ciudad ciuO = new Ciudad();
+                Ciudad ciuD = new Ciudad();
+
+                ciuO.setIdCiudad(rs.getInt("idCiudadOrigen"));
+                ciuO.setNombre(rs.getString("co.Nombre"));
+                ciuO.setPais(rs.getString("co.Pais"));
+                ciuO.setProvincia(rs.getString("co.Provincia"));
+                ciuO.setEstado(rs.getBoolean("co.Estado"));
+
+                ciuD.setIdCiudad(rs.getInt("idCiudadDestino"));
+                ciuD.setNombre(rs.getString("cd.Nombre"));
+                ciuD.setPais(rs.getString("cd.Pais"));
+                ciuD.setProvincia(rs.getString("cd.Provincia"));
+                ciuD.setEstado(rs.getBoolean("cd.Estado"));
+
+                alo = aloData.buscarAlojamiento(rs.getInt("idAlojamiento"));
+                paq.setAlojamiento(alo);
+                paq.setOrigen(ciuO);
+                paq.setDestino(ciuD);
+
+                pas = pd.buscarPasaje(rs.getInt("idPasaje"));
+                paq.setPasaje(pas);
+
+                paq.setIdPaquete(rs.getInt("IdPaquete"));
+
+                paquete1.add(paq);
+
 //                System.out.println("Nombre ciudad Origen "+ciuO.getNombre());
 //                System.out.println("Nombre ciudad Destino "+ciuD.getNombre());
 //                System.out.println("Nombre del Alojamiento ID "+alo.getIdAlojamiento());
@@ -149,15 +146,68 @@ public class PaqueteData {
 //                System.out.println("Fecha "+alo.getFechaing());
 //                System.out.println("===================================================");
             }
-        
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(PaqueteData.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
- 
         return paquete1;
+    }
 
+    public List<Paquete> listarPaquetePorFechaSalida(LocalDate fechaActual) {
+        String sql = "SELECT * "
+                + "FROM paquete p "
+                + "INNER JOIN Ciudad co ON p.idCiudadOrigen = co.idCiudad "
+                + "INNER JOIN Alojamiento a ON p.idAlojamiento = a.idAlojamiento "
+                + "INNER JOIN Pasaje pa ON p.idPasaje = pa.idPasaje "
+                + "INNER JOIN Ciudad cd ON p.idCiudadDestino = cd.idCiudad "
+                + "WHERE a.FechaOn < ? ";
+                
+
+        ArrayList<Paquete> paquete1 = new ArrayList<>();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaActual));
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Paquete paq = new Paquete();
+                Alojamiento alo = new Alojamiento();
+                AlojamientoData aloData = new AlojamientoData();
+                PasajeData pd = new PasajeData();
+                Pasaje pas = new Pasaje();
+                Ciudad ciuO = new Ciudad();
+                Ciudad ciuD = new Ciudad();
+
+                ciuO.setIdCiudad(rs.getInt("idCiudadOrigen"));
+                ciuO.setNombre(rs.getString("co.Nombre"));
+                ciuO.setPais(rs.getString("co.Pais"));
+                ciuO.setProvincia(rs.getString("co.Provincia"));
+                ciuO.setEstado(rs.getBoolean("co.Estado"));
+
+                ciuD.setIdCiudad(rs.getInt("idCiudadDestino"));
+                ciuD.setNombre(rs.getString("cd.Nombre"));
+                ciuD.setPais(rs.getString("cd.Pais"));
+                ciuD.setProvincia(rs.getString("cd.Provincia"));
+                ciuD.setEstado(rs.getBoolean("cd.Estado"));
+
+                alo = aloData.buscarAlojamiento(rs.getInt("idAlojamiento"));
+                paq.setAlojamiento(alo);
+                paq.setOrigen(ciuO);
+                paq.setDestino(ciuD);
+
+                pas = pd.buscarPasaje(rs.getInt("idPasaje"));
+                paq.setPasaje(pas);
+
+                paq.setIdPaquete(rs.getInt("IdPaquete"));
+
+                paquete1.add(paq);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PaqueteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return paquete1;
     }
 }

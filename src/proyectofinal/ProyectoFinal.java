@@ -2,8 +2,12 @@ package proyectofinal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,12 +20,13 @@ import proyectofinal.AccesoaDatos.PasajeData;
 
 import proyectofinal.Entidades.Alojamiento;
 import proyectofinal.Entidades.Ciudad;
+import proyectofinal.Entidades.Paquete;
 import proyectofinal.Entidades.Pasaje;
 import proyectofinal.Vistas.menu;
 
 public class ProyectoFinal {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         // TODO code application logic here
 
         Connection con = Conexion.getConexion();
@@ -110,6 +115,6 @@ public class ProyectoFinal {
 //        
 //        Ciudad ss = cd.buscarCiudadPorNombre("Azul");
 //        
-//        System.out.println("Probando "+ss.getIdCiudad()+" "+ss.getNombre());
+//        System.out.println("Probando "+ss.getIdCiudad()+" "+ss.getNombre());      
     }
 }

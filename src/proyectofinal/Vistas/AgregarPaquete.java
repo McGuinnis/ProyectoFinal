@@ -29,23 +29,22 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarPaquete
      */
-    
-    private DefaultTableModel modelo;   
-    
+    private DefaultTableModel modelo;
+
     public AgregarPaquete() {
         initComponents();
         cargarComboPaises();
-        
+
         modelo = new DefaultTableModel();
         armarCabecera();
 
-        
         //Calendar hoy=Calendar.getInstance();
         jfechaIn.setCalendar(Calendar.getInstance());
         jcomboProvincia.setEnabled(false);
         jcomboCiudad.setEnabled(false);
     }
-private CiudadData cData = new CiudadData();
+    private CiudadData cData = new CiudadData();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -402,45 +401,36 @@ private CiudadData cData = new CiudadData();
 
     private void jBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonGuardarActionPerformed
         // TODO add your handling code here:
-        Ciudad ciudadOrigen= new Ciudad();
-        Ciudad ciudadDestino=new Ciudad();
-        ciudadOrigen=cData.buscarCiudadPorNombre("Azul");
-        ciudadDestino=cData.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
-        System.out.println(ciudadDestino.getIdCiudad()+"importe "+Double.parseDouble(jtImporte.getText()));
+        Ciudad ciudadOrigen = new Ciudad();
+        Ciudad ciudadDestino = new Ciudad();
+        ciudadOrigen = cData.buscarCiudadPorNombre("Azul");
+        ciudadDestino = cData.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
+        System.out.println(ciudadDestino.getIdCiudad() + "importe " + Double.parseDouble(jtImporte.getText()));
         //Carga de Pasaje para paquete
-        Pasaje pasaje1= new Pasaje(jcomboTransporte.getSelectedItem().toString(),
+        Pasaje pasaje1 = new Pasaje(jcomboTransporte.getSelectedItem().toString(),
                 Double.parseDouble(jtImporte.getText()), ciudadOrigen, true);
-        PasajeData pData= new PasajeData();
-        Pasaje pasaje=pData.agregarPasaje(pasaje1);
-        
-        
-       
-        
-        
+        PasajeData pData = new PasajeData();
+        Pasaje pasaje = pData.agregarPasaje(pasaje1);
+
         //Obtener IdAlojamiento de la seleccion en tabla
-        Alojamiento alojamiento=new Alojamiento();
-        AlojamientoData aData=new AlojamientoData();
+        Alojamiento alojamiento = new Alojamiento();
+        AlojamientoData aData = new AlojamientoData();
         int filaActual = jTabla.getSelectedRow();
         Integer idAlojamiento = (Integer) jTabla.getValueAt(filaActual, 0);
-        alojamiento=aData.buscarAlojamiento(idAlojamiento);
-        
-        
+        alojamiento = aData.buscarAlojamiento(idAlojamiento);
+
         //Guardado Paquete
-        Paquete paquete=new Paquete(ciudadOrigen, ciudadDestino, alojamiento, pasaje);
-        PaqueteData paqData=new PaqueteData();
+        Paquete paquete = new Paquete(ciudadOrigen, ciudadDestino, alojamiento, pasaje);
+        PaqueteData paqData = new PaqueteData();
         paqData.agregarPaquete(paquete);
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jBotonGuardarActionPerformed
 
     private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
         // TODO add your handling code here:
         jcomboProvincia.setEnabled(true);
-        
+
         cargarComboProvincias();
     }//GEN-LAST:event_jcomboPaisActionPerformed
 
@@ -454,11 +444,11 @@ private CiudadData cData = new CiudadData();
 
     private void jbBuscarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTablaActionPerformed
         // TODO add your handling code here:
-        CiudadData cd=new CiudadData();
-        
-        Ciudad c=cd.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
+        CiudadData cd = new CiudadData();
+
+        Ciudad c = cd.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
         cargarTabla(c.getIdCiudad(), jfechaIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        
+
     }//GEN-LAST:event_jbBuscarTablaActionPerformed
 
     private void jcomboTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboTransporteActionPerformed
@@ -503,10 +493,10 @@ private CiudadData cData = new CiudadData();
     // End of variables declaration//GEN-END:variables
 
     private void cargarComboPaises() {
-        List<String> pais = cData.listarPaises();        
+        List<String> pais = cData.listarPaises();
         //jcomboCiudad.setEnabled(false);
         //jcomboCiudad.removeAllItems();
-        
+
         for (String pai : pais) {
             jcomboPais.addItem(pai);
 
@@ -517,36 +507,38 @@ private CiudadData cData = new CiudadData();
     private void cargarComboProvincias() {
         String pai = (String) jcomboPais.getSelectedItem();
 
-        List<String> provincias = cData.listarProvinciasPorPaisC(pai);        
+        List<String> provincias = cData.listarProvinciasPorPaisC(pai);
         //jcomboCiudad.setEnabled(false);
-        jcomboProvincia.removeAllItems();        
+        jcomboProvincia.removeAllItems();
         jcomboCiudad.removeAllItems();
 
         for (String provincia : provincias) {
             jcomboProvincia.addItem(provincia);
         }
     }
-    
-    private void cargarComboCiudades(){
-        String pai =(String) jcomboPais.getSelectedItem();
-        String prov=(String) jcomboProvincia.getSelectedItem();
-        List<Ciudad> ciu =  cData.listarCiudadPorProvinciaypais(pai, prov);
-        
+
+    private void cargarComboCiudades() {
+        String pai = (String) jcomboPais.getSelectedItem();
+        String prov = (String) jcomboProvincia.getSelectedItem();
+        List<Ciudad> ciu = cData.listarCiudadPorProvinciaypais(pai, prov);
+
         for (Ciudad ciudad : ciu) {
             String ciudadx = ciudad.getNombre();
             jcomboCiudad.addItem(ciudadx);
-            
+
         }
-        
+
     }
-    private void cargarComboTransporte(){
-        TipoTransporte[] tipos=TipoTransporte.values();
-        for (TipoTransporte tipo:tipos){
-        jcomboTransporte.addItem(tipo.toString());}
-                
+
+    private void cargarComboTransporte() {
+        TipoTransporte[] tipos = TipoTransporte.values();
+        for (TipoTransporte tipo : tipos) {
+            jcomboTransporte.addItem(tipo.toString());
+        }
+
     }
-    
-        private void armarCabecera() {
+
+    private void armarCabecera() {
         modelo.addColumn("Id");
         modelo.addColumn("Fecha Inicio");
         modelo.addColumn("Fecha Fin");
@@ -555,8 +547,8 @@ private CiudadData cData = new CiudadData();
         modelo.addColumn("Importe Diario");
         jTabla.setModel(modelo);
     }
-        
-     private void borrarFilas() {
+
+    private void borrarFilas() {
 
         int filas = jTabla.getRowCount() - 1;
 
@@ -565,14 +557,14 @@ private CiudadData cData = new CiudadData();
             modelo.removeRow(i);
         }
     }
-     private void cargarTabla (int ciudad, LocalDate fechaIn){
-         AlojamientoData ad=new AlojamientoData();
-         List<Alojamiento> al=ad.listarAlojamientoxCyF(ciudad, fechaIn);
-         borrarFilas();
-         for(Alojamiento al1:al){
-         modelo.addRow(new Object[]{al1.getIdAlojamiento(), al1.getFechaing(), al1.getFechaOn(),al1.getTipoAlojam(),al1.getServicio(),al1.getImporteDiario()});
-         }
-         }
-         
-}
 
+    private void cargarTabla(int ciudad, LocalDate fechaIn) {
+        AlojamientoData ad = new AlojamientoData();
+        List<Alojamiento> al = ad.listarAlojamientoxCyF(ciudad, fechaIn);
+        borrarFilas();
+        for (Alojamiento al1 : al) {
+            modelo.addRow(new Object[]{al1.getIdAlojamiento(), al1.getFechaing(), al1.getFechaOn(), al1.getTipoAlojam(), al1.getServicio(), al1.getImporteDiario()});
+        }
+    }
+    
+}
