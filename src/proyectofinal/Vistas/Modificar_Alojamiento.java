@@ -288,7 +288,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     private void jbCargarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCargarAlojamientoActionPerformed
      
         int filaActual = jtPaquetesVencidos.getSelectedRow();
-        Integer idAlojamiento = (Integer) jtPaquetesVencidos.getValueAt(filaActual, 0);
+        Integer idAlojamiento = (Integer) jtPaquetesVencidos.getValueAt(filaActual, 2);
         
         Alojamiento alojamiento = new Alojamiento();
         alojamiento = ad.buscarAlojamiento(idAlojamiento);
@@ -298,14 +298,17 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jdFechaInicio.setDate(java.sql.Date.valueOf(alojamiento.getFechaing()));
         jdFechaSalida.setDate(java.sql.Date.valueOf(alojamiento.getFechaOn()));
         
-        if (alojamiento.getServicio().equalsIgnoreCase("Desayuno")){
-            jcServicio.setSelectedIndex(0);
-        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo")){
-            jcServicio.setSelectedIndex(1);
-        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo - Cena")){
-            jcServicio.setSelectedIndex(2);
-        }
+        jcTipoAlojamiento.setSelectedItem(alojamiento.getTipoAlojam());
+        jcServicio.setSelectedItem(alojamiento.getServicio());
         
+//        if (alojamiento.getServicio().equalsIgnoreCase("Desayuno")){
+//            jcServicio.setSelectedIndex(0);
+//        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo")){
+//            jcServicio.setSelectedIndex(1);
+//        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo - Cena")){
+//            jcServicio.setSelectedIndex(2);
+//        }
+//        
             
         
         
