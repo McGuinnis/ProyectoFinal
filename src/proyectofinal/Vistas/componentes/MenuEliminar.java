@@ -14,9 +14,9 @@ import java.awt.RenderingHints;
  *
  * @author orell
  */
-public class MenuConsultas extends javax.swing.JPanel {
+public class MenuEliminar extends javax.swing.JPanel {
 
-    public MenuConsultas() {
+    public MenuEliminar() {
         initComponents();
         setOpaque(false);
         
@@ -43,7 +43,7 @@ public class MenuConsultas extends javax.swing.JPanel {
     protected void paintChildren(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
          g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint g =new GradientPaint(0, 0, Color.decode("#f79d00"),0, getHeight(), Color.decode("#64f38c"));
+        GradientPaint g =new GradientPaint(0, 0, Color.decode("#cb2d3e"),0, getHeight(), Color.decode("#ef473a"));
         g2.setPaint(g);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
         g2.fillRect(0, 0, getWidth() - 20, getHeight());
