@@ -13,30 +13,20 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
- 
-
-
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author orell
  */
-
-
 public class menu extends javax.swing.JFrame {
-    
-    
-    
 
     /**
      * Creates new form menu
      */
     public Clip clip;
-    public String Ruta="/sonido/";
-    
-    
-    
+    public String Ruta = "/sonido/";
+
     public menu() {
         initComponents();
         setLocationRelativeTo(null);
@@ -46,15 +36,15 @@ public class menu extends javax.swing.JFrame {
         jlMenuModificarAlojamiento.setEnabled(false);
         jlMenuEliminar1.setEnabled(false);
     }
-    
-    public void Sonido(String archivo){
-        try{
+
+    public void Sonido(String archivo) {
+        try {
             clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(Ruta+archivo+".wav")));
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(Ruta + archivo + ".wav")));
             clip.start();
-        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e){
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
         }
-        
+
     }
 
     /**
@@ -247,7 +237,7 @@ public class menu extends javax.swing.JFrame {
         );
         menuLogin1Layout.setVerticalGroup(
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
             .addGroup(menuLogin1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,25 +288,27 @@ public class menu extends javax.swing.JFrame {
 
         String usuario = "admin";
         String pass = "admin";
-
-        if (usuario.equals(jtfUsuario.getText()) && pass.equals(jpfContraseña.getText())) {
+        if (jpfContraseña.getText().equals(pass) && jtfUsuario.getText().equals(usuario)) {
             
-            jlMenuCiudad.setEnabled(true);
-            jlMenuAlojamiento.setEnabled(true);
-            jlMenuPaquete.setEnabled(true);
-            jlMenuModificarAlojamiento.setEnabled(true);
-            jlMenuEliminar1.setEnabled(true);
-            
+            JOptionPane.showMessageDialog(this, "Opciones Desbloqueadas");
+            if (usuario.equals(jtfUsuario.getText()) && pass.equals(jpfContraseña.getText())) {
 
-        } else {
-            System.out.println("No entro al login");
-        }
+                jlMenuCiudad.setEnabled(true);
+                jlMenuAlojamiento.setEnabled(true);
+                jlMenuPaquete.setEnabled(true);
+                jlMenuModificarAlojamiento.setEnabled(true);
+                jlMenuEliminar1.setEnabled(true);
+
+            } 
+        }else {
+                JOptionPane.showMessageDialog(this, "Usuario y/o Contraseña Incorrectas!!!");
+            }
 
     }//GEN-LAST:event_jbLoginActionPerformed
 
     private void jlMenuConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuConsultasMouseClicked
-         // TODO add your handling code here:
-            jdEscritorio.repaint();
+        // TODO add your handling code here:
+        jdEscritorio.repaint();
         Consultas c = new Consultas();
         c.setVisible(true);
         jdEscritorio.add(c);
@@ -351,7 +343,7 @@ public class menu extends javax.swing.JFrame {
 
     private void jlMenuAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuAlojamientoMouseClicked
         // TODO add your handling code here:
-        AgregarAlojamiento aa=new AgregarAlojamiento();
+        AgregarAlojamiento aa = new AgregarAlojamiento();
         aa.setVisible(true);
 
     }//GEN-LAST:event_jlMenuAlojamientoMouseClicked
@@ -359,24 +351,23 @@ public class menu extends javax.swing.JFrame {
     private void jlMenuEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuEliminar1MouseClicked
         // TODO add your handling code here:
         jdEscritorio.repaint();
-        Eliminar elis = new Eliminar ();
+        Eliminar elis = new Eliminar();
         elis.setVisible(true);
         jdEscritorio.add(elis);
         jdEscritorio.moveToFront(elis);
     }//GEN-LAST:event_jlMenuEliminar1MouseClicked
     private boolean flechaVisible = true;
     //private boolean textVisible = false;
-    
+
     public void keyPressed(KeyEvent e) {
-                // Este método se llama cuando se presiona una tecla
-                if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
-                    // Abre la ventana cuando se presiona la tecla 'A' o 'a'
-                    CiudadAgregar ciudadA = new CiudadAgregar();
-                    ciudadA.setVisible(true);
-                }
-            }
-    
-    
+        // Este método se llama cuando se presiona una tecla
+        if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
+            // Abre la ventana cuando se presiona la tecla 'A' o 'a'
+            CiudadAgregar ciudadA = new CiudadAgregar();
+            ciudadA.setVisible(true);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */

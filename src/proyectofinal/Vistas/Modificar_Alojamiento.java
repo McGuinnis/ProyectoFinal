@@ -100,6 +100,12 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Importe Diario: ");
 
+        jtImporteDiario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtImporteDiarioKeyTyped(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Estado:");
 
@@ -231,7 +237,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                 .addComponent(jdCalendarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,7 +293,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
+                .addGap(0, 18, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -385,6 +391,14 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         Alojamiento alojamientoA = new Alojamiento(idAlo, fechaIng, fechaSal, jcEstado.isSelected(), jcServicio.getSelectedItem().toString(), importeD, ciudadD, jcTipoAlojamiento.getSelectedItem().toString());
         ad.modificarAlojamiento(alojamientoA);
     }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
+         
+        if (Character.isLetter(evt.getKeyChar())) {
+            evt.consume(); //Permite ingresar SOLO Numeros
+}
+        
+    }//GEN-LAST:event_jtImporteDiarioKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

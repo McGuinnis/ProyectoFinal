@@ -95,6 +95,9 @@ public class Eliminar extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtCiudadKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCiudadKeyTyped(evt);
+            }
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -346,6 +349,14 @@ public class Eliminar extends javax.swing.JInternalFrame {
         pData.eliminarPaquete(idpaq);
         passD.EliminarPasaje(idpas);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCiudadKeyTyped
+         
+        if (!Character.isLetter(evt.getKeyChar()) && evt.getKeyChar() != ' ') {
+            evt.consume(); //Permite ingresar SOLO caracteres
+}
+        
+    }//GEN-LAST:event_jtCiudadKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
