@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 import proyectofinal.AccesoaDatos.AlojamientoData;
@@ -174,6 +175,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fecha Inicio");
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+
+        jfechaIn.setMaxSelectableDate(new java.util.Date(1893470462000L));
 
         jbBuscarTabla.setForeground(new java.awt.Color(0, 0, 0));
         jbBuscarTabla.setText("Buscar");
@@ -446,10 +449,15 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
 
     private void jbBuscarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTablaActionPerformed
         // TODO add your handling code here:
+        try{
         CiudadData cd = new CiudadData();
 
         Ciudad c = cd.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
         cargarTabla(c.getIdCiudad(), jfechaIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        
+        }catch(NullPointerException nu){
+            JOptionPane.showMessageDialog(this, "Formato Incorrecto");
+        }
 
     }//GEN-LAST:event_jbBuscarTablaActionPerformed
 
