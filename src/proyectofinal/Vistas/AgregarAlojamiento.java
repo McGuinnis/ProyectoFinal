@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import proyectofinal.AccesoaDatos.AlojamientoData;
@@ -30,12 +31,9 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
      */
     public AgregarAlojamiento() {
         initComponents();
-        
-        cargarComboPaises();
-        
-        setLocationRelativeTo(null);
-        
-        
+        cargarComboPaises();        
+        setLocationRelativeTo(null);       
+        jbGuardar.setEnabled(false);
         jcomboProvincia.setEnabled(false);
         jComboCiudad.setEnabled(false);
         jbBuscar.setEnabled(false);
@@ -377,6 +375,11 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         });
 
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -460,9 +463,10 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
 
     private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
 
-        if (Character.isLetter(evt.getKeyChar())) { // Acepta Numeros
-            evt.consume();                        // agregarle el " ! " para que acepte letras
-        }
+         if (Character.isLetter(evt.getKeyChar())){ // Acepta Numeros
+            evt.consume(); // agregarle el " ! " para que acepte letras
+}
+
     }//GEN-LAST:event_jtImporteDiarioKeyTyped
 
     private void jpSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSalirActionPerformed
@@ -477,16 +481,17 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
+        jbGuardar.setEnabled(true);
+        try{
         String provincias =jcomboProvincia.getSelectedItem().toString();
         String pais =jcomboPais.getSelectedItem().toString();
-        System.out.println(pais+ provincias);
-        
         
         jComboCiudad.setEnabled(true);
                
-        cargarComboCiudades(pais, provincias);
-        
-        
+        cargarComboCiudades(pais, provincias);        
+        }catch(NullPointerException nu){
+            JOptionPane.showMessageDialog(this, "Combos Vacios");
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
@@ -510,7 +515,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jpSalirMouseExited
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-
+       try{ 
        LocalDate fechaIng = jdFechaIngreso.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        LocalDate fechaSalida = jdFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        boolean estado = jcEstado.isSelected();
@@ -526,7 +531,9 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
        Alojamiento alojamiento2 = new Alojamiento(fechaIng, fechaSalida, estado, tipoServicio, importeDiario, ciudad1, tipoAlojamiento);
        
        alojamientoData.agregarAlojamiento(alojamiento2);
-        
+       }catch(NullPointerException np) {
+           JOptionPane.showMessageDialog(this, "Campos vacios y/o Formato no valido");
+       }
       
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -536,6 +543,17 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jComboCiudad.removeAllItems();
         jbBuscar.setEnabled(true);
     }//GEN-LAST:event_jcomboProvinciaActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+         // TODO add your handling code here:
+         
+         jcomboPais.setSelectedItem(null);
+         jcTipoAlojamiento.setSelectedItem(null);
+         jdFechaIngreso.setDate(null);
+         jdFechaSalida.setDate(null);
+         jcServicios.setSelectedItem(null);
+         jtImporteDiario.setText("");
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
     /**
      * @param args the command line arguments

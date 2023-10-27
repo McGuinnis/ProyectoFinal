@@ -589,8 +589,9 @@ public class menu extends javax.swing.JFrame {
     private void jbPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaqueteActionPerformed
         // TODO add your handling code here:
         AgregarPaquete ap = new AgregarPaquete();
-        getParent().add(ap);
+        //getParent().add(ap);
         ap.setVisible(true);
+        ap.moveToFront();
 
     }//GEN-LAST:event_jbPaqueteActionPerformed
 
@@ -598,7 +599,7 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Eliminar eli= new Eliminar();
-        getParent().add(eli);
+        //getParent().add(eli);
         eli.setVisible(true);
 
     }//GEN-LAST:event_jbPasajeActionPerformed

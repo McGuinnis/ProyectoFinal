@@ -406,9 +406,11 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         ciudadOrigen = cData.buscarCiudadPorNombre("Azul");
         ciudadDestino = cData.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
         System.out.println(ciudadDestino.getIdCiudad() + "importe " + Double.parseDouble(jtImporte.getText()));
+
         //Carga de Pasaje para paquete
+        
         Pasaje pasaje1 = new Pasaje(jcomboTransporte.getSelectedItem().toString(),
-                Double.parseDouble(jtImporte.getText()), ciudadOrigen, true);
+        Double.parseDouble(jtImporte.getText()), ciudadOrigen, true);
         PasajeData pData = new PasajeData();
         Pasaje pasaje = pData.agregarPasaje(pasaje1);
 
@@ -566,5 +568,5 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{al1.getIdAlojamiento(), al1.getFechaing(), al1.getFechaOn(), al1.getTipoAlojam(), al1.getServicio(), al1.getImporteDiario()});
         }
     }
-    
+
 }
