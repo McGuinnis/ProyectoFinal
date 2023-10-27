@@ -45,6 +45,7 @@ public class menu extends javax.swing.JFrame {
         jlMenuPaquete.setEnabled(false);
         jlMenuModificarAlojamiento.setEnabled(false);
         jlMenuEliminar1.setEnabled(false);
+        jlMenuConsultas.setEnabled(false);
     }
     
     public void Sonido(String archivo){
@@ -87,7 +88,7 @@ public class menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51,90));
 
         jtfUsuario.setBackground(new java.awt.Color(51, 51, 51));
         jtfUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -219,14 +220,14 @@ public class menu extends javax.swing.JFrame {
         menuPanel1.add(jlMenuModificarAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 50, -1));
 
         jlMenuConsultas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
+        jlMenuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-book-50.png"))); // NOI18N
         jlMenuConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlMenuConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuConsultasMouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenuConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, 50, -1));
+        menuPanel1.add(jlMenuConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 50, -1));
 
         jlMenuEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlMenuEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
@@ -246,28 +247,28 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuLogin1Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
+                        .addGap(128, 128, 128)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuLogin1Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
                         .addGroup(menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(menuLogin1Layout.createSequentialGroup()
                                 .addGap(213, 213, 213)
                                 .addComponent(jLabel2)
                                 .addGap(209, 209, 209))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(menuLogin1Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         menuLogin1Layout.setVerticalGroup(
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLogin1Layout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
-            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
         );
 
         jdEscritorio.setLayer(menuLogin1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -318,6 +319,8 @@ public class menu extends javax.swing.JFrame {
             jlMenuPaquete.setEnabled(true);
             jlMenuModificarAlojamiento.setEnabled(true);
             jlMenuEliminar1.setEnabled(true);
+             jlMenuConsultas.setEnabled(true);
+            
 
         } else {
             System.out.println("No entro al login");
