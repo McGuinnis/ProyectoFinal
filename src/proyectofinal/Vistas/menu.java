@@ -40,6 +40,11 @@ public class menu extends javax.swing.JFrame {
     public menu() {
         initComponents();
         setLocationRelativeTo(null);
+        jlMenuCiudad.setEnabled(false);
+        jlMenuAlojamiento.setEnabled(false);
+        jlMenuPaquete.setEnabled(false);
+        jlMenuModificarAlojamiento.setEnabled(false);
+        jlMenuEliminar1.setEnabled(false);
     }
     
     public void Sonido(String archivo){
@@ -70,35 +75,15 @@ public class menu extends javax.swing.JFrame {
         jlContrasena = new javax.swing.JLabel();
         jbLogin = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jbCiudad = new javax.swing.JButton();
-        jbAlojamiento = new javax.swing.JButton();
-        jbPaquete = new javax.swing.JButton();
-        jbPasaje = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        menuPanel21 = new proyectofinal.Vistas.componentes.MenuPanel2();
-        flecha5 = new javax.swing.JLabel();
-        flecha4 = new javax.swing.JLabel();
-        flecha3 = new javax.swing.JLabel();
-        flecha2 = new javax.swing.JLabel();
-        flecha1 = new javax.swing.JLabel();
-        text5 = new javax.swing.JLabel();
-        text1 = new javax.swing.JLabel();
-        text2 = new javax.swing.JLabel();
-        text3 = new javax.swing.JLabel();
-        text4 = new javax.swing.JLabel();
         menuPanel1 = new proyectofinal.Vistas.componentes.MenuPanel();
-        jlMenu = new javax.swing.JLabel();
-        jlMenu1 = new javax.swing.JLabel();
-        jlMenu2 = new javax.swing.JLabel();
-        jlMenu3 = new javax.swing.JLabel();
-        jlMenu4 = new javax.swing.JLabel();
-        jlMenu5 = new javax.swing.JLabel();
+        jlMenuAlojamiento = new javax.swing.JLabel();
+        jlMenuPaquete = new javax.swing.JLabel();
+        jlMenuCiudad = new javax.swing.JLabel();
+        jlMenuModificarAlojamiento = new javax.swing.JLabel();
+        jlMenuConsultas = new javax.swing.JLabel();
+        jlMenuEliminar1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,273 +163,90 @@ public class menu extends javax.swing.JFrame {
 
         jPanel3.setOpaque(false);
 
-        jbCiudad.setBackground(new java.awt.Color(51, 51, 51));
-        jbCiudad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jbCiudad.setForeground(new java.awt.Color(255, 255, 255));
-        jbCiudad.setText("Agregar Ciudad");
-        jbCiudad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCiudadActionPerformed(evt);
-            }
-        });
-
-        jbAlojamiento.setBackground(new java.awt.Color(51, 51, 51));
-        jbAlojamiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jbAlojamiento.setForeground(new java.awt.Color(255, 255, 255));
-        jbAlojamiento.setText("Agregar Alojamiento");
-        jbAlojamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAlojamientoActionPerformed(evt);
-            }
-        });
-
-        jbPaquete.setBackground(new java.awt.Color(51, 51, 51));
-        jbPaquete.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jbPaquete.setForeground(new java.awt.Color(255, 255, 255));
-        jbPaquete.setText("Agregar Paquete");
-        jbPaquete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbPaqueteActionPerformed(evt);
-            }
-        });
-
-        jbPasaje.setBackground(new java.awt.Color(51, 51, 51));
-        jbPasaje.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jbPasaje.setForeground(new java.awt.Color(255, 255, 255));
-        jbPasaje.setText("Eliminar");
-        jbPasaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbPasajeActionPerformed(evt);
-            }
-        });
-
-        jButton5.setBackground(new java.awt.Color(51, 51, 51));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Modificar Alojamiento");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jbCiudad)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jbAlojamiento)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbPaquete)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(219, 219, 219)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 727, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCiudad)
-                    .addComponent(jbAlojamiento)
-                    .addComponent(jbPasaje)
-                    .addComponent(jbPaquete))
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-user-50.png"))); // NOI18N
 
-        menuPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        flecha5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        flecha5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-technical-support-50.png"))); // NOI18N
-        flecha5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        flecha5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                flecha5MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(flecha5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 90, -1));
-
-        flecha4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        flecha4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-technical-support-50.png"))); // NOI18N
-        flecha4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        flecha4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                flecha4MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(flecha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 90, -1));
-
-        flecha3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        flecha3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-technical-support-50.png"))); // NOI18N
-        flecha3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        flecha3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                flecha3MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(flecha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 90, -1));
-
-        flecha2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        flecha2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-technical-support-50.png"))); // NOI18N
-        flecha2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        flecha2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                flecha2MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(flecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 90, -1));
-
-        flecha1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        flecha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-technical-support-50.png"))); // NOI18N
-        flecha1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        flecha1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                flecha1MouseClicked(evt);
-            }
-        });
-        flecha1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                flecha1KeyPressed(evt);
-            }
-        });
-        menuPanel21.add(flecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 90, -1));
-
-        text5.setForeground(new java.awt.Color(255, 255, 255));
-        text5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text5.setText("Eliminar");
-        text5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuPanel21.add(text5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 430, 90, 50));
-
-        text1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        text1.setForeground(new java.awt.Color(255, 255, 255));
-        text1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text1.setText("Agregar Ciudad");
-        text1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        text1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                text1MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 90, 110, 50));
-
-        text2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        text2.setForeground(new java.awt.Color(255, 255, 255));
-        text2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text2.setText("Agregar Alojamiento");
-        text2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        text2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                text2MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-105, 160, 110, 50));
-
-        text3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        text3.setForeground(new java.awt.Color(255, 255, 255));
-        text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text3.setText("Agregar Paquete");
-        text3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        text3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                text3MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 250, 90, 50));
-
-        text4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        text4.setForeground(new java.awt.Color(255, 255, 255));
-        text4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text4.setText("Modificar Alojamiento");
-        text4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        text4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                text4MouseClicked(evt);
-            }
-        });
-        menuPanel21.add(text4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 340, 100, 50));
-
         menuPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlMenu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-hotel-50.png"))); // NOI18N
-        jlMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlMenuAlojamiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-hotel-50.png"))); // NOI18N
+        jlMenuAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuMouseClicked(evt);
+                jlMenuAlojamientoMouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
+        menuPanel1.add(jlMenuAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
 
-        jlMenu1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-menu-30.png"))); // NOI18N
-        jlMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlMenuPaquete.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-worldwide-delivery-50.png"))); // NOI18N
+        jlMenuPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenu1MouseClicked(evt);
+                jlMenuPaqueteMouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 30, -1));
+        menuPanel1.add(jlMenuPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, -1));
 
-        jlMenu2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-worldwide-delivery-50.png"))); // NOI18N
-        jlMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlMenuCiudad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-buildings-50.png"))); // NOI18N
+        jlMenuCiudad.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenu2MouseClicked(evt);
+                jlMenuCiudadMouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, -1));
+        menuPanel1.add(jlMenuCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 50, -1));
 
-        jlMenu3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-buildings-50.png"))); // NOI18N
-        jlMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlMenuModificarAlojamiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuModificarAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-edit-property-50.png"))); // NOI18N
+        jlMenuModificarAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuModificarAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenu3MouseClicked(evt);
+                jlMenuModificarAlojamientoMouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 50, -1));
+        menuPanel1.add(jlMenuModificarAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 50, -1));
 
-        jlMenu4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-edit-property-50.png"))); // NOI18N
-        jlMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlMenuConsultas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
+        jlMenuConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenu4MouseClicked(evt);
+                jlMenuConsultasMouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 50, -1));
+        menuPanel1.add(jlMenuConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, 50, -1));
 
-        jlMenu5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
-        jlMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlMenuEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
+        jlMenuEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenu5MouseClicked(evt);
+                jlMenuEliminar1MouseClicked(evt);
             }
         });
-        menuPanel1.add(jlMenu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 50, -1));
-
-        menuPanel21.add(menuPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 720));
+        menuPanel1.add(jlMenuEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 50, -1));
 
         javax.swing.GroupLayout menuLogin1Layout = new javax.swing.GroupLayout(menuLogin1);
         menuLogin1.setLayout(menuLogin1Layout);
         menuLogin1Layout.setHorizontalGroup(
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLogin1Layout.createSequentialGroup()
-                .addComponent(menuPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuLogin1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                        .addGap(255, 255, 255)
                         .addGroup(menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(menuLogin1Layout.createSequentialGroup()
                                 .addGap(213, 213, 213)
@@ -452,20 +254,20 @@ public class menu extends javax.swing.JFrame {
                                 .addGap(209, 209, 209))
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(menuLogin1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(128, 128, 128)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         menuLogin1Layout.setVerticalGroup(
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLogin1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
-            .addComponent(menuPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jdEscritorio.setLayer(menuLogin1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -474,38 +276,12 @@ public class menu extends javax.swing.JFrame {
         jdEscritorio.setLayout(jdEscritorioLayout);
         jdEscritorioLayout.setHorizontalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdEscritorioLayout.createSequentialGroup()
-                .addComponent(menuLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 488, Short.MAX_VALUE))
+            .addComponent(menuLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menuLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        jMenu1.setText("Consultas");
-
-        jMenuItem1.setText("Consultas de Paquetes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Cargar paquetes");
-
-        jMenuItem2.setText("Login");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -513,7 +289,7 @@ public class menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,30 +299,6 @@ public class menu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        //jdEscritorio.removeAll();
-        jdEscritorio.repaint();
-        Consultas con = new Consultas();
-        con.setVisible(true);
-        jdEscritorio.add(con);
-        jdEscritorio.moveToFront(con);
-        
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        jdEscritorio.removeAll();
-        jdEscritorio.repaint();
-        Login log = new Login();
-        log.setVisible(true);
-        jdEscritorio.add(log);
-        jdEscritorio.moveToFront(log);
-        
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jtfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsuarioActionPerformed
         // TODO add your handling code here:
@@ -560,11 +312,12 @@ public class menu extends javax.swing.JFrame {
         String pass = "admin";
 
         if (usuario.equals(jtfUsuario.getText()) && pass.equals(jpfContraseña.getText())) {
-
-            jbCiudad.setEnabled(true);
-            jbAlojamiento.setEnabled(true);
-            jbPaquete.setEnabled(true);
-            jbPasaje.setEnabled(true);
+            
+            jlMenuCiudad.setEnabled(true);
+            jlMenuAlojamiento.setEnabled(true);
+            jlMenuPaquete.setEnabled(true);
+            jlMenuModificarAlojamiento.setEnabled(true);
+            jlMenuEliminar1.setEnabled(true);
 
         } else {
             System.out.println("No entro al login");
@@ -572,192 +325,59 @@ public class menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbLoginActionPerformed
 
-    private void jbCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCiudadActionPerformed
+    private void jlMenuConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuConsultasMouseClicked
+         // TODO add your handling code here:
+            jdEscritorio.repaint();
+        Consultas c = new Consultas();
+        c.setVisible(true);
+        jdEscritorio.add(c);
+        jdEscritorio.moveToFront(c);
+    }//GEN-LAST:event_jlMenuConsultasMouseClicked
+
+    private void jlMenuModificarAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuModificarAlojamientoMouseClicked
+        // TODO add your handling code here:
+        jdEscritorio.repaint();
+        Modificar_Alojamiento mod = new Modificar_Alojamiento();
+        mod.setVisible(true);
+        jdEscritorio.add(mod);
+        jdEscritorio.moveToFront(mod);
+    }//GEN-LAST:event_jlMenuModificarAlojamientoMouseClicked
+
+    private void jlMenuCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuCiudadMouseClicked
         // TODO add your handling code here:
         CiudadAgregar ciudadA = new CiudadAgregar();
 
         ciudadA.setVisible(true);
 
-    }//GEN-LAST:event_jbCiudadActionPerformed
+    }//GEN-LAST:event_jlMenuCiudadMouseClicked
 
-    private void jbAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlojamientoActionPerformed
-
-        AgregarAlojamiento aa = new AgregarAlojamiento();
-        aa.setVisible(true);
-    }//GEN-LAST:event_jbAlojamientoActionPerformed
-
-    private void jbPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaqueteActionPerformed
+    private void jlMenuPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuPaqueteMouseClicked
         // TODO add your handling code here:
         AgregarPaquete ap = new AgregarPaquete();
-        //getParent().add(ap);
         ap.setVisible(true);
-        ap.moveToFront();
+        jdEscritorio.add(ap);
+        jdEscritorio.moveToFront(ap);
 
-    }//GEN-LAST:event_jbPaqueteActionPerformed
+    }//GEN-LAST:event_jlMenuPaqueteMouseClicked
 
-    private void jbPasajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPasajeActionPerformed
+    private void jlMenuAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuAlojamientoMouseClicked
         // TODO add your handling code here:
+        AgregarAlojamiento aa=new AgregarAlojamiento();
+        aa.setVisible(true);
 
-        Eliminar eli= new Eliminar();
-        //getParent().add(eli);
-        eli.setVisible(true);
+    }//GEN-LAST:event_jlMenuAlojamientoMouseClicked
 
-    }//GEN-LAST:event_jbPasajeActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jlMenuEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuEliminar1MouseClicked
         // TODO add your handling code here:
-        Modificar_Alojamiento ma = new Modificar_Alojamiento();
-        getParent().add(ma);
-        ma.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jlMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuMouseClicked
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jlMenuMouseClicked
+        jdEscritorio.repaint();
+        Eliminar elis = new Eliminar ();
+        elis.setVisible(true);
+        jdEscritorio.add(elis);
+        jdEscritorio.moveToFront(elis);
+    }//GEN-LAST:event_jlMenuEliminar1MouseClicked
     private boolean flechaVisible = true;
     //private boolean textVisible = false;
     
-    private void jlMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenu1MouseClicked
-        // TODO add your handling code here:
-        Desface  des = new Desface();
-        if (menuPanel1.getX() == 0) {
-        des.desplazarDerecha(menuPanel1, menuPanel1.getX(), +120, 10, 10);
-        menuPanel1.setLocation(+100, 0);
-
-        }else if (menuPanel1.getX() == +120) {
-              des.desplazarIzquierda(menuPanel1, menuPanel1.getX(), 0, 10, 10);
-        }
-        
-        flechaVisible = !flechaVisible;
-
-        flecha1.setVisible(flechaVisible);
-        flecha2.setVisible(flechaVisible);
-        flecha3.setVisible(flechaVisible);
-        flecha4.setVisible(flechaVisible);
-        flecha5.setVisible(flechaVisible);
-        
-        AnimationClass agCiu = new AnimationClass();
-        agCiu.jLabelXRight(-90, 0, 10, 5, text1);
-        
-        AnimationClass agAlo = new AnimationClass();
-        agAlo.jLabelXRight(-105, 3, 10, 5, text2);
-        
-        AnimationClass agPack = new AnimationClass();
-        agPack.jLabelXRight(-90, 10, 10, 5, text3);
-        
-        AnimationClass modAlo = new AnimationClass();
-        modAlo.jLabelXRight(-100, 6, 10, 5, text4);
-        
-         AnimationClass eliminar = new AnimationClass();
-        eliminar.jLabelXRight(-70, 9, 10, 5, text5);
-        
-        
-        
-        
-        
-        AnimationClass aggCiu = new AnimationClass();
-        aggCiu.jLabelXLeft(0, -90, 10, 5, text1);
-        
-        AnimationClass aggAlo = new AnimationClass();
-        aggAlo.jLabelXLeft(3, -105, 10, 5, text2);
-        
-        AnimationClass aggPack = new AnimationClass();
-        aggPack.jLabelXLeft(9, -90, 10, 5, text3);
-        
-        AnimationClass moddAlo = new AnimationClass();
-        moddAlo.jLabelXLeft(6, -100, 10, 5, text4);
-        
-        AnimationClass eliminarr = new AnimationClass();
-        eliminarr.jLabelXLeft(9, -70, 10, 5, text5);
-        
-        
-        
-
-        
-    }//GEN-LAST:event_jlMenu1MouseClicked
-
-    private void jlMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenu2MouseClicked
-        // TODO add your handling code here:
-        AgregarPaquete ap = new AgregarPaquete();
-        getParent().add(ap);
-        ap.setVisible(true);
-
-        
-    }//GEN-LAST:event_jlMenu2MouseClicked
-
-    private void jlMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenu3MouseClicked
-        // TODO add your handling code here:
-        CiudadAgregar ciudadA = new CiudadAgregar();
-
-        ciudadA.setVisible(true);
-        
-    }//GEN-LAST:event_jlMenu3MouseClicked
-
-    private void jlMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenu4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlMenu4MouseClicked
-
-    private void jlMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenu5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlMenu5MouseClicked
-
-    private void flecha1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flecha1MouseClicked
-        // TODO add your handling code here:
-        Sonido("Agregar Ciudad");
-        
-        
-    }//GEN-LAST:event_flecha1MouseClicked
-
-    private void flecha2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flecha2MouseClicked
-        // TODO add your handling code here:
-        Sonido("Agregar Alojamiento");
-        
-    }//GEN-LAST:event_flecha2MouseClicked
-
-    private void flecha3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flecha3MouseClicked
-        // TODO add your handling code here:
-        Sonido("Agregar Paquete");
-        
-    }//GEN-LAST:event_flecha3MouseClicked
-
-    private void flecha4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flecha4MouseClicked
-        // TODO add your handling code here:
-        Sonido("Modificar Alojamient");
-        
-    }//GEN-LAST:event_flecha4MouseClicked
-
-    private void flecha5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flecha5MouseClicked
-        // TODO add your handling code here:
-        Sonido("Eliminar");
-    }//GEN-LAST:event_flecha5MouseClicked
-
-    private void text1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_text1MouseClicked
-        // TODO add your handling code here:
-        CiudadAgregar ciudadA = new CiudadAgregar();
-
-        ciudadA.setVisible(true);
-        
-    }//GEN-LAST:event_text1MouseClicked
-
-    private void text2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_text2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text2MouseClicked
-
-    private void text3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_text3MouseClicked
-        // TODO add your handling code here:
-        AgregarPaquete ap = new AgregarPaquete();
-        getParent().add(ap);
-        ap.setVisible(true);
-
-        
-    }//GEN-LAST:event_text3MouseClicked
-
-    private void text4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_text4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text4MouseClicked
-
     public void keyPressed(KeyEvent e) {
                 // Este método se llama cuando se presiona una tecla
                 if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
@@ -768,16 +388,6 @@ public class menu extends javax.swing.JFrame {
             }
     
     
-    private void flecha1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_flecha1KeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyChar() == 'A' || evt.getKeyChar() == 'a') {
-            CiudadAgregar ciudadA = new CiudadAgregar();
-        // Abre la ventana deseada
-        ciudadA.setVisible(true);
-    }
-        
-    }//GEN-LAST:event_flecha1KeyPressed
-
     /**
      * @param args the command line arguments
      */
@@ -814,43 +424,23 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel flecha1;
-    private javax.swing.JLabel flecha2;
-    private javax.swing.JLabel flecha3;
-    private javax.swing.JLabel flecha4;
-    private javax.swing.JLabel flecha5;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton jbAlojamiento;
-    private javax.swing.JButton jbCiudad;
     private javax.swing.JButton jbLogin;
-    private javax.swing.JButton jbPaquete;
-    private javax.swing.JButton jbPasaje;
     private javax.swing.JDesktopPane jdEscritorio;
     private javax.swing.JLabel jlContrasena;
-    private javax.swing.JLabel jlMenu;
-    private javax.swing.JLabel jlMenu1;
-    private javax.swing.JLabel jlMenu2;
-    private javax.swing.JLabel jlMenu3;
-    private javax.swing.JLabel jlMenu4;
-    private javax.swing.JLabel jlMenu5;
+    private javax.swing.JLabel jlMenuAlojamiento;
+    private javax.swing.JLabel jlMenuCiudad;
+    private javax.swing.JLabel jlMenuConsultas;
+    private javax.swing.JLabel jlMenuEliminar1;
+    private javax.swing.JLabel jlMenuModificarAlojamiento;
+    private javax.swing.JLabel jlMenuPaquete;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JPasswordField jpfContraseña;
     private javax.swing.JTextField jtfUsuario;
     private proyectofinal.Vistas.componentes.MenuLogin menuLogin1;
     private proyectofinal.Vistas.componentes.MenuPanel menuPanel1;
-    private proyectofinal.Vistas.componentes.MenuPanel2 menuPanel21;
-    private javax.swing.JLabel text1;
-    private javax.swing.JLabel text2;
-    private javax.swing.JLabel text3;
-    private javax.swing.JLabel text4;
-    private javax.swing.JLabel text5;
     // End of variables declaration//GEN-END:variables
 }
