@@ -45,7 +45,6 @@ public class menu extends javax.swing.JFrame {
         jlMenuPaquete.setEnabled(false);
         jlMenuModificarAlojamiento.setEnabled(false);
         jlMenuEliminar1.setEnabled(false);
-        jlMenuConsultas.setEnabled(false);
     }
     
     public void Sonido(String archivo){
@@ -69,14 +68,6 @@ public class menu extends javax.swing.JFrame {
 
         jdEscritorio = new javax.swing.JDesktopPane();
         menuLogin1 = new proyectofinal.Vistas.componentes.MenuLogin();
-        jPanel2 = new javax.swing.JPanel();
-        jtfUsuario = new javax.swing.JTextField();
-        jlUsuario = new javax.swing.JLabel();
-        jpfContraseña = new javax.swing.JPasswordField();
-        jlContrasena = new javax.swing.JLabel();
-        jbLogin = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         menuPanel1 = new proyectofinal.Vistas.componentes.MenuPanel();
         jlMenuAlojamiento = new javax.swing.JLabel();
         jlMenuPaquete = new javax.swing.JLabel();
@@ -84,9 +75,83 @@ public class menu extends javax.swing.JFrame {
         jlMenuModificarAlojamiento = new javax.swing.JLabel();
         jlMenuConsultas = new javax.swing.JLabel();
         jlMenuEliminar1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jtfUsuario = new javax.swing.JTextField();
+        jlUsuario = new javax.swing.JLabel();
+        jpfContraseña = new javax.swing.JPasswordField();
+        jlContrasena = new javax.swing.JLabel();
+        jbLogin = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        menuPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlMenuAlojamiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-hotel-50.png"))); // NOI18N
+        jlMenuAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMenuAlojamientoMouseClicked(evt);
+            }
+        });
+        menuPanel1.add(jlMenuAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
+
+        jlMenuPaquete.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-worldwide-delivery-50.png"))); // NOI18N
+        jlMenuPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMenuPaqueteMouseClicked(evt);
+            }
+        });
+        menuPanel1.add(jlMenuPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, -1));
+
+        jlMenuCiudad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-buildings-50.png"))); // NOI18N
+        jlMenuCiudad.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMenuCiudadMouseClicked(evt);
+            }
+        });
+        menuPanel1.add(jlMenuCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 50, -1));
+
+        jlMenuModificarAlojamiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuModificarAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-edit-property-50.png"))); // NOI18N
+        jlMenuModificarAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuModificarAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMenuModificarAlojamientoMouseClicked(evt);
+            }
+        });
+        menuPanel1.add(jlMenuModificarAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 50, -1));
+
+        jlMenuConsultas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-book-50.png"))); // NOI18N
+        jlMenuConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMenuConsultasMouseClicked(evt);
+            }
+        });
+        menuPanel1.add(jlMenuConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 50, -1));
+
+        jlMenuEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMenuEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
+        jlMenuEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlMenuEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMenuEliminar1MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(jlMenuEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 50, -1));
+
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51,90));
 
@@ -162,82 +227,13 @@ public class menu extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
         );
 
-        jPanel3.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 727, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-user-50.png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
 
-        menuPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlMenuAlojamiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-hotel-50.png"))); // NOI18N
-        jlMenuAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlMenuAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuAlojamientoMouseClicked(evt);
-            }
-        });
-        menuPanel1.add(jlMenuAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
-
-        jlMenuPaquete.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-worldwide-delivery-50.png"))); // NOI18N
-        jlMenuPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlMenuPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuPaqueteMouseClicked(evt);
-            }
-        });
-        menuPanel1.add(jlMenuPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, -1));
-
-        jlMenuCiudad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-buildings-50.png"))); // NOI18N
-        jlMenuCiudad.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlMenuCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuCiudadMouseClicked(evt);
-            }
-        });
-        menuPanel1.add(jlMenuCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 50, -1));
-
-        jlMenuModificarAlojamiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuModificarAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-edit-property-50.png"))); // NOI18N
-        jlMenuModificarAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlMenuModificarAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuModificarAlojamientoMouseClicked(evt);
-            }
-        });
-        menuPanel1.add(jlMenuModificarAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 50, -1));
-
-        jlMenuConsultas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-book-50.png"))); // NOI18N
-        jlMenuConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlMenuConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuConsultasMouseClicked(evt);
-            }
-        });
-        menuPanel1.add(jlMenuConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 50, -1));
-
-        jlMenuEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlMenuEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-delete-50.png"))); // NOI18N
-        jlMenuEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlMenuEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlMenuEliminar1MouseClicked(evt);
-            }
-        });
-        menuPanel1.add(jlMenuEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 50, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/avion.png"))); // NOI18N
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         javax.swing.GroupLayout menuLogin1Layout = new javax.swing.GroupLayout(menuLogin1);
         menuLogin1.setLayout(menuLogin1Layout);
@@ -245,30 +241,17 @@ public class menu extends javax.swing.JFrame {
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLogin1Layout.createSequentialGroup()
                 .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuLogin1Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuLogin1Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menuLogin1Layout.createSequentialGroup()
-                                .addGap(213, 213, 213)
-                                .addComponent(jLabel2)
-                                .addGap(209, 209, 209))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuLogin1Layout.setVerticalGroup(
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
             .addGroup(menuLogin1Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
-            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jdEscritorio.setLayer(menuLogin1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -277,7 +260,9 @@ public class menu extends javax.swing.JFrame {
         jdEscritorio.setLayout(jdEscritorioLayout);
         jdEscritorioLayout.setHorizontalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jdEscritorioLayout.createSequentialGroup()
+                .addComponent(menuLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +275,9 @@ public class menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,7 +306,6 @@ public class menu extends javax.swing.JFrame {
             jlMenuPaquete.setEnabled(true);
             jlMenuModificarAlojamiento.setEnabled(true);
             jlMenuEliminar1.setEnabled(true);
-             jlMenuConsultas.setEnabled(true);
             
 
         } else {
@@ -428,6 +414,7 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
