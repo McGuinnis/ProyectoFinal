@@ -105,7 +105,7 @@ public class Consultas extends javax.swing.JInternalFrame {
         jPanel3.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Selecione Pais Destino:");
 
         jcomboPais.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -117,7 +117,7 @@ public class Consultas extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Selecione Provincia:");
 
         jcomboProvincia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -130,11 +130,11 @@ public class Consultas extends javax.swing.JInternalFrame {
         jspCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Cantidad de Personas:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Selecione Mes:");
 
         jcomboMes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -145,7 +145,7 @@ public class Consultas extends javax.swing.JInternalFrame {
             }
         });
 
-        jbBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        jbBuscar.setBackground(new java.awt.Color(255, 180, 4));
         jbBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -224,17 +224,18 @@ public class Consultas extends javax.swing.JInternalFrame {
                 .addGroup(menuConsultas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuConsultas1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addGroup(menuConsultas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(114, 114, 114))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(119, 119, 119))
                     .addGroup(menuConsultas1Layout.createSequentialGroup()
                         .addGroup(menuConsultas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(25, Short.MAX_VALUE))))
+                        .addContainerGap(25, Short.MAX_VALUE))
+                    .addGroup(menuConsultas1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(114, 114, 114))))
         );
         menuConsultas1Layout.setVerticalGroup(
             menuConsultas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

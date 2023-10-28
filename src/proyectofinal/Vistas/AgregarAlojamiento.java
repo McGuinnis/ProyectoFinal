@@ -351,7 +351,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
 
         jPanel6.setOpaque(false);
 
-        jpSalir.setBackground(new java.awt.Color(0, 180, 219));
+        jpSalir.setBackground(new java.awt.Color(0, 80, 80));
         jpSalir.setText("Salir");
         jpSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -367,6 +367,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
             }
         });
 
+        jbGuardar.setBackground(new java.awt.Color(0, 80, 80));
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,6 +375,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
             }
         });
 
+        jbNuevo.setBackground(new java.awt.Color(0, 80, 80));
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -65,6 +65,12 @@ public class menu extends javax.swing.JFrame {
         jlMenuModificarAlojamiento = new javax.swing.JLabel();
         jlMenuConsultas = new javax.swing.JLabel();
         jlMenuEliminar1 = new javax.swing.JLabel();
+        voz6 = new javax.swing.JLabel();
+        voz1 = new javax.swing.JLabel();
+        voz2 = new javax.swing.JLabel();
+        voz3 = new javax.swing.JLabel();
+        voz4 = new javax.swing.JLabel();
+        voz5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jtfUsuario = new javax.swing.JTextField();
@@ -139,6 +145,54 @@ public class menu extends javax.swing.JFrame {
             }
         });
         menuPanel1.add(jlMenuEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 50, -1));
+
+        voz6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-voice-20.png"))); // NOI18N
+        voz6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voz6MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(voz6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, -1, -1));
+
+        voz1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-voice-20.png"))); // NOI18N
+        voz1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voz1MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(voz1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        voz2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-voice-20.png"))); // NOI18N
+        voz2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voz2MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(voz2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        voz3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-voice-20.png"))); // NOI18N
+        voz3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voz3MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(voz3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        voz4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-voice-20.png"))); // NOI18N
+        voz4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voz4MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(voz4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        voz5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-voice-20.png"))); // NOI18N
+        voz5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voz5MouseClicked(evt);
+            }
+        });
+        menuPanel1.add(voz5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -220,7 +274,7 @@ public class menu extends javax.swing.JFrame {
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/icons8-user-50.png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/Vistas/iconos/avion.png"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
@@ -356,6 +410,44 @@ public class menu extends javax.swing.JFrame {
         jdEscritorio.add(elis);
         jdEscritorio.moveToFront(elis);
     }//GEN-LAST:event_jlMenuEliminar1MouseClicked
+
+    private void voz1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz1MouseClicked
+        // TODO add your handling code here:
+        Sonido("Agregar Ciudad");
+        
+        
+        
+    }//GEN-LAST:event_voz1MouseClicked
+
+    private void voz2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz2MouseClicked
+        // TODO add your handling code here:
+        Sonido("Agregar Alojamiento");
+        
+    }//GEN-LAST:event_voz2MouseClicked
+
+    private void voz3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz3MouseClicked
+        // TODO add your handling code here:
+        Sonido("Agregar Paquete");
+        
+    }//GEN-LAST:event_voz3MouseClicked
+
+    private void voz4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz4MouseClicked
+        // TODO add your handling code here:
+        Sonido("Modificar Alojamient");
+        
+    }//GEN-LAST:event_voz4MouseClicked
+
+    private void voz5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz5MouseClicked
+        // TODO add your handling code here:
+        Sonido("Eliminar");
+        
+    }//GEN-LAST:event_voz5MouseClicked
+
+    private void voz6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz6MouseClicked
+        // TODO add your handling code here:
+        Sonido("Consulta de Paquetes");
+        
+    }//GEN-LAST:event_voz6MouseClicked
     private boolean flechaVisible = true;
     //private boolean textVisible = false;
 
@@ -423,5 +515,11 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtfUsuario;
     private proyectofinal.Vistas.componentes.MenuLogin menuLogin1;
     private proyectofinal.Vistas.componentes.MenuPanel menuPanel1;
+    private javax.swing.JLabel voz1;
+    private javax.swing.JLabel voz2;
+    private javax.swing.JLabel voz3;
+    private javax.swing.JLabel voz4;
+    private javax.swing.JLabel voz5;
+    private javax.swing.JLabel voz6;
     // End of variables declaration//GEN-END:variables
 }

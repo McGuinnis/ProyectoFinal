@@ -178,7 +178,9 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
 
         jfechaIn.setMaxSelectableDate(new java.util.Date(1893470462000L));
 
-        jbBuscarTabla.setForeground(new java.awt.Color(0, 0, 0));
+        jbBuscarTabla.setBackground(new java.awt.Color(0, 78, 25));
+        jbBuscarTabla.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jbBuscarTabla.setForeground(new java.awt.Color(255, 255, 255));
         jbBuscarTabla.setText("Buscar");
         jbBuscarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +286,7 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(51, 51, 0));
         jPanel5.setOpaque(false);
 
-        jBotonGuardar.setBackground(new java.awt.Color(51, 51, 51));
+        jBotonGuardar.setBackground(new java.awt.Color(0, 78, 25));
         jBotonGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jBotonGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jBotonGuardar.setText("Agregar");
@@ -294,7 +296,7 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setBackground(new java.awt.Color(51, 51, 51));
+        jbSalir.setBackground(new java.awt.Color(0, 78, 25));
         jbSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jbSalir.setForeground(new java.awt.Color(255, 255, 255));
         jbSalir.setText("Salir");
