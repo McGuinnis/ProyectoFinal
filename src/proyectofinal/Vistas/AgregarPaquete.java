@@ -31,22 +31,30 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarPaquete
      */
-    private DefaultTableModel modelo;
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        // Hacer que las columnas 1 hasta la 6 no sean editables
+        @Override
+        public boolean isCellEditable(int row, int column) {
+
+            if (column == 6) { //Columna 1 hasta 6
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    };
 
     public AgregarPaquete() {
         initComponents();
         cargarComboPaises();
-
-        modelo = new DefaultTableModel();
         armarCabecera();
-
-        //Calendar hoy=Calendar.getInstance();
         jfechaIn.setCalendar(Calendar.getInstance());
         jcomboProvincia.setEnabled(false);
         jcomboCiudad.setEnabled(false);
-        
-        ((JTextFieldDateEditor)jfechaIn.getDateEditor()).setEditable(false);
-        
+
+        ((JTextFieldDateEditor) jfechaIn.getDateEditor()).setEditable(false);
+
     }
     private CiudadData cData = new CiudadData();
 
@@ -415,32 +423,31 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
 
     private void jBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonGuardarActionPerformed
         // TODO add your handling code here:
-        try{
-        Ciudad ciudadOrigen = new Ciudad();
-        Ciudad ciudadDestino = new Ciudad();
-        ciudadOrigen = cData.buscarCiudadPorNombre("Azul");
-        ciudadDestino = cData.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
-        System.out.println(ciudadDestino.getIdCiudad() + "importe " + Double.parseDouble(jtImporte.getText()));
+        try {
+            Ciudad ciudadOrigen = new Ciudad();
+            Ciudad ciudadDestino = new Ciudad();
+            ciudadOrigen = cData.buscarCiudadPorNombre("Azul");
+            ciudadDestino = cData.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
+            System.out.println(ciudadDestino.getIdCiudad() + "importe " + Double.parseDouble(jtImporte.getText()));
 
-        //Carga de Pasaje para paquete
-        
-        Pasaje pasaje1 = new Pasaje(jcomboTransporte.getSelectedItem().toString(),
-        Double.parseDouble(jtImporte.getText()), ciudadOrigen, true);
-        PasajeData pData = new PasajeData();
-        Pasaje pasaje = pData.agregarPasaje(pasaje1);
+            //Carga de Pasaje para paquete
+            Pasaje pasaje1 = new Pasaje(jcomboTransporte.getSelectedItem().toString(),
+                    Double.parseDouble(jtImporte.getText()), ciudadOrigen, true);
+            PasajeData pData = new PasajeData();
+            Pasaje pasaje = pData.agregarPasaje(pasaje1);
 
-        //Obtener IdAlojamiento de la seleccion en tabla
-        Alojamiento alojamiento = new Alojamiento();
-        AlojamientoData aData = new AlojamientoData();
-        int filaActual = jTabla.getSelectedRow();
-        Integer idAlojamiento = (Integer) jTabla.getValueAt(filaActual, 0);
-        alojamiento = aData.buscarAlojamiento(idAlojamiento);
+            //Obtener IdAlojamiento de la seleccion en tabla
+            Alojamiento alojamiento = new Alojamiento();
+            AlojamientoData aData = new AlojamientoData();
+            int filaActual = jTabla.getSelectedRow();
+            Integer idAlojamiento = (Integer) jTabla.getValueAt(filaActual, 0);
+            alojamiento = aData.buscarAlojamiento(idAlojamiento);
 
-        //Guardado Paquete
-        Paquete paquete = new Paquete(ciudadOrigen, ciudadDestino, alojamiento, pasaje);
-        PaqueteData paqData = new PaqueteData();
-        paqData.agregarPaquete(paquete);
-        }catch(NumberFormatException nu){
+            //Guardado Paquete
+            Paquete paquete = new Paquete(ciudadOrigen, ciudadDestino, alojamiento, pasaje);
+            PaqueteData paqData = new PaqueteData();
+            paqData.agregarPaquete(paquete);
+        } catch (NumberFormatException nu) {
             JOptionPane.showMessageDialog(this, "Formato no valido");
         }
 
@@ -464,13 +471,13 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
 
     private void jbBuscarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTablaActionPerformed
         // TODO add your handling code here:
-        try{
-        CiudadData cd = new CiudadData();
+        try {
+            CiudadData cd = new CiudadData();
 
-        Ciudad c = cd.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
-        cargarTabla(c.getIdCiudad(), jfechaIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        
-        }catch(NullPointerException nu){
+            Ciudad c = cd.buscarCiudadPorNombre(jcomboCiudad.getSelectedItem().toString());
+            cargarTabla(c.getIdCiudad(), jfechaIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+        } catch (NullPointerException nu) {
             JOptionPane.showMessageDialog(this, "Formato Incorrecto");
         }
 
@@ -486,8 +493,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jtImporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteKeyTyped
-         // TODO add your handling code here:
-          char c = evt.getKeyChar();
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || c == '.')) {
             evt.consume();
         }

@@ -26,13 +26,24 @@ public class Consultas extends javax.swing.JInternalFrame {
     /**
      * Creates new form Consultas
      */
-    private DefaultTableModel modelo;    
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        // Hacer que las columnas 1 hasta la 7 no sean editables
+        @Override
+        public boolean isCellEditable(int row, int column) {
+
+            if (column == 7) { //Columna 1 hasta 7
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    };
 
     public Consultas() {
         initComponents();
         cargarComboPaises();
         cargarComboProvincias();
-        modelo = new DefaultTableModel();
         armarCabecera();
 
         jcomboProvincia.setEnabled(false);

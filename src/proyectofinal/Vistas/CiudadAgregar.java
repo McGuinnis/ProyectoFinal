@@ -5,6 +5,7 @@
  */
 package proyectofinal.Vistas;
 
+import static java.awt.Color.GREEN;
 import javax.swing.JOptionPane;
 import proyectofinal.AccesoaDatos.CiudadData;
 import proyectofinal.Entidades.Ciudad;
@@ -21,6 +22,9 @@ public class CiudadAgregar extends javax.swing.JFrame {
     public CiudadAgregar() {
         initComponents();
         setLocationRelativeTo(null);
+        jbNuevo.setForeground(GREEN);
+        jbGuardar.setForeground(GREEN);
+        jbSalir.setForeground(GREEN);
     }
 
     /**
@@ -79,20 +83,22 @@ public class CiudadAgregar extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(29, 227, 236));
         jLabel2.setText("Pais:");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(29, 227, 236));
         jLabel5.setText("Provincia:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(29, 227, 236));
         jLabel3.setText("Ciudad:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(29, 227, 236));
         jLabel4.setText("Estado:");
+
+        jEstado.setBackground(new java.awt.Color(0, 102, 102));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

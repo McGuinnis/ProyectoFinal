@@ -31,8 +31,33 @@ public class Eliminar extends javax.swing.JInternalFrame {
         armarTabla();
         armarTablaPaquete();
     }
-    private DefaultTableModel model = new DefaultTableModel();
-    private DefaultTableModel modelPaquete = new DefaultTableModel();
+    private DefaultTableModel model = new DefaultTableModel() {
+        // Hacer que las columnas 1 hasta la 4 no sean editables
+        @Override
+        public boolean isCellEditable(int row, int column) {
+
+            if (column == 4) { //Columna 1 hasta 4
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    };
+    
+    private DefaultTableModel modelPaquete = new DefaultTableModel() {
+        // Hacer que las columnas 1 hasta la 4 no sean editables
+        @Override
+        public boolean isCellEditable(int row, int column) {
+
+            if (column == 4) { //Columna 1 hasta 4
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    };
     CiudadData cData = new CiudadData();
     PaqueteData pData = new PaqueteData();
     PasajeData passD = new PasajeData();

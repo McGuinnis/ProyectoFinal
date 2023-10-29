@@ -53,6 +53,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jdCalendarioActual.setCalendar(Calendar.getInstance());
         armarCabecera();
         jbActualizar.setEnabled(false);
+        jbCargarAlojamiento.setEnabled(false);
         ((JTextFieldDateEditor)jdCalendarioActual.getDateEditor()).setEditable(false);
         ((JTextFieldDateEditor)jdFechaInicio.getDateEditor()).setEditable(false);
         ((JTextFieldDateEditor)jdFechaSalida.getDateEditor()).setEditable(false);
@@ -382,6 +383,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
 
             });
         }
+        jbCargarAlojamiento.setEnabled(true);
     }//GEN-LAST:event_jbBuscarPaquetesActionPerformed
 
     private void jbCargarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCargarAlojamientoActionPerformed

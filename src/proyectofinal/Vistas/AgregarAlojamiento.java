@@ -7,6 +7,8 @@ package proyectofinal.Vistas;
 
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
+import static java.awt.Color.GREEN;
+import static java.awt.Color.RED;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -38,6 +40,8 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jcomboProvincia.setEnabled(false);
         jComboCiudad.setEnabled(false);
         jbBuscar.setEnabled(false);
+        jbNuevo.setForeground(RED);
+        jbSalir.setForeground(RED);
         ((JTextFieldDateEditor)jdFechaIngreso.getDateEditor()).setEditable(false);
         ((JTextFieldDateEditor)jdFechaSalida.getDateEditor()).setEditable(false);
         
@@ -103,7 +107,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jpSalir = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -218,6 +222,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Tipo de Alojamiento:");
 
         jcTipoAlojamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel", "Hostel", "Departamento" }));
@@ -246,9 +251,11 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Fecha de Ingreso");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Fecha de Salida");
 
         jLabel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -290,9 +297,11 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jcServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Desayuno", "Desayuno - Almuerzo", "Desayuno - Almuerzo - Cena" }));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Servicio");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Importe Diario");
 
         jtImporteDiario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -302,6 +311,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Estado");
 
         jcEstado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -355,19 +365,19 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
 
         jPanel6.setOpaque(false);
 
-        jpSalir.setBackground(new java.awt.Color(0, 80, 80));
-        jpSalir.setText("Salir");
-        jpSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbSalir.setBackground(new java.awt.Color(0, 80, 80));
+        jbSalir.setText("Salir");
+        jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpSalirMouseEntered(evt);
+                jbSalirMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpSalirMouseExited(evt);
+                jbSalirMouseExited(evt);
             }
         });
-        jpSalir.addActionListener(new java.awt.event.ActionListener() {
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpSalirActionPerformed(evt);
+                jbSalirActionPerformed(evt);
             }
         });
 
@@ -397,7 +407,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jpSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
         jPanel6Layout.setVerticalGroup(
@@ -406,7 +416,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -476,15 +486,16 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jtImporteDiarioKeyTyped
 
-    private void jpSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSalirActionPerformed
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
 
         dispose();
-    }//GEN-LAST:event_jpSalirActionPerformed
+    }//GEN-LAST:event_jbSalirActionPerformed
 
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         jbGuardar.setEnabled(true);
+        jbGuardar.setForeground(RED);
         try {
             String provincias = jcomboProvincia.getSelectedItem().toString();
             String pais = jcomboPais.getSelectedItem().toString();
@@ -506,16 +517,16 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jcomboPaisActionPerformed
 
     private Color colorOriginal;
-    private void jpSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseEntered
+    private void jbSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseEntered
         // TODO add your handling code here:
-        colorOriginal = jpSalir.getBackground();
-        jpSalir.setBackground(Color.RED);
-    }//GEN-LAST:event_jpSalirMouseEntered
+        colorOriginal = jbSalir.getBackground();
+        jbSalir.setBackground(Color.RED);
+    }//GEN-LAST:event_jbSalirMouseEntered
 
-    private void jpSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseExited
+    private void jbSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseExited
         // TODO add your handling code here:
-        jpSalir.setBackground(colorOriginal);
-    }//GEN-LAST:event_jpSalirMouseExited
+        jbSalir.setBackground(colorOriginal);
+    }//GEN-LAST:event_jbSalirMouseExited
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         try {
@@ -531,8 +542,10 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
             String tipoAlojamiento = jcTipoAlojamiento.getSelectedItem().toString();
 
             Alojamiento alojamiento2 = new Alojamiento(fechaIng, fechaSalida, estado, tipoServicio, importeDiario, ciudad1, tipoAlojamiento);
-
-            alojamientoData.agregarAlojamiento(alojamiento2);
+            if(fechaSalida.isAfter(fechaIng)){
+                alojamientoData.agregarAlojamiento(alojamiento2);
+            }else JOptionPane.showMessageDialog(this, "Fecha de salida incorrecta");
+            
         } catch (NullPointerException np) {
             JOptionPane.showMessageDialog(this, "Campos vacios y/o Formato no valido");
         }
@@ -618,6 +631,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JCheckBox jcEstado;
     private javax.swing.JComboBox<String> jcServicios;
     private javax.swing.JComboBox<String> jcTipoAlojamiento;
@@ -627,7 +641,6 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdFechaSalida;
     private javax.swing.JPanel jpCiudad;
     private javax.swing.JPanel jpFondo;
-    private javax.swing.JButton jpSalir;
     private javax.swing.JTextField jtImporteDiario;
     // End of variables declaration//GEN-END:variables
 
