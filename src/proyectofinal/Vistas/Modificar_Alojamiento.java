@@ -5,6 +5,7 @@
  */
 package proyectofinal.Vistas;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
@@ -34,11 +35,11 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
      */
     // private DefaultTableModel modelo;
     private DefaultTableModel modelo = new DefaultTableModel() {
-        // Hacer que las columnas 1 y 2 no sean editables
+        // Hacer que las columnas 1 hasta la 4 no sean editables
         @Override
         public boolean isCellEditable(int row, int column) {
 
-            if (column == 4) { //Columna 1 hasta 2
+            if (column == 4) { //Columna 1 hasta 4
                 return true;
             } else {
                 return false;
@@ -50,9 +51,11 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     public Modificar_Alojamiento() {
         initComponents();
         jdCalendarioActual.setCalendar(Calendar.getInstance());
-
         armarCabecera();
         jbActualizar.setEnabled(false);
+        ((JTextFieldDateEditor)jdCalendarioActual.getDateEditor()).setEditable(false);
+        ((JTextFieldDateEditor)jdFechaInicio.getDateEditor()).setEditable(false);
+        ((JTextFieldDateEditor)jdFechaSalida.getDateEditor()).setEditable(false);
     }
     private PaqueteData pd = new PaqueteData();
     private AlojamientoData ad = new AlojamientoData();
@@ -460,8 +463,9 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
 
     private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
 
-        if (Character.isLetter(evt.getKeyChar())) {
-            evt.consume(); //Permite ingresar SOLO Numeros
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == '.')) {
+            evt.consume();
         }
 
     }//GEN-LAST:event_jtImporteDiarioKeyTyped

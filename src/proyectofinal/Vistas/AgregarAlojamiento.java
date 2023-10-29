@@ -5,6 +5,7 @@
  */
 package proyectofinal.Vistas;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -37,8 +38,11 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         jcomboProvincia.setEnabled(false);
         jComboCiudad.setEnabled(false);
         jbBuscar.setEnabled(false);
+        ((JTextFieldDateEditor)jdFechaIngreso.getDateEditor()).setEditable(false);
+        ((JTextFieldDateEditor)jdFechaSalida.getDateEditor()).setEditable(false);
+        
     }
-
+    
     class jPanelGradient extends JPanel {
 
         @Override
