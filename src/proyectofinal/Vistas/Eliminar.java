@@ -352,7 +352,7 @@ public class Eliminar extends javax.swing.JInternalFrame {
             int filaActual = jtTabla.getSelectedRow();
             Integer idciudadD = (Integer) jtTabla.getValueAt(filaActual, 0);
             List<Paquete> listaP = pData.listarPaquetePorCiudad(idciudadD);
-
+            borrarFilas();
             for (Paquete paquete : listaP) {
                 modelPaquete.addRow(new Object[]{
                     paquete.getIdPaquete(),
