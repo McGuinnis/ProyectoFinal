@@ -4,6 +4,7 @@
  */
 package proyectofinal.Vistas;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -43,6 +44,9 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         jfechaIn.setCalendar(Calendar.getInstance());
         jcomboProvincia.setEnabled(false);
         jcomboCiudad.setEnabled(false);
+        
+        ((JTextFieldDateEditor)jfechaIn.getDateEditor()).setEditable(false);
+        
     }
     private CiudadData cData = new CiudadData();
 
@@ -177,6 +181,7 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
 
         jfechaIn.setMaxSelectableDate(new java.util.Date(1893470462000L));
+        jfechaIn.setMinSelectableDate(new java.util.Date(1641009704000L));
 
         jbBuscarTabla.setBackground(new java.awt.Color(0, 78, 25));
         jbBuscarTabla.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -252,6 +257,12 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         jcomboTransporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcomboTransporteActionPerformed(evt);
+            }
+        });
+
+        jtImporte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtImporteKeyTyped(evt);
             }
         });
 
@@ -331,27 +342,25 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         menuAgrAlo1.setLayout(menuAgrAlo1Layout);
         menuAgrAlo1Layout.setHorizontalGroup(
             menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAgrAlo1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(149, 149, 149))
             .addGroup(menuAgrAlo1Layout.createSequentialGroup()
                 .addGroup(menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuAgrAlo1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menuAgrAlo1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(89, 89, 89)
+                        .addGroup(menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(menuAgrAlo1Layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addGroup(menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(60, 60, 60))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAgrAlo1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(149, 149, 149))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(menuAgrAlo1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(67, 67, 67))
         );
         menuAgrAlo1Layout.setVerticalGroup(
             menuAgrAlo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,6 +415,7 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
 
     private void jBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonGuardarActionPerformed
         // TODO add your handling code here:
+        try{
         Ciudad ciudadOrigen = new Ciudad();
         Ciudad ciudadDestino = new Ciudad();
         ciudadOrigen = cData.buscarCiudadPorNombre("Azul");
@@ -430,6 +440,9 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         Paquete paquete = new Paquete(ciudadOrigen, ciudadDestino, alojamiento, pasaje);
         PaqueteData paqData = new PaqueteData();
         paqData.agregarPaquete(paquete);
+        }catch(NumberFormatException nu){
+            JOptionPane.showMessageDialog(this, "Formato no valido");
+        }
 
 
     }//GEN-LAST:event_jBotonGuardarActionPerformed
@@ -471,6 +484,14 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jtImporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteKeyTyped
+         // TODO add your handling code here:
+          char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == '.')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtImporteKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -115,6 +115,10 @@ public class ProyectoFinal {
 //        
 //        Ciudad ss = cd.buscarCiudadPorNombre("Azul");
 //        
-//        System.out.println("Probando "+ss.getIdCiudad()+" "+ss.getNombre());      
+//        System.out.println("Probando "+ss.getIdCiudad()+" "+ss.getNombre());   
+
+menu mn = new menu();
+mn.setVisible(true);
+
     }
 }

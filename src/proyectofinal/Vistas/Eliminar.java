@@ -7,6 +7,7 @@ package proyectofinal.Vistas;
 
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -25,17 +26,16 @@ public class Eliminar extends javax.swing.JInternalFrame {
     /**
      * Creates new form Eliminar
      */
-    
     public Eliminar() {
         initComponents();
         armarTabla();
         armarTablaPaquete();
     }
-    private DefaultTableModel model=new DefaultTableModel();
-    private DefaultTableModel modelPaquete=new DefaultTableModel();
-    CiudadData cData=new CiudadData();
-    PaqueteData pData=new PaqueteData();
-    PasajeData passD=new PasajeData();
+    private DefaultTableModel model = new DefaultTableModel();
+    private DefaultTableModel modelPaquete = new DefaultTableModel();
+    CiudadData cData = new CiudadData();
+    PaqueteData pData = new PaqueteData();
+    PasajeData passD = new PasajeData();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -300,44 +300,46 @@ public class Eliminar extends javax.swing.JInternalFrame {
 
     private void jtCiudadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCiudadKeyReleased
         // TODO add your handling code here:
-        Ciudad ciu=new Ciudad();
-        
-        List<Ciudad> listaC =cData.listarCiudad();
+        Ciudad ciu = new Ciudad();
+
+        List<Ciudad> listaC = cData.listarCiudad();
         borrarFilas();
         for (Ciudad ciudad : listaC) {
             if (ciudad.getNombre().toLowerCase().contains(jtCiudad.getText().toLowerCase())) {
-                 model.addRow(new Object[]{
-                 ciudad.getIdCiudad(),
-                 ciudad.getNombre(),
-                 ciudad.getProvincia(),
-                 ciudad.getPais()
-                 
-                 });
+                model.addRow(new Object[]{
+                    ciudad.getIdCiudad(),
+                    ciudad.getNombre(),
+                    ciudad.getProvincia(),
+                    ciudad.getPais()
+
+                });
             }
-            
+
         }
-        
-        
+
+
     }//GEN-LAST:event_jtCiudadKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Paquete paq=new Paquete();
-        
-        int filaActual = jtTabla.getSelectedRow();
-        Integer idciudadD = (Integer) jtTabla.getValueAt(filaActual, 0);
-        List<Paquete> listaP =pData.listarPaquetePorCiudad(idciudadD);
-        
-        for (Paquete paquete : listaP) {
-            modelPaquete.addRow(new Object[]{
-               paquete.getIdPaquete(),
-               paquete.getPasaje().getIdPasaje(),
-               paquete.getAlojamiento().getCiudadDest(),
-               paquete.getAlojamiento().getFechaing()
-         
-            });
+        Paquete paq = new Paquete();
+        try {
+            int filaActual = jtTabla.getSelectedRow();
+            Integer idciudadD = (Integer) jtTabla.getValueAt(filaActual, 0);
+            List<Paquete> listaP = pData.listarPaquetePorCiudad(idciudadD);
+
+            for (Paquete paquete : listaP) {
+                modelPaquete.addRow(new Object[]{
+                    paquete.getIdPaquete(),
+                    paquete.getPasaje().getIdPasaje(),
+                    paquete.getAlojamiento().getCiudadDest(),
+                    paquete.getAlojamiento().getFechaing()
+
+                });
+            }
+        } catch (ArrayIndexOutOfBoundsException arr) {
+            JOptionPane.showMessageDialog(this, "La tabla no debe estar vacia");
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -351,11 +353,10 @@ public class Eliminar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCiudadKeyTyped
-         
-        if (!Character.isLetter(evt.getKeyChar()) && evt.getKeyChar() != ' ') {
+
+        if (!Character.isLetter(evt.getKeyChar())) {
             evt.consume(); //Permite ingresar SOLO caracteres
-}
-        
+        }
     }//GEN-LAST:event_jtCiudadKeyTyped
 
 
@@ -381,27 +382,25 @@ public class Eliminar extends javax.swing.JInternalFrame {
     private proyectofinal.Vistas.componentes.MenuEliminar menuEliminar1;
     // End of variables declaration//GEN-END:variables
 
+    private void armarTabla() {
 
-    private void armarTabla(){
-        
         model.addColumn("Id");
         model.addColumn("Ciudad");
         model.addColumn("Provincia");
         model.addColumn("Pais");
         jtTabla.setModel(model);
-        }
-    
-        private void armarTablaPaquete(){
-        
+    }
+
+    private void armarTablaPaquete() {
+
         modelPaquete.addColumn("IdPaquete");
         modelPaquete.addColumn("IdPasaje");
         modelPaquete.addColumn("Ciudad Destino");
         modelPaquete.addColumn("Fecha de Inicio");
-        
+
         jtPaquete.setModel(modelPaquete);
-        }
-    
-    
+    }
+
     private void borrarFilas() {
 
         int filas = jtTabla.getRowCount() - 1;
@@ -411,5 +410,5 @@ public class Eliminar extends javax.swing.JInternalFrame {
             model.removeRow(i);
         }
     }
-    
+
 }

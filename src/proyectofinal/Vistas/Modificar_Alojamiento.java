@@ -5,12 +5,15 @@
  */
 package proyectofinal.Vistas;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal.AccesoaDatos.AlojamientoData;
@@ -29,19 +32,31 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     /**
      * Creates new form Modificar_Alojamiento
      */
-    private DefaultTableModel modelo;
-    
-    
+    // private DefaultTableModel modelo;
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        // Hacer que las columnas 1 y 2 no sean editables
+        @Override
+        public boolean isCellEditable(int row, int column) {
+
+            if (column == 4) { //Columna 1 hasta 2
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    };
+
     public Modificar_Alojamiento() {
         initComponents();
-         jdCalendarioActual.setCalendar(Calendar.getInstance());
-        modelo = new DefaultTableModel();
+        jdCalendarioActual.setCalendar(Calendar.getInstance());
+
         armarCabecera();
+        jbActualizar.setEnabled(false);
     }
     private PaqueteData pd = new PaqueteData();
     private AlojamientoData ad = new AlojamientoData();
     private CiudadData cd = new CiudadData();
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,6 +107,12 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Fecha de Salida:");
+
+        jdFechaSalida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jdFechaSalidaKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,16 +272,16 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jbActualizar)
-                                .addGap(209, 209, 209))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(209, 209, 209))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(92, 92, 92))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jdCalendarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(92, 92, 92))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jdCalendarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(138, 138, 138))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,104 +365,111 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarPaquetesActionPerformed
-        
+
         LocalDate fechaIngreso = jdCalendarioActual.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         List<Paquete> paquete = pd.listarPaquetePorFechaSalida(fechaIngreso);
-        
+
         borrarFilas();
-        for (Paquete paquetex : paquete ) {
+        for (Paquete paquetex : paquete) {
             modelo.addRow(new Object[]{
-               paquetex.getIdPaquete(),
-               paquetex.getDestino().getNombre(),
-               paquetex.getAlojamiento().getIdAlojamiento(),
-               paquetex.getPasaje().getIdPasaje()
-         
+                paquetex.getIdPaquete(),
+                paquetex.getDestino().getNombre(),
+                paquetex.getAlojamiento().getIdAlojamiento(),
+                paquetex.getPasaje().getIdPasaje()
+
             });
         }
     }//GEN-LAST:event_jbBuscarPaquetesActionPerformed
 
     private void jbCargarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCargarAlojamientoActionPerformed
-     
-        int filaActual = jtPaquetesVencidos.getSelectedRow();
-        Integer idAlojamiento = (Integer) jtPaquetesVencidos.getValueAt(filaActual, 2);
-        
-        Alojamiento alojamiento = new Alojamiento();
-        alojamiento = ad.buscarAlojamiento(idAlojamiento);
-        //**************Seteando Campos *****************
-        jdFechaInicio.setDate(null);
-        jdFechaSalida.setDate(null);
-        jcEstado.setSelected(false);
-        jtImporteDiario.setText("");
-        jcTipoAlojamiento.setSelectedIndex(0);
-        jcServicio.setSelectedIndex(0);
-        
-        jdFechaInicio.setDate(java.sql.Date.valueOf(alojamiento.getFechaing()));
-        jdFechaSalida.setDate(java.sql.Date.valueOf(alojamiento.getFechaOn()));
-        
+        try {
+            int filaActual = jtPaquetesVencidos.getSelectedRow();
+            Integer idAlojamiento = (Integer) jtPaquetesVencidos.getValueAt(filaActual, 2);
 
-        
-        if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno".toLowerCase())){
-            jcServicio.setSelectedIndex(0);
-        }else if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno - Almuerzo".toLowerCase())){
-            jcServicio.setSelectedIndex(1);
-        }else if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno - Almuerzo - Cena".toLowerCase())){
-            jcServicio.setSelectedIndex(2);
-        }
-        
-        if (alojamiento.getTipoAlojam().equalsIgnoreCase("Hotel")){
+            Alojamiento alojamiento = new Alojamiento();
+            alojamiento = ad.buscarAlojamiento(idAlojamiento);
+            //**************Seteando Campos *****************
+            jdFechaInicio.setDate(null);
+            jdFechaSalida.setDate(null);
+            jcEstado.setSelected(false);
+            jtImporteDiario.setText("");
             jcTipoAlojamiento.setSelectedIndex(0);
-        }else if (alojamiento.getTipoAlojam().equalsIgnoreCase("Hostel")){
-            jcTipoAlojamiento.setSelectedIndex(1);
-        }else{
-            jcTipoAlojamiento.setSelectedIndex(2);
+            jcServicio.setSelectedIndex(0);
+
+            jdFechaInicio.setDate(java.sql.Date.valueOf(alojamiento.getFechaing()));
+            jdFechaSalida.setDate(java.sql.Date.valueOf(alojamiento.getFechaOn()));
+
+            if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno".toLowerCase())) {
+                jcServicio.setSelectedIndex(0);
+            } else if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno - Almuerzo".toLowerCase())) {
+                jcServicio.setSelectedIndex(1);
+            } else if (alojamiento.getServicio().toLowerCase().equalsIgnoreCase("Desayuno - Almuerzo - Cena".toLowerCase())) {
+                jcServicio.setSelectedIndex(2);
+            }
+
+            if (alojamiento.getTipoAlojam().equalsIgnoreCase("Hotel")) {
+                jcTipoAlojamiento.setSelectedIndex(0);
+            } else if (alojamiento.getTipoAlojam().equalsIgnoreCase("Hostel")) {
+                jcTipoAlojamiento.setSelectedIndex(1);
+            } else {
+                jcTipoAlojamiento.setSelectedIndex(2);
+            }
+            jtIdAlojamiento.setText("" + alojamiento.getIdAlojamiento());
+            jtImporteDiario.setText("" + alojamiento.getImporteDiario());
+            jcEstado.setSelected(alojamiento.isEstado());
+
+            jcTipoAlojamiento.setSelectedItem(alojamiento.getTipoAlojam());
+            jcServicio.setSelectedItem(alojamiento.getServicio());
+
+            String x = (String) jtPaquetesVencidos.getValueAt(jtPaquetesVencidos.getSelectedRow(), 1);
+            if (!x.isEmpty()) {
+                jbActualizar.setEnabled(true);
+            }
+        } catch (ArrayIndexOutOfBoundsException arr) {
+            JOptionPane.showMessageDialog(this, "Campos y/o Tabla Vacia");
         }
-         jtIdAlojamiento.setText(""+alojamiento.getIdAlojamiento());
-        jtImporteDiario.setText(""+alojamiento.getImporteDiario());
-        jcEstado.setSelected(alojamiento.isEstado());
 
-        jcTipoAlojamiento.setSelectedItem(alojamiento.getTipoAlojam());
-        jcServicio.setSelectedItem(alojamiento.getServicio());
-        
-//        if (alojamiento.getServicio().equalsIgnoreCase("Desayuno")){
-//            jcServicio.setSelectedIndex(0);
-//        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo")){
-//            jcServicio.setSelectedIndex(1);
-//        }else if (alojamiento.getServicio().equalsIgnoreCase("Desayuno - Almuerzo - Cena")){
-//            jcServicio.setSelectedIndex(2);
-//        }
-//        
-            
-        
-        
 
-        
-               
-        
     }//GEN-LAST:event_jbCargarAlojamientoActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        
-        Ciudad ciudadD = new Ciudad();
-        int filaActual = jtPaquetesVencidos.getSelectedRow();
-        String ciudadDestino = (String) jtPaquetesVencidos.getValueAt(filaActual, 1);
-        ciudadD = cd.buscarCiudadPorNombre(ciudadDestino);
-        int idAlo = Integer.parseInt(jtIdAlojamiento.getText());
-        
-        LocalDate fechaIng = jdFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate fechaSal = jdFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        double importeD = Double.parseDouble(jtImporteDiario.getText());
-        
-        Alojamiento alojamientoA = new Alojamiento(idAlo, fechaIng, fechaSal, jcEstado.isSelected(), jcServicio.getSelectedItem().toString(), importeD, ciudadD, jcTipoAlojamiento.getSelectedItem().toString());
-        ad.modificarAlojamiento(alojamientoA);
+        try {
+            Ciudad ciudadD = new Ciudad();
+            int filaActual = jtPaquetesVencidos.getSelectedRow();
+            String ciudadDestino = (String) jtPaquetesVencidos.getValueAt(filaActual, 1);
+            ciudadD = cd.buscarCiudadPorNombre(ciudadDestino);
+            int idAlo = Integer.parseInt(jtIdAlojamiento.getText());
+
+            LocalDate fechaIng = jdFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fechaSal = jdFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            double importeD = Double.parseDouble(jtImporteDiario.getText());
+
+            Alojamiento alojamientoA = new Alojamiento(idAlo, fechaIng, fechaSal, jcEstado.isSelected(), jcServicio.getSelectedItem().toString(), importeD, ciudadD, jcTipoAlojamiento.getSelectedItem().toString());
+            
+            if(fechaIng.isBefore(fechaSal)){
+                
+                ad.modificarAlojamiento(alojamientoA);
+            }else{
+                JOptionPane.showMessageDialog(this, "Fecha de Salida Incorrecta!!");
+            }
+            
+        } catch (ArrayIndexOutOfBoundsException arr) {
+            JOptionPane.showMessageDialog(this, "Campos y/o Tabla Vacia");
+        }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
-         
+
         if (Character.isLetter(evt.getKeyChar())) {
             evt.consume(); //Permite ingresar SOLO Numeros
-}
-        
+        }
+
     }//GEN-LAST:event_jtImporteDiarioKeyTyped
+
+    private void jdFechaSalidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdFechaSalidaKeyTyped
+
+
+    }//GEN-LAST:event_jdFechaSalidaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -475,17 +503,15 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     private proyectofinal.Vistas.componentes.MenuModAlo menuModAlo1;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    private void armarCabecera(){
-        
+    private void armarCabecera() {
+
         modelo.addColumn("idPaquete");
         modelo.addColumn("Ciudad Destino");
         modelo.addColumn("idAlojamiento");
         modelo.addColumn("idPasaje");
         jtPaquetesVencidos.setModel(modelo);
     }
-    
+
     private void borrarFilas() {
 
         int filas = jtPaquetesVencidos.getRowCount() - 1;
@@ -495,6 +521,5 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    
-    
+
 }

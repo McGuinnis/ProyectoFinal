@@ -31,33 +31,33 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
      */
     public AgregarAlojamiento() {
         initComponents();
-        cargarComboPaises();        
-        setLocationRelativeTo(null);       
+        cargarComboPaises();
+        setLocationRelativeTo(null);
         jbGuardar.setEnabled(false);
         jcomboProvincia.setEnabled(false);
         jComboCiudad.setEnabled(false);
         jbBuscar.setEnabled(false);
     }
-    
-     class jPanelGradient extends JPanel {
-         @Override
-         protected void paintComponent (Graphics g){
-             Graphics2D g2d = (Graphics2D) g;
-             int width = getWidth();
-             int height = getHeight();
-             
-             Color color1 = new Color (67, 198, 172, 255);
-             Color color2 = new Color(25, 22, 84, 255);
-             GradientPaint gp = new GradientPaint(0, 0, color1, 180, height, color2);
-             g2d.setPaint(gp);
-             g2d.fillRect(0, 0, width, height);
-         }
-         
-     }     
+
+    class jPanelGradient extends JPanel {
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            int width = getWidth();
+            int height = getHeight();
+
+            Color color1 = new Color(67, 198, 172, 255);
+            Color color2 = new Color(25, 22, 84, 255);
+            GradientPaint gp = new GradientPaint(0, 0, color1, 180, height, color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, width, height);
+        }
+
+    }
 
     private CiudadData cData = new CiudadData();
     private AlojamientoData alojamientoData = new AlojamientoData();
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -333,7 +333,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jcServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -367,7 +367,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
             }
         });
 
-        jbGuardar.setBackground(new java.awt.Color(0, 80, 80));
+        jbGuardar.setBackground(new java.awt.Color(102, 255, 0));
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,7 +429,7 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
                     .addGroup(jpFondoLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel1)))
-                .addGap(60, 60, 60))
+                .addGap(57, 57, 57))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,33 +465,30 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
 
     private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
 
-         if (Character.isLetter(evt.getKeyChar())){ // Acepta Numeros
-            evt.consume(); // agregarle el " ! " para que acepte letras
-}
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == '.')) {
+            evt.consume();
+        }
 
     }//GEN-LAST:event_jtImporteDiarioKeyTyped
 
     private void jpSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSalirActionPerformed
 
-        
-        
         dispose();
     }//GEN-LAST:event_jpSalirActionPerformed
 
-    
-    
-    
+
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         jbGuardar.setEnabled(true);
-        try{
-        String provincias =jcomboProvincia.getSelectedItem().toString();
-        String pais =jcomboPais.getSelectedItem().toString();
-        
-        jComboCiudad.setEnabled(true);
-               
-        cargarComboCiudades(pais, provincias);        
-        }catch(NullPointerException nu){
+        try {
+            String provincias = jcomboProvincia.getSelectedItem().toString();
+            String pais = jcomboPais.getSelectedItem().toString();
+
+            jComboCiudad.setEnabled(true);
+
+            cargarComboCiudades(pais, provincias);
+        } catch (NullPointerException nu) {
             JOptionPane.showMessageDialog(this, "Combos Vacios");
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
@@ -499,9 +496,9 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     private void jcomboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboPaisActionPerformed
         // TODO add your handling code here:
         jcomboProvincia.setEnabled(true);
-        
+
         cargarComboProvincias();
-        
+
     }//GEN-LAST:event_jcomboPaisActionPerformed
 
     private Color colorOriginal;
@@ -517,26 +514,25 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jpSalirMouseExited
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-       try{ 
-       LocalDate fechaIng = jdFechaIngreso.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-       LocalDate fechaSalida = jdFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-       boolean estado = jcEstado.isSelected();
-       String tipoServicio = jcServicios.getSelectedItem().toString();
-       Double importeDiario = Double.parseDouble(jtImporteDiario.getText());
-       String ciudadDestino = jComboCiudad.getSelectedItem().toString();
-       Ciudad ciudad1 = cData.buscarCiudadPorNombre(ciudadDestino);
-       
-       
-        //int idCiudadAgregar = ciudad1.getIdCiudad();
-       String tipoAlojamiento = jcTipoAlojamiento.getSelectedItem().toString();
-       
-       Alojamiento alojamiento2 = new Alojamiento(fechaIng, fechaSalida, estado, tipoServicio, importeDiario, ciudad1, tipoAlojamiento);
-       
-       alojamientoData.agregarAlojamiento(alojamiento2);
-       }catch(NullPointerException np) {
-           JOptionPane.showMessageDialog(this, "Campos vacios y/o Formato no valido");
-       }
-      
+        try {
+            LocalDate fechaIng = jdFechaIngreso.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fechaSalida = jdFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            boolean estado = jcEstado.isSelected();
+            String tipoServicio = jcServicios.getSelectedItem().toString();
+            Double importeDiario = Double.parseDouble(jtImporteDiario.getText());
+            String ciudadDestino = jComboCiudad.getSelectedItem().toString();
+            Ciudad ciudad1 = cData.buscarCiudadPorNombre(ciudadDestino);
+
+            //int idCiudadAgregar = ciudad1.getIdCiudad();
+            String tipoAlojamiento = jcTipoAlojamiento.getSelectedItem().toString();
+
+            Alojamiento alojamiento2 = new Alojamiento(fechaIng, fechaSalida, estado, tipoServicio, importeDiario, ciudad1, tipoAlojamiento);
+
+            alojamientoData.agregarAlojamiento(alojamiento2);
+        } catch (NullPointerException np) {
+            JOptionPane.showMessageDialog(this, "Campos vacios y/o Formato no valido");
+        }
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcomboProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboProvinciaActionPerformed
@@ -547,14 +543,15 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jcomboProvinciaActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-         // TODO add your handling code here:
-         
-         jcomboPais.setSelectedItem(null);
-         jcTipoAlojamiento.setSelectedItem(null);
-         jdFechaIngreso.setDate(null);
-         jdFechaSalida.setDate(null);
-         jcServicios.setSelectedItem(null);
-         jtImporteDiario.setText("");
+        // TODO add your handling code here:
+
+        jcomboPais.setSelectedItem(null);
+        jcTipoAlojamiento.setSelectedItem(null);
+        jdFechaIngreso.setDate(null);
+        jdFechaSalida.setDate(null);
+        jcServicios.setSelectedItem(null);
+        jtImporteDiario.setText("");
+        jbGuardar.setEnabled(false);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     /**
@@ -633,10 +630,10 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     private void cargarComboPaises() {
 
         List<String> pais = cData.listarPaises();
-        
+
         jComboCiudad.setEnabled(false);
         jComboCiudad.removeAllItems();
-        
+
         for (String pai : pais) {
 
             jcomboPais.addItem(pai);
@@ -649,26 +646,25 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
         String pai = (String) jcomboPais.getSelectedItem();
 
         List<Ciudad> ciudad = cData.listarProvinciasPorPaisCombo(pai);
-        
+
         jComboCiudad.setEnabled(false);
-        jcomboProvincia.removeAllItems();        
+        jcomboProvincia.removeAllItems();
         jComboCiudad.removeAllItems();
 
         for (Ciudad ciudad1 : ciudad) {
             jcomboProvincia.addItem(ciudad1);
         }
     }
-    
-    private void cargarComboCiudades(String pai, String prov){
-        
-        
-        List<Ciudad> ciu =  cData.listarCiudadPorProvinciaypais(pai, prov);
-        
+
+    private void cargarComboCiudades(String pai, String prov) {
+
+        List<Ciudad> ciu = cData.listarCiudadPorProvinciaypais(pai, prov);
+
         for (Ciudad ciudad : ciu) {
             String ciudadx = ciudad.getNombre();
             jComboCiudad.addItem(ciudadx);
-            
+
         }
-        
+
     }
 }

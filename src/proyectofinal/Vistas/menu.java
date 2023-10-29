@@ -291,7 +291,7 @@ public class menu extends javax.swing.JFrame {
         );
         menuLogin1Layout.setVerticalGroup(
             menuLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
             .addGroup(menuLogin1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,7 +343,7 @@ public class menu extends javax.swing.JFrame {
         String usuario = "admin";
         String pass = "admin";
         if (jpfContraseña.getText().equals(pass) && jtfUsuario.getText().equals(usuario)) {
-            
+
             JOptionPane.showMessageDialog(this, "Opciones Desbloqueadas");
             if (usuario.equals(jtfUsuario.getText()) && pass.equals(jpfContraseña.getText())) {
 
@@ -353,10 +353,10 @@ public class menu extends javax.swing.JFrame {
                 jlMenuModificarAlojamiento.setEnabled(true);
                 jlMenuEliminar1.setEnabled(true);
 
-            } 
-        }else {
-                JOptionPane.showMessageDialog(this, "Usuario y/o Contraseña Incorrectas!!!");
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario y/o Contraseña Incorrectas!!!");
+        }
 
     }//GEN-LAST:event_jbLoginActionPerformed
 
@@ -373,94 +373,88 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         jdEscritorio.repaint();
         Modificar_Alojamiento mod = new Modificar_Alojamiento();
-        mod.setVisible(true);
-        jdEscritorio.add(mod);
-        jdEscritorio.moveToFront(mod);
+        if (jlMenuModificarAlojamiento.isEnabled()) {
+            mod.setVisible(true);
+            jdEscritorio.add(mod);
+            jdEscritorio.moveToFront(mod);
+        }
     }//GEN-LAST:event_jlMenuModificarAlojamientoMouseClicked
 
     private void jlMenuCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuCiudadMouseClicked
         // TODO add your handling code here:
         CiudadAgregar ciudadA = new CiudadAgregar();
-
-        ciudadA.setVisible(true);
-
+        if (jlMenuCiudad.isEnabled()) {
+            ciudadA.setVisible(true);
+        }
     }//GEN-LAST:event_jlMenuCiudadMouseClicked
 
     private void jlMenuPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuPaqueteMouseClicked
         // TODO add your handling code here:
         AgregarPaquete ap = new AgregarPaquete();
-        ap.setVisible(true);
-        jdEscritorio.add(ap);
-        jdEscritorio.moveToFront(ap);
 
+        if (jlMenuPaquete.isEnabled()) {
+            ap.setVisible(true);
+            jdEscritorio.add(ap);
+            jdEscritorio.moveToFront(ap);
+        }
     }//GEN-LAST:event_jlMenuPaqueteMouseClicked
 
     private void jlMenuAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuAlojamientoMouseClicked
         // TODO add your handling code here:
         AgregarAlojamiento aa = new AgregarAlojamiento();
-        aa.setVisible(true);
-
+        if (jlMenuAlojamiento.isEnabled()) {
+            aa.setVisible(true);
+        }
     }//GEN-LAST:event_jlMenuAlojamientoMouseClicked
 
     private void jlMenuEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuEliminar1MouseClicked
         // TODO add your handling code here:
-        jdEscritorio.repaint();
-        Eliminar elis = new Eliminar();
-        elis.setVisible(true);
-        jdEscritorio.add(elis);
-        jdEscritorio.moveToFront(elis);
+        if (jlMenuEliminar1.isEnabled()) {
+            jdEscritorio.repaint();
+            Eliminar elis = new Eliminar();
+            elis.setVisible(true);
+            jdEscritorio.add(elis);
+            jdEscritorio.moveToFront(elis);
+        }
     }//GEN-LAST:event_jlMenuEliminar1MouseClicked
 
     private void voz1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz1MouseClicked
         // TODO add your handling code here:
         Sonido("Agregar Ciudad");
-        
-        
-        
+
+
     }//GEN-LAST:event_voz1MouseClicked
 
     private void voz2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz2MouseClicked
         // TODO add your handling code here:
         Sonido("Agregar Alojamiento");
-        
+
     }//GEN-LAST:event_voz2MouseClicked
 
     private void voz3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz3MouseClicked
         // TODO add your handling code here:
         Sonido("Agregar Paquete");
-        
+
     }//GEN-LAST:event_voz3MouseClicked
 
     private void voz4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz4MouseClicked
         // TODO add your handling code here:
         Sonido("Modificar Alojamient");
-        
+
     }//GEN-LAST:event_voz4MouseClicked
 
     private void voz5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz5MouseClicked
         // TODO add your handling code here:
         Sonido("Eliminar");
-        
+
     }//GEN-LAST:event_voz5MouseClicked
 
     private void voz6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz6MouseClicked
         // TODO add your handling code here:
         Sonido("Consulta de Paquetes");
-        
+
     }//GEN-LAST:event_voz6MouseClicked
-    private boolean flechaVisible = true;
-    //private boolean textVisible = false;
-
-    public void keyPressed(KeyEvent e) {
-        // Este método se llama cuando se presiona una tecla
-        if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
-            // Abre la ventana cuando se presiona la tecla 'A' o 'a'
-            CiudadAgregar ciudadA = new CiudadAgregar();
-            ciudadA.setVisible(true);
-        }
-    }
-
-    /**
+       /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
