@@ -13,6 +13,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,6 +36,8 @@ public class menu extends javax.swing.JFrame {
         jlMenuPaquete.setEnabled(false);
         jlMenuModificarAlojamiento.setEnabled(false);
         jlMenuEliminar1.setEnabled(false);
+//        JInternalFrame Modificar_Alojamiento = new JInternalFrame();
+//        Modificar_Alojamiento.setResizable(false);
     }
 
     public void Sonido(String archivo) {

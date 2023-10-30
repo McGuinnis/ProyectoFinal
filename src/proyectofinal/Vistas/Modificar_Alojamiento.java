@@ -57,6 +57,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         ((JTextFieldDateEditor)jdCalendarioActual.getDateEditor()).setEditable(false);
         ((JTextFieldDateEditor)jdFechaInicio.getDateEditor()).setEditable(false);
         ((JTextFieldDateEditor)jdFechaSalida.getDateEditor()).setEditable(false);
+        
     }
     private PaqueteData pd = new PaqueteData();
     private AlojamientoData ad = new AlojamientoData();

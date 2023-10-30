@@ -382,7 +382,7 @@ public class Eliminar extends javax.swing.JInternalFrame {
 
     private void jtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCiudadKeyTyped
 
-        if (!Character.isLetter(evt.getKeyChar())) {
+        if (!Character.isLetter(evt.getKeyChar()) && evt.getKeyChar() != ' ') {
             evt.consume(); //Permite ingresar SOLO caracteres
         }
     }//GEN-LAST:event_jtCiudadKeyTyped
