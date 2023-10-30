@@ -98,13 +98,13 @@ public class AlojamientoData {
     }
 
     public void calculoVacaciones(LocalDate fecha1, LocalDate fecha2) {
-        LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
+       // LocalDate fechaInicio = LocalDate.of(2023, 1, 1);
 
-        LocalDate fechaFin = LocalDate.of(2023, 1, 16);
+        //LocalDate fechaFin = LocalDate.of(2023, 1, 16);
 
-        String temporada = CalcularTemporada(fechaInicio);
+        String temporada = CalcularTemporada(fecha1);
 
-        int diasVacaciones = CalcularDiasVacaciones(fechaInicio, fechaFin);
+        int diasVacaciones = CalcularDiasVacaciones(fecha1, fecha2);
 
         System.out.println("Temporada" + temporada);
         System.out.println("Día de Vacaciones" + diasVacaciones);
