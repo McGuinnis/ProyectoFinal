@@ -480,7 +480,12 @@ public class AgregarAlojamiento extends javax.swing.JFrame {
     private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
 
         char c = evt.getKeyChar();
-        if (!(Character.isDigit(c) || c == '.')) {
+        String text = jtImporteDiario.getText();
+
+        // Verificar si ya hay un punto en el campo
+        if (c == '.' && text.contains(".")) {
+            evt.consume(); // Ignorar el carácter '.' adicional
+        } else if (!(Character.isDigit(c) || c == '.')) {
             evt.consume();
         }
 

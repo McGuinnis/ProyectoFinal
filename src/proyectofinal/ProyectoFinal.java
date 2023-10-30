@@ -117,6 +117,8 @@ public class ProyectoFinal {
 //        
 //        System.out.println("Probando "+ss.getIdCiudad()+" "+ss.getNombre());   
 
+       // System.out.println(""+ad.CalcularDiasVacaciones(LocalDate.of(2023, 10, 30), LocalDate.of(2023, 11, 2)));
+
 menu mn = new menu();
 mn.setVisible(true);
 

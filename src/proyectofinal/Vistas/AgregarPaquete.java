@@ -493,9 +493,13 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jtImporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteKeyTyped
-        // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if (!(Character.isDigit(c) || c == '.')) {
+        String text = jtImporte.getText();
+
+        // Verificar si ya hay un punto en el campo
+        if (c == '.' && text.contains(".")) {
+            evt.consume(); // Ignorar el carácter '.' adicional
+        } else if (!(Character.isDigit(c) || c == '.')) {
             evt.consume();
         }
     }//GEN-LAST:event_jtImporteKeyTyped

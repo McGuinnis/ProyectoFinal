@@ -93,6 +93,12 @@ public class menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuAlojamientoMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlMenuAlojamientoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlMenuAlojamientoMouseExited(evt);
+            }
         });
         menuPanel1.add(jlMenuAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
 
@@ -102,6 +108,12 @@ public class menu extends javax.swing.JFrame {
         jlMenuPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuPaqueteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlMenuPaqueteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlMenuPaqueteMouseExited(evt);
             }
         });
         menuPanel1.add(jlMenuPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, -1));
@@ -113,6 +125,12 @@ public class menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuCiudadMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlMenuCiudadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlMenuCiudadMouseExited(evt);
+            }
         });
         menuPanel1.add(jlMenuCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 50, -1));
 
@@ -122,6 +140,12 @@ public class menu extends javax.swing.JFrame {
         jlMenuModificarAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuModificarAlojamientoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlMenuModificarAlojamientoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlMenuModificarAlojamientoMouseExited(evt);
             }
         });
         menuPanel1.add(jlMenuModificarAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 50, -1));
@@ -133,6 +157,12 @@ public class menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuConsultasMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlMenuConsultasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlMenuConsultasMouseExited(evt);
+            }
         });
         menuPanel1.add(jlMenuConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 50, -1));
 
@@ -142,6 +172,12 @@ public class menu extends javax.swing.JFrame {
         jlMenuEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMenuEliminar1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlMenuEliminar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlMenuEliminar1MouseExited(evt);
             }
         });
         menuPanel1.add(jlMenuEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 50, -1));
@@ -354,7 +390,7 @@ public class menu extends javax.swing.JFrame {
                 jlMenuPaquete.setEnabled(true);
                 jlMenuModificarAlojamiento.setEnabled(true);
                 jlMenuEliminar1.setEnabled(true);
-
+                jbLogin.setEnabled(false);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Usuario y/o Contraseña Incorrectas!!!");
@@ -421,10 +457,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlMenuEliminar1MouseClicked
 
     private void voz1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz1MouseClicked
-        // TODO add your handling code here:
         Sonido("Agregar Ciudad");
-
-
     }//GEN-LAST:event_voz1MouseClicked
 
     private void voz2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz2MouseClicked
@@ -440,23 +473,67 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_voz3MouseClicked
 
     private void voz4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz4MouseClicked
-        // TODO add your handling code here:
         Sonido("Modificar Alojamient");
-
     }//GEN-LAST:event_voz4MouseClicked
 
     private void voz5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz5MouseClicked
-        // TODO add your handling code here:
         Sonido("Eliminar");
 
     }//GEN-LAST:event_voz5MouseClicked
 
     private void voz6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voz6MouseClicked
-        // TODO add your handling code here:
         Sonido("Consulta de Paquetes");
 
     }//GEN-LAST:event_voz6MouseClicked
-       /**
+
+    private void jlMenuCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuCiudadMouseEntered
+        Sonido("Agregar Ciudad");
+    }//GEN-LAST:event_jlMenuCiudadMouseEntered
+
+    private void jlMenuAlojamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuAlojamientoMouseEntered
+        Sonido("Agregar Alojamiento");
+    }//GEN-LAST:event_jlMenuAlojamientoMouseEntered
+
+    private void jlMenuPaqueteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuPaqueteMouseEntered
+        Sonido("Agregar Paquete");
+    }//GEN-LAST:event_jlMenuPaqueteMouseEntered
+
+    private void jlMenuModificarAlojamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuModificarAlojamientoMouseEntered
+        Sonido("Modificar Alojamient");
+    }//GEN-LAST:event_jlMenuModificarAlojamientoMouseEntered
+
+    private void jlMenuEliminar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuEliminar1MouseEntered
+        Sonido("Eliminar");
+    }//GEN-LAST:event_jlMenuEliminar1MouseEntered
+
+    private void jlMenuConsultasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuConsultasMouseEntered
+        Sonido("Consulta de Paquetes");
+    }//GEN-LAST:event_jlMenuConsultasMouseEntered
+
+    private void jlMenuCiudadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuCiudadMouseExited
+        clip.stop();
+    }//GEN-LAST:event_jlMenuCiudadMouseExited
+
+    private void jlMenuAlojamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuAlojamientoMouseExited
+        clip.stop();
+    }//GEN-LAST:event_jlMenuAlojamientoMouseExited
+
+    private void jlMenuPaqueteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuPaqueteMouseExited
+        clip.stop();
+    }//GEN-LAST:event_jlMenuPaqueteMouseExited
+
+    private void jlMenuModificarAlojamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuModificarAlojamientoMouseExited
+        clip.stop();
+    }//GEN-LAST:event_jlMenuModificarAlojamientoMouseExited
+
+    private void jlMenuEliminar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuEliminar1MouseExited
+        clip.stop();
+    }//GEN-LAST:event_jlMenuEliminar1MouseExited
+
+    private void jlMenuConsultasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMenuConsultasMouseExited
+        clip.stop();
+    }//GEN-LAST:event_jlMenuConsultasMouseExited
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {

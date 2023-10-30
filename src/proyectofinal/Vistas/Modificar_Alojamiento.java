@@ -144,6 +144,8 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado:");
 
+        jcEstado.setBackground(new java.awt.Color(255, 153, 0));
+
         jbActualizar.setBackground(new java.awt.Color(0, 94, 47));
         jbActualizar.setForeground(new java.awt.Color(255, 255, 255));
         jbActualizar.setText("Actualizar");
@@ -276,10 +278,7 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jbActualizar)
-                                .addGap(209, 209, 209))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(209, 209, 209))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(92, 92, 92))
@@ -466,7 +465,12 @@ public class Modificar_Alojamiento extends javax.swing.JInternalFrame {
     private void jtImporteDiarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtImporteDiarioKeyTyped
 
         char c = evt.getKeyChar();
-        if (!(Character.isDigit(c) || c == '.')) {
+        String text = jtImporteDiario.getText();
+
+        // Verificar si ya hay un punto en el campo
+        if (c == '.' && text.contains(".")) {
+            evt.consume(); // Ignorar el carácter '.' adicional
+        } else if (!(Character.isDigit(c) || c == '.')) {
             evt.consume();
         }
 

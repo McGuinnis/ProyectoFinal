@@ -368,13 +368,16 @@ public class Eliminar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        try{
         int filaActual = jtPaquete.getSelectedRow();
         Integer idpaq = (Integer) jtPaquete.getValueAt(filaActual, 0);
         Integer idpas = (Integer) jtPaquete.getValueAt(filaActual, 1);
         System.out.println(idpas);
         pData.eliminarPaquete(idpaq);
         passD.EliminarPasaje(idpas);
+        }catch(ArrayIndexOutOfBoundsException ar){
+            JOptionPane.showMessageDialog(this, "Seleccione un Paquete");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCiudadKeyTyped

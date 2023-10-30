@@ -297,6 +297,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jcEstado">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="99" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jbActualizar">
               <Properties>
